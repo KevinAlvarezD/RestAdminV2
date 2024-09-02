@@ -14,7 +14,7 @@ public class Administrator
     [Column("id_administrator")]
     public int Id { get; set; }
     [Column("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
     [Column("username")]
     [MaxLength(50, ErrorMessage = "The Username field must be at most {1} characters.")]
     public string? UserName { get; set; }
