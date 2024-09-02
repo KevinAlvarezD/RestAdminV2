@@ -5,17 +5,8 @@ using RestAdminV2.Models;
 
 namespace RestAdmin.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class CustomerControllerPut : ControllerBase
+    public partial class CustomerController
     {
-        private readonly ApplicationDbContext _context;
-
-        public CustomerControllerPut(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
         // PUT: api/Customer/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCustomer(int id, Customer customer)

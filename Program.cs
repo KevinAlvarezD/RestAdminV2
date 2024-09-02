@@ -40,7 +40,7 @@ if (app.Environment.IsDevelopment())
 app.UseCors("AllowAllOrigins");
 
 app.UseHttpsRedirection();
-app.UseWelcomePage();
+// app.UseWelcomePage();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

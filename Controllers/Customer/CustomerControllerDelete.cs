@@ -1,20 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using RestAdmin.Models;
 using RestAdminV2.Models;
 
 namespace RestAdmin.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class CustomerControllerDelete : ControllerBase
+    public partial class CustomerController
     {
-        private readonly ApplicationDbContext _context;
-
-        public CustomerControllerDelete(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
         // DELETE: api/Customer/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCustomer(int id)

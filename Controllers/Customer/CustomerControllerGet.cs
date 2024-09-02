@@ -5,17 +5,8 @@ using RestAdminV2.Models;
 
 namespace RestAdmin.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class CustomerControllerGet : ControllerBase
+    public partial class CustomerController
     {
-        private readonly ApplicationDbContext _context;
-
-        public CustomerControllerGet(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
         // GET: api/Customer
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
