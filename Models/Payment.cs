@@ -23,4 +23,9 @@ public class Payment
     public double Amount { get; set; }
     [Column("payment_method")]
     public string? PaymentMethod { get; set; }
+
+
+    //Foreing Links
+    [ForeignKey("IdInvoice")]
+    public Invoice? Invoice { get; set; }
 }
