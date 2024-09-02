@@ -23,7 +23,6 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Ordered> Ordereds { get; set; }
 
-
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
