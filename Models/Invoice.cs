@@ -27,6 +27,6 @@ public class Invoice
 
     //Foreing Links
     [ForeignKey("IdOrder")]
-    public Ordered? Ordered { get; set; }
+    public Ordered Ordered { get; set; }
 
 }
