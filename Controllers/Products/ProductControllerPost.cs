@@ -1,12 +1,23 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using RestAdminV2.Models;
 
-namespace RestAdminV2.Controllers.Products
+namespace RestAdmin.Controllers
 {
-    public class ProductControllerPost
+    public partial class ProductController
     {
-        
+        // POST: api/products
+        [HttpPost]
+        public async Task<ActionResult<Product>> CreateProduct([FromBody] Product product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
+        }
     }
 }
