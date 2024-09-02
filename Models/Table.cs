@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace RestAdmin.Models;
+namespace RestAdminV2.Models;
 [Table("tables")]
 
 public class Table
