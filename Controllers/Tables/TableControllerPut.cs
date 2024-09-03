@@ -1,22 +1,26 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RestAdmin.Models;
 using RestAdminV2.Models;
 
 namespace RestAdmin.Controllers
 {
-    public partial class OrderDetailsController
+    public partial class TableController
     {
-        // PUT: api/OrderDetails/5
+        // PUT: api/products/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrderDetails(int id, OrderDetails orderDetails)
+        public async Task<IActionResult> UpdateTable(int id, [FromBody] Table table)
         {
-            if (id != orderDetails.Id)
+            if (id != table.Id)
             {
-                return BadRequest("OrderDetails ID mismatch.");
+                return BadRequest("Table ID mismatch.");
             }
 
-            _context.Entry(orderDetails).State = EntityState.Modified;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _context.Entry(table).State = EntityState.Modified;
 
             try
             {
@@ -24,7 +28,7 @@ namespace RestAdmin.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!OrderDetailsExists(id))
+                if (!TableExists(id))
                 {
                     return NotFound();
                 }
@@ -37,9 +41,9 @@ namespace RestAdmin.Controllers
             return NoContent();
         }
 
-        private bool OrderDetailsExists(int id)
+        private bool TableExists(int id)
         {
-            return _context.OrderDetails.Any(e => e.Id == id);
+            return _context.Tables.Any(e => e.Id == id);
         }
     }
 }
