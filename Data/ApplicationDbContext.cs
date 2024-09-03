@@ -27,8 +27,18 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Administrator> Administrators { get; set; }
 
+
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
+    }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Invoice>()
+            .HasOne(i => i.Ordered)
+            .WithMany() // O usa WithMany() si Ordered tiene una colección de Invoices
+            .HasForeignKey(i => i.IdOrder);
+
+        // Configuración adicional para otras entidades
     }
 
 }
