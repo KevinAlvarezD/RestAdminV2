@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RestAdminV2.Models;
@@ -32,8 +33,13 @@ public class Invoice
     [Display(Name = "Total")]
     public double Total { get; set; }
 
+    [Column("pdf_file")]
+    [NotMapped]
+    [JsonIgnore]
+    public byte[]? PdfFile { get; set; }
+
     //Foreing Links
     [ForeignKey("IdOrder")]
-    public required Ordered Ordered { get; set; }
+    public virtual Ordered Ordered { get; set; }
 
 }
