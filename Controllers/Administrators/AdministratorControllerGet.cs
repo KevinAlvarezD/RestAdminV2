@@ -6,16 +6,16 @@ namespace RestAdminV2.Controllers
 {
     public partial class AdministratorController
     {
-        // GET: api/Customer
+        // GET: api/Administrator
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Administrator>>> GetCustomers()
+        public async Task<ActionResult<IEnumerable<Administrator>>> GetAdministrator()
         {
             return await _context.Administrators.ToListAsync();
         }
 
-        // GET: api/Customer/5
+        // GET: api/Administrator/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Administrator>> GetCustomer(int id)
+        public async Task<ActionResult<Administrator>> GetAdministrator(int id)
         {
             var administrator = await _context.Administrators.FindAsync(id);
             if (administrator == null)
