@@ -32,6 +32,9 @@ public class Invoice
     [Display(Name = "Total")]
     public double Total { get; set; }
 
+    [Column("pdf_file")]
+    public byte[]? PdfFile { get; set; }  // field for share pdf into Database
+
     //Foreing Links
     [ForeignKey("IdOrder")]
     public required Ordered Ordered { get; set; }
