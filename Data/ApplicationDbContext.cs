@@ -22,8 +22,10 @@ public class ApplicationDbContext : DbContext
     public DbSet<Payment> Payments { get; set; }
 
     public DbSet<Ordered> Ordereds { get; set; }
-    
+
     public DbSet<OrderDetails> OrderDetails { get; set; }
+
+    public DbSet<Administrator> Administrators { get; set; }
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
