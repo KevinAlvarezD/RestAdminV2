@@ -13,7 +13,7 @@ namespace RestAdmin.Controllers
         {
             if (id != customer.Id)
             {
-                return BadRequest();
+                return BadRequest("Customer ID mismatch.");
             }
 
             _context.Entry(customer).State = EntityState.Modified;

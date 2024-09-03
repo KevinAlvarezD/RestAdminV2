@@ -13,7 +13,7 @@ namespace RestAdmin.Controllers
         {
             if (id != ordered.Id)
             {
-                return BadRequest();
+                return BadRequest("Ordered ID mismatch.");
             }
 
             _context.Entry(ordered).State = EntityState.Modified;
