@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using RestAdminV2.Models;
 
-namespace RestAdminV2.Controllers.Administrator
+namespace RestAdminV2.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AdministratorController : ControllerBase
+    public partial class AdministratorController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
