@@ -5,16 +5,10 @@ namespace RestAdmin.Controllers
 {
     public partial class InvoiceController : ControllerBase
     {
-      
-        public InvoiceController(ApplicationDbContext context, InvoiceService invoiceService)
-        {
-            _context = context;
-            _invoiceService = invoiceService;
-        }
 
         // POST: api/invoice
         [HttpPost]
-        public async Task<ActionResult<Invoice>> CreateInvoice([FromBody] Invoice invoice)
+        public async Task<IActionResult> CreateInvoice([FromBody] Invoice invoice)
         {
             if (!ModelState.IsValid)
             {
@@ -23,6 +17,14 @@ namespace RestAdmin.Controllers
 
             try
             {
+                var ordered = await _context.Ordereds.FindAsync(invoice.IdOrder);
+                if (ordered == null)
+                {
+                    return NotFound($"Order with ID {invoice.IdOrder} not found.");
+                }
+
+                invoice.Ordered = ordered;
+
                 byte[] pdfFile = _invoiceService.GenerateInvoicePdf(invoice);
 
                 invoice.PdfFile = pdfFile;
@@ -30,7 +32,7 @@ namespace RestAdmin.Controllers
                 _context.Invoices.Add(invoice);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction(nameof(GetInvoice), new { id = invoice.IdInvoice }, invoice);
+                return File(pdfFile, "application/pdf", "invoice.pdf");
             }
             catch (Exception ex)
             {
