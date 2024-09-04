@@ -12,12 +12,10 @@ public class InvoiceService
         {
             using (var writer = new PdfWriter(memoryStream))
             {
-                // Crear el documento PDF
                 using (var pdf = new PdfDocument(writer))
                 {
                     var document = new Document(pdf);
-
-                    // Añadir el contenido al documento
+                    
                     document.Add(new Paragraph($"Invoice ID: {invoice.IdInvoice}"));
                     document.Add(new Paragraph($"Order ID: {invoice.IdOrder}"));
                     document.Add(new Paragraph($"Date: {invoice.DateInvoice.ToShortDateString()}"));
