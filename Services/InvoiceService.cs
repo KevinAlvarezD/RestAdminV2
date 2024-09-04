@@ -10,7 +10,6 @@ public class InvoiceService
     {
         using (var memoryStream = new MemoryStream())
         {
-            // Crear el PdfWriter con el MemoryStream
             using (var writer = new PdfWriter(memoryStream))
             {
                 // Crear el documento PDF
