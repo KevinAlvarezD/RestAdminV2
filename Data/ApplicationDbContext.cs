@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RestAdmin.Models;
 
@@ -31,15 +27,28 @@ public class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Invoice>()
-            .HasOne(i => i.Ordered)
-            .WithMany() // O usa WithMany() si Ordered tiene una colección de Invoices
-            .HasForeignKey(i => i.IdOrder);
+   protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Invoice>()
+        .HasOne(i => i.Ordered)
+        .WithMany() // O usa WithMany() si Ordered tiene una colección de Invoices
+        .HasForeignKey(i => i.IdOrder)
+        .OnDelete(DeleteBehavior.Restrict); // Puedes ajustar la estrategia de eliminación según sea necesario
 
-        // Configuración adicional para otras entidades
-    }
+    modelBuilder.Entity<Ordered>()
+        .HasOne(o => o.Customer)
+        .WithMany()
+        .HasForeignKey(o => o.IdCustomer)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<Ordered>()
+        .HasOne(o => o.Table)
+        .WithMany()
+        .HasForeignKey(o => o.IdTable)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    // Configuración adicional para otras entidades
+}
 
 }
 
