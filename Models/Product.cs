@@ -16,16 +16,16 @@ public class Product
    [Column("image_url")]
     [MaxLength(255, ErrorMessage = "The field must be at most {1} characters.")]
     [DataType(DataType.ImageUrl, ErrorMessage = "The field must be a valid URL.")]
-    public string? ImageURL { get; set; }
+    public string ImageURL { get; set; }
 
     [Column("name")]
     [MaxLength(50, ErrorMessage = "The field must be at most {1} characters.")]
     [Required(ErrorMessage = "The name is required.")]
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
     [Column("description")]
     [MaxLength(255, ErrorMessage = "The field must be at most {1} characters.")]
-    public string? Description { get; set; }
+    public string Description { get; set; }
 
     [Column("price")]
     [Required(ErrorMessage = "The price is required.")]
