@@ -8,7 +8,6 @@ public class InvoiceService
 {
     public byte[] GenerateInvoicePdf(Invoice invoice)
     {
-        // Usar MemoryStream para almacenar el PDF en memoria
         using (var memoryStream = new MemoryStream())
         {
             // Crear el PdfWriter con el MemoryStream
