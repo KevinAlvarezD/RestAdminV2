@@ -11,20 +11,20 @@ namespace RestAdmin.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<OrderDetails>>> GetOrderDetails()
         {
-            return await _context.OrderDetails.ToListAsync();
+            return await _context.OrderDetails.Include(i => i.Ordered).Include(i => i.Product).ToListAsync();
         }
 
         // GET: api/OrderDetails/5
         [HttpGet("{id}")]
         public async Task<ActionResult<OrderDetails>> GetOrderDetails(int id)
         {
-            var orderDetails = await _context.OrderDetails.FindAsync(id);
+            var orderDetails = await _context.OrderDetails.Include(i => i.Ordered).Include(i => i.Product).FirstOrDefaultAsync(i => i.Id == id);
             if (orderDetails == null)
             {
                 return NotFound();
             }
 
-            return orderDetails;
+            return Ok(orderDetails);
         }
     }
 }

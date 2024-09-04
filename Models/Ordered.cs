@@ -36,8 +36,8 @@ public class Ordered
 
     //Foreing Links
     [ForeignKey("IdCustomer")]
-    public Customer? Customer { get; set; }
+    public virtual Customer? Customer { get; set; }
 
     [ForeignKey("IdTable")]
-    public Table? Table { get; set; }
+    public virtual Table? Table { get; set; }
 }
