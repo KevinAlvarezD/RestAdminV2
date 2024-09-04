@@ -31,9 +31,9 @@ public class ApplicationDbContext : DbContext
 {
     modelBuilder.Entity<Invoice>()
         .HasOne(i => i.Ordered)
-        .WithMany() // O usa WithMany() si Ordered tiene una colección de Invoices
+        .WithMany() 
         .HasForeignKey(i => i.IdOrder)
-        .OnDelete(DeleteBehavior.Restrict); // Puedes ajustar la estrategia de eliminación según sea necesario
+        .OnDelete(DeleteBehavior.Restrict); 
 
     modelBuilder.Entity<Ordered>()
         .HasOne(o => o.Customer)
