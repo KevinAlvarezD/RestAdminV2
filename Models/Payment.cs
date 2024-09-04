@@ -37,5 +37,5 @@ public class Payment
 
     //Foreing Links
     [ForeignKey("IdInvoice")]
-    public Invoice? Invoice { get; set; }
+    public virtual Invoice Invoice { get; set; }
 }

@@ -10,7 +10,7 @@ namespace RestAdmin.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Payment>>> GetPayments()
         {
-            var payments = await _context.Payments.ToListAsync();
+            var payments = await _context.Payments.Include(i => i.Invoice).ThenInclude(o => o.Ordered).ThenInclude(o => o.Customer).Include(i => i.Invoice).ThenInclude(o => o.Ordered).ThenInclude(o => o.Table).ToListAsync();
             return Ok(payments);
         }
 
@@ -18,7 +18,7 @@ namespace RestAdmin.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Payment>> GetPayment(int id)
         {
-            var payment = await _context.Payments.FindAsync(id);
+            var payment = await _context.Payments.Include(i => i.Invoice).FirstOrDefaultAsync(i => i.IdPayment == id);
 
             if (payment == null)
             {

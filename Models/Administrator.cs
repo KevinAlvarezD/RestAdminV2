@@ -17,17 +17,17 @@ public class Administrator
     [Column("name")]
     [MinLength(5, ErrorMessage = "The Name field must be at least {1} characters.")]
     [MaxLength(90, ErrorMessage = "The Name field must be at most {1} characters.")]
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
     [Column("username")]
     [MinLength(5, ErrorMessage = "The username field must be at least {1} characters.")]
     [MaxLength(50, ErrorMessage = "The Username field must be at most {1} characters.")]
-    public string? UserName { get; set; }
+    public string UserName { get; set; }
 
     [Column("password")]
     [MinLength(5, ErrorMessage = "The password field must be at least {1} characters.")]
     [MaxLength(255, ErrorMessage = "The Password field must be at most {1} characters.")]
-    public string? Password { get; set; }
+    public string Password { get; set; }
 
 }
 

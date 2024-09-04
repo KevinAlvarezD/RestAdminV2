@@ -35,9 +35,9 @@ public class OrderDetails
 
     //Foreing Links
     [ForeignKey("IdOrdered")]
-    public Ordered? Ordered { get; set; }
+    public virtual Ordered Ordered { get; set; }
 
     [ForeignKey("IdProduct")]
-    public Product? Product { get; set; }
+    public virtual Product Product { get; set; }
 
 }
