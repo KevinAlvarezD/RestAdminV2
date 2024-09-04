@@ -19,7 +19,7 @@ namespace RestAdmin.Controllers
         public async Task<ActionResult<Invoice>> GetInvoice(int id)
         {
             var invoice = await _context.Invoices
-                .Include(i => i.Ordered) // Incluye la entidad Ordered
+                .Include(i => i.Ordered)
                 .FirstOrDefaultAsync(i => i.IdInvoice == id);
 
             if (invoice == null)

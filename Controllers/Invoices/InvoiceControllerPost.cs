@@ -25,17 +25,13 @@ namespace RestAdmin.Controllers
 
                 invoice.Ordered = ordered;
 
-                // Generar el PDF usando el servicio actualizado a iText7
                 byte[] pdfFile = _invoiceService.GenerateInvoicePdf(invoice);
 
-                // Almacenar el archivo PDF generado en la propiedad del modelo
                 invoice.PdfFile = pdfFile;
 
-                // Agregar y guardar el nuevo registro de factura en la base de datos
                 _context.Invoices.Add(invoice);
                 await _context.SaveChangesAsync();
 
-                // Devolver el archivo PDF como respuesta
                 return File(pdfFile, "application/pdf", "invoice.pdf");
             }
             catch (DbUpdateException dbEx)

@@ -24,7 +24,6 @@ public class InvoiceService
                     document.Close();
                 }
             }
-            // Retornar el PDF como un array de bytes
             return memoryStream.ToArray();
         }
     }
