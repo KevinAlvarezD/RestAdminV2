@@ -11,7 +11,7 @@ namespace RestAdmin.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<OrderDetails>>> GetOrderDetails()
         {
-            return await _context.OrderDetails.Include(i => i.Ordered).Include(i => i.Product).ToListAsync();
+            return await _context.OrderDetails.Include(i => i.Ordered).ThenInclude(o => o.Customer).Include(i => i.Ordered).ThenInclude(o => o.Table).Include(i => i.Product).ToListAsync();
         }
 
         // GET: api/OrderDetails/5
