@@ -15,13 +15,12 @@ public class InvoiceService
                 using (var pdf = new PdfDocument(writer))
                 {
                     var document = new Document(pdf);
-                    
+
                     document.Add(new Paragraph($"Invoice ID: {invoice.IdInvoice}"));
                     document.Add(new Paragraph($"Order ID: {invoice.IdOrder}"));
                     document.Add(new Paragraph($"Date: {invoice.DateInvoice.ToShortDateString()}"));
                     document.Add(new Paragraph($"Total: {invoice.Total:C}"));
 
-                    // Cerrar el documento
                     document.Close();
                 }
             }
