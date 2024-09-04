@@ -47,7 +47,6 @@ public class ApplicationDbContext : DbContext
         .HasForeignKey(o => o.IdTable)
         .OnDelete(DeleteBehavior.Restrict);
 
-    // Configuración adicional para otras entidades
 }
 
 }
