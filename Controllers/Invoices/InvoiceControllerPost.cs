@@ -1,11 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using RestAdminV2.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace RestAdmin.Controllers
 {
     public partial class InvoiceController : ControllerBase
     {
-
         // POST: api/invoice
         [HttpPost]
         public async Task<IActionResult> CreateInvoice([FromBody] Invoice invoice)
@@ -33,6 +33,10 @@ namespace RestAdmin.Controllers
                 await _context.SaveChangesAsync();
 
                 return File(pdfFile, "application/pdf", "invoice.pdf");
+            }
+            catch (DbUpdateException dbEx)
+            {
+                return StatusCode(500, $"Database update error: {dbEx.Message}");
             }
             catch (Exception ex)
             {

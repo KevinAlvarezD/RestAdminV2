@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using RestAdmin.Models;
 
@@ -27,9 +23,31 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Administrator> Administrators { get; set; }
 
+
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
+   protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Invoice>()
+        .HasOne(i => i.Ordered)
+        .WithMany() 
+        .HasForeignKey(i => i.IdOrder)
+        .OnDelete(DeleteBehavior.Restrict); 
+
+    modelBuilder.Entity<Ordered>()
+        .HasOne(o => o.Customer)
+        .WithMany()
+        .HasForeignKey(o => o.IdCustomer)
+        .OnDelete(DeleteBehavior.Restrict);
+
+    modelBuilder.Entity<Ordered>()
+        .HasOne(o => o.Table)
+        .WithMany()
+        .HasForeignKey(o => o.IdTable)
+        .OnDelete(DeleteBehavior.Restrict);
+
+}
 
 }
 

@@ -18,7 +18,9 @@ namespace RestAdmin.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Invoice>> GetInvoice(int id)
         {
-            var invoice = await _context.Invoices.FindAsync(id);
+            var invoice = await _context.Invoices
+                .Include(i => i.Ordered)
+                .FirstOrDefaultAsync(i => i.IdInvoice == id);
 
             if (invoice == null)
             {
@@ -28,4 +30,4 @@ namespace RestAdmin.Controllers
             return Ok(invoice);
         }
     }
-}
+}    

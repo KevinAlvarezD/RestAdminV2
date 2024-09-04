@@ -1,6 +1,8 @@
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Element;
 using RestAdminV2.Models;
+
 
 public class InvoiceService
 {
@@ -8,17 +10,19 @@ public class InvoiceService
     {
         using (var memoryStream = new MemoryStream())
         {
-            using (var document = new Document())
+            using (var writer = new PdfWriter(memoryStream))
             {
-                PdfWriter.GetInstance(document, memoryStream);
-                document.Open();
-                
-                document.Add(new Paragraph($"Invoice ID: {invoice.IdInvoice}"));
-                document.Add(new Paragraph($"Order ID: {invoice.IdOrder}"));
-                document.Add(new Paragraph($"Date: {invoice.DateInvoice.ToShortDateString()}"));
-                document.Add(new Paragraph($"Total: {invoice.Total:C}"));
+                using (var pdf = new PdfDocument(writer))
+                {
+                    var document = new Document(pdf);
 
-                document.Close();
+                    document.Add(new Paragraph($"Invoice ID: {invoice.IdInvoice}"));
+                    document.Add(new Paragraph($"Order ID: {invoice.IdOrder}"));
+                    document.Add(new Paragraph($"Date: {invoice.DateInvoice.ToShortDateString()}"));
+                    document.Add(new Paragraph($"Total: {invoice.Total:C}"));
+
+                    document.Close();
+                }
             }
             return memoryStream.ToArray();
         }
