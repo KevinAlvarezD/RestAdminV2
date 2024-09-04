@@ -16,7 +16,7 @@ public class Ordered
     [Column("name")]
     [MinLength(5, ErrorMessage = "The Name field must be at least {1} characters.")]
     [MaxLength(90, ErrorMessage = "The Name field must be at most {1} characters.")]
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
     [Column("id_customer")]
     [Required(ErrorMessage = "The customer ID is required.")]
@@ -36,8 +36,8 @@ public class Ordered
 
     //Foreing Links
     [ForeignKey("IdCustomer")]
-    public virtual Customer? Customer { get; set; }
+    public virtual Customer Customer { get; set; }
 
     [ForeignKey("IdTable")]
-    public virtual Table? Table { get; set; }
+    public virtual Table Table { get; set; }
 }

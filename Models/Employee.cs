@@ -18,12 +18,12 @@ public class Employee
     [Column("name")]
     [MinLength(5, ErrorMessage = "The Name field must be at least {1} characters.")]
     [MaxLength(90, ErrorMessage = "The Name field must be at most {1} characters.")]
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
     [Column("role")]
     [MinLength(5, ErrorMessage = "The role field must be at least {1} characters.")]
     [MaxLength(90, ErrorMessage = "The role field must be at most {1} characters.")]
-    public string? Role { get; set; }
+    public string Role { get; set; }
 
     [Column("schedule")]
     [DataType(DataType.Date)]

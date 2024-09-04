@@ -33,10 +33,10 @@ public class Invoice
     [Column("pdf_file")]
     [NotMapped]
     [JsonIgnore]
-    public byte[]? PdfFile { get; set; }
+    public byte[] PdfFile { get; set; }
 
     //Foreing Links
     [ForeignKey("IdOrder")]
-    public virtual Ordered? Ordered { get; set; }
+    public virtual Ordered Ordered { get; set; }
 
 }
