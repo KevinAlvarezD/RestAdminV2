@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace RestAdminV2.Models;
-[Table("company")]
+[Table("companys")]
 public class Company
 {
     [Key]

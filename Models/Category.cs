@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RestAdminV2.Models;
-[Table("Category")]
+[Table("categorys")]
 public class Category
 {
     [Key]

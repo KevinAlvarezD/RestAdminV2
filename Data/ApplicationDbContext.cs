@@ -25,6 +25,8 @@ public class ApplicationDbContext : DbContext
     
     public DbSet<Category> Categorys { get; set; }
 
+    public DbSet<Company> Companys { get; set; }
+
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
