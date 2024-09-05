@@ -100,7 +100,7 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("datetime(6)")
                         .HasColumnName("date_invoice");
 
-                    b.Property<int>("IdOrder")
+                    b.Property<int>("OrderedId")
                         .HasColumnType("int")
                         .HasColumnName("id_order");
 
@@ -114,7 +114,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("IdInvoice");
 
-                    b.HasIndex("IdOrder");
+                    b.HasIndex("OrderedId");
 
                     b.ToTable("invoices");
                 });
@@ -128,7 +128,7 @@ namespace RestAdminV2.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("IdOrdered")
+                    b.Property<int>("OrderedIded")
                         .HasColumnType("int")
                         .HasColumnName("id_ordered");
 
@@ -146,7 +146,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdOrdered");
+                    b.HasIndex("OrderedIded");
 
                     b.HasIndex("IdProduct");
 
@@ -284,7 +284,7 @@ namespace RestAdminV2.Migrations
                 {
                     b.HasOne("RestAdminV2.Models.Ordered", "Ordered")
                         .WithMany()
-                        .HasForeignKey("IdOrder")
+                        .HasForeignKey("OrderedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -295,7 +295,7 @@ namespace RestAdminV2.Migrations
                 {
                     b.HasOne("RestAdminV2.Models.Ordered", "Ordered")
                         .WithMany()
-                        .HasForeignKey("IdOrdered")
+                        .HasForeignKey("OrderedIded")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

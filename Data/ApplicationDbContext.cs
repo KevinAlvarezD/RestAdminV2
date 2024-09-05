@@ -32,7 +32,7 @@ public class ApplicationDbContext : DbContext
     modelBuilder.Entity<Invoice>()
         .HasOne(i => i.Ordered)
         .WithMany() 
-        .HasForeignKey(i => i.IdOrder)
+        .HasForeignKey(i => i.OrderedId)
         .OnDelete(DeleteBehavior.Restrict); 
 
     modelBuilder.Entity<Ordered>()

@@ -17,10 +17,10 @@ namespace RestAdmin.Controllers
 
             try
             {
-                var ordered = await _context.Ordereds.FindAsync(invoice.IdOrder);
+                var ordered = await _context.Ordereds.FindAsync(invoice.OrderedId);
                 if (ordered == null)
                 {
-                    return NotFound($"Order with ID {invoice.IdOrder} not found.");
+                    return NotFound($"Order with ID {invoice.OrderedId} not found.");
                 }
 
                 invoice.Ordered = ordered;

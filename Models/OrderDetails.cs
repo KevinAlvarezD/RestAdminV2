@@ -14,7 +14,7 @@ public class OrderDetails
     [Column("id_ordered")]
     [Required(ErrorMessage = "The order ID is required.")]
     [Range(1, int.MaxValue, ErrorMessage = "The order ID must be a positive number.")]
-    public int IdOrdered { get; set; }
+    public int OrderedIded { get; set; }
 
     [Column("id_product")]
     [Required(ErrorMessage = "The product ID is required.")]
@@ -34,7 +34,7 @@ public class OrderDetails
     
 
     //Foreing Links
-    [ForeignKey("IdOrdered")]
+    [ForeignKey("OrderedIded")]
     public virtual Ordered Ordered { get; set; }
 
     [ForeignKey("IdProduct")]

@@ -16,7 +16,7 @@ public class Invoice
     [Column("id_order")]
     [Required(ErrorMessage = "The order ID is required..")]
     [Range(1, int.MaxValue, ErrorMessage = "The order ID must be a positive number.")]
-    public int IdOrder { get; set; }
+    public int OrderedId { get; set; }
 
     [Column("date_invoice")]
     [DataType(DataType.Date, ErrorMessage = "The invoice date must be in a valid format.")]
@@ -36,7 +36,7 @@ public class Invoice
     public byte[] PdfFile { get; set; }
 
     //Foreing Links
-    [ForeignKey("IdOrder")]
+    [ForeignKey("OrderedId")]
     public virtual Ordered Ordered { get; set; }
 
 }
