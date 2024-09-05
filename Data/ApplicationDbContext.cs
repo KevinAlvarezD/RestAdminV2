@@ -31,27 +31,7 @@ public class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
-   protected override void OnModelCreating(ModelBuilder modelBuilder)
-{
-    modelBuilder.Entity<Invoice>()
-        .HasOne(i => i.Ordered)
-        .WithMany() 
-        .HasForeignKey(i => i.OrderedId)
-        .OnDelete(DeleteBehavior.Restrict); 
 
-    modelBuilder.Entity<Ordered>()
-        .HasOne(o => o.Customer)
-        .WithMany()
-        .HasForeignKey(o => o.IdCustomer)
-        .OnDelete(DeleteBehavior.Restrict);
-
-    modelBuilder.Entity<Ordered>()
-        .HasOne(o => o.Table)
-        .WithMany()
-        .HasForeignKey(o => o.IdTable)
-        .OnDelete(DeleteBehavior.Restrict);
-
-}
 
 }
 

@@ -42,6 +42,7 @@ public class OrderDetails
     public virtual Product Product { get; set; }
 
     [JsonIgnore]
+    [NotMapped]
     public virtual ICollection<Product> Products { get; set; }
 
     [JsonIgnore]

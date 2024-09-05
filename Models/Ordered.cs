@@ -44,8 +44,9 @@ public class Ordered
 
 
     [JsonIgnore]
+    [NotMapped]
     public virtual ICollection<Customer> Customers { get; set; }
-    
+
     [JsonIgnore]
     public virtual ICollection<Table> Tables { get; set; }
 
