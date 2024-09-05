@@ -1,15 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using RestAdminV2.Models;
+using RestAdmin.Models;
 
-namespace RestAdminV2.Controllers.Category
+namespace RestAdmin.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class CategoryControllerPost : ControllerBase
+     public partial class CategoryController
     {
-        
+        // POST: api/Category
+        [HttpPost]
+        public async Task<ActionResult<Category>> PostCategory(Category category)
+        {
+            _context.Categorys.Add(category);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetCategory), new { id = category.Id }, category);
+        }
     }
 }
