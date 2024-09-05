@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RestAdminV2.Models;
@@ -36,4 +37,6 @@ public class Customer
     [MaxLength(255, ErrorMessage = "The Email field must be at most {1} characters.")]
     public string Email { get; set; }
 
+    [JsonIgnore]
+    public virtual ICollection<Ordered> Ordereds { get; set; }
 }
