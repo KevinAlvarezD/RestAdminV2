@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RestAdmin.Models;
+using RestAdminV2.Controllers.Category;
 
 namespace RestAdminV2.Models;
 
@@ -22,9 +23,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<OrderDetails> OrderDetails { get; set; }
 
     public DbSet<Administrator> Administrators { get; set; }
-
-    public DbSet<Company> Companys { get; set; }
-
+    
     public DbSet<Category> Categorys { get; set; }
 
 

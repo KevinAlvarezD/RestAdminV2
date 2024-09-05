@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace RestAdminV2.Controllers.Category
+namespace RestAdmin.Controllers
 {
     public partial class CategoryController{
         //Delete: api/Category/5
