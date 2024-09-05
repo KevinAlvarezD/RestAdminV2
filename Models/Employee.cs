@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RestAdmin.Models;
+namespace RestAdminV2.Models;
 
 
 [Table("employees")]

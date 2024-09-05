@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using RestAdmin.Models;
-using RestAdminV2.Controllers;
+using RestAdminV2.Models;
 
 namespace RestAdminV2.Models;
 
@@ -35,7 +34,7 @@ public class ApplicationDbContext : DbContext
     modelBuilder.Entity<Invoice>()
         .HasOne(i => i.Ordered)
         .WithMany() 
-        .HasForeignKey(i => i.IdOrder)
+        .HasForeignKey(i => i.OrderedId)
         .OnDelete(DeleteBehavior.Restrict); 
 
     modelBuilder.Entity<Ordered>()

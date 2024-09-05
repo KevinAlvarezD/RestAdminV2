@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RestAdminV2.Models;
 
-namespace RestAdmin.Controllers
+namespace RestAdminV2.Controllers
 {
     public partial class OrderedController
     {
