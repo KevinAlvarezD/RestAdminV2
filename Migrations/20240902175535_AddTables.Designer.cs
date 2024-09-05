@@ -25,7 +25,7 @@ namespace RestAdminV2.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("RestAdmin.Models.Customer", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,7 +59,7 @@ namespace RestAdminV2.Migrations
                     b.ToTable("customers");
                 });
 
-            modelBuilder.Entity("RestAdmin.Models.Employee", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Employee", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -248,7 +248,7 @@ namespace RestAdminV2.Migrations
 
             modelBuilder.Entity("RestAdminV2.Models.Ordered", b =>
                 {
-                    b.HasOne("RestAdmin.Models.Customer", "Customer")
+                    b.HasOne("RestAdminV2.Models.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("IdCustomer")
                         .OnDelete(DeleteBehavior.Cascade)

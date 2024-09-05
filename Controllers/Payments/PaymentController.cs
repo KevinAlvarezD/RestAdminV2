@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RestAdminV2.Models;
 
-namespace RestAdmin.Controllers
+namespace RestAdminV2.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

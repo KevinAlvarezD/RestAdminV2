@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using RestAdmin.Models;
+using RestAdminV2.Models;
 
 namespace RestAdminV2.Models;
 
