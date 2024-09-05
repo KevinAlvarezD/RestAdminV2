@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 namespace RestAdminV2.Models;
 public class Category
 {
-
+    
 }
