@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RestAdmin.Models;
+using RestAdminV2.Models;
 using RestAdminV2.Models;
 
-namespace RestAdmin.Controllers
+namespace RestAdminV2.Controllers
 {
     public partial class OrderedController
     {
