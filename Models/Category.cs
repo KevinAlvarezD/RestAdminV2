@@ -20,10 +20,6 @@ public class Category
     [Required(ErrorMessage = "The name is required.")]
     public string Name { get; set; }
 
-    //Foreing Links
-    [ForeignKey("IdProduct")]
-    public virtual Product Product { get; set; }
-
     [JsonIgnore]
     [NotMapped]
     public virtual ICollection<Product> Products { get; set; }
