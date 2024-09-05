@@ -1,6 +1,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using RestAdminV2.Models;
 
 
@@ -40,4 +41,13 @@ public class Ordered
 
     [ForeignKey("IdTable")]
     public virtual Table Table { get; set; }
+
+
+    [JsonIgnore]
+    public virtual ICollection<Customer> Customers { get; set; }
+    
+    [JsonIgnore]
+    public virtual ICollection<Table> Tables { get; set; }
+
+
 }

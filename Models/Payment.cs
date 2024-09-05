@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace RestAdminV2.Models;
 
@@ -38,4 +39,7 @@ public class Payment
     //Foreing Links
     [ForeignKey("IdInvoice")]
     public virtual Invoice Invoice { get; set; }
+
+    [JsonIgnore]
+    public virtual ICollection<Invoice> Invoices { get; set; }
 }

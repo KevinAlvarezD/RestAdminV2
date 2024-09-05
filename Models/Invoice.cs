@@ -39,4 +39,7 @@ public class Invoice
     [ForeignKey("OrderedId")]
     public virtual Ordered Ordered { get; set; }
 
+    [JsonIgnore]
+    public virtual ICollection<Ordered> Ordereds { get; set; }
+
 }
