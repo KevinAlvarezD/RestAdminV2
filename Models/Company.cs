@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace RestAdminV2.Models;
-[Table("company")]
+[Table("companys")]
 public class Company
 {
     [Key]

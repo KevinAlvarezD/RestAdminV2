@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestAdminV2.Models;
 
@@ -11,9 +12,11 @@ using RestAdminV2.Models;
 namespace RestAdminV2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240905162207_UpdateAllModels")]
+    partial class UpdateAllModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,6 +63,9 @@ namespace RestAdminV2.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("IdProduct")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -67,6 +73,8 @@ namespace RestAdminV2.Migrations
                         .HasColumnName("name");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdProduct");
 
                     b.ToTable("categorys");
                 });
@@ -352,6 +360,15 @@ namespace RestAdminV2.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("tables");
+                });
+
+            modelBuilder.Entity("RestAdminV2.Models.Category", b =>
+                {
+                    b.HasOne("RestAdminV2.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("IdProduct");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Invoice", b =>

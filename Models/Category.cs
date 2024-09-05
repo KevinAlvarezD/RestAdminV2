@@ -1,9 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 
 namespace RestAdminV2.Models;
-[Table("Category")]
+[Table("categorys")]
 public class Category
 {
     [Key]
@@ -15,14 +18,7 @@ public class Category
     [Required(ErrorMessage = "The name is required.")]
     public string Name { get; set; }
 
-    [Column("id_product")]
-    [Required(ErrorMessage = "The product ID is required.")]
-    [Range(1, int.MaxValue, ErrorMessage = "The product ID must be a positive number.")]
-    public int IdProduct { get; set; }
-
-    //Foreing Links
-    [ForeignKey("IdProduct")]
-    public virtual Product Product { get; set; }
-
+    [JsonIgnore]
+    [NotMapped]
     public virtual ICollection<Product> Products { get; set; }
 }

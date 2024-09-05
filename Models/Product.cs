@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 
 namespace RestAdminV2.Models;
@@ -11,7 +12,7 @@ public class Product
     [Column("id")]
     public int Id { get; set; }
 
-   [Column("image_url")]
+    [Column("image_url")]
     [MaxLength(255, ErrorMessage = "The field must be at most {1} characters.")]
     [DataType(DataType.ImageUrl, ErrorMessage = "The field must be a valid URL.")]
     public string ImageURL { get; set; }
@@ -30,5 +31,8 @@ public class Product
     [Range(0.01, double.MaxValue, ErrorMessage = "The price must be a positive number greater than zero.")]
     [DataType(DataType.Currency, ErrorMessage = "The price must be in a valid currency format.")]
     public double Price { get; set; }
+
+    [JsonIgnore]
+    public virtual ICollection<OrderDetails> OrderDetails { get; set; }
 
 }
