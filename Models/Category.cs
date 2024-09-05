@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RestAdminV2.Models;
@@ -23,5 +24,6 @@ public class Category
     [ForeignKey("IdProduct")]
     public virtual Product Product { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<Product> Products { get; set; }
 }

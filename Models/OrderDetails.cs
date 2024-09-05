@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 
 namespace RestAdminV2.Models;
@@ -39,5 +40,11 @@ public class OrderDetails
 
     [ForeignKey("IdProduct")]
     public virtual Product Product { get; set; }
+
+    [JsonIgnore]
+    public virtual ICollection<Product> Products { get; set; }
+
+    [JsonIgnore]
+    public virtual ICollection<Ordered> Ordereds { get; set; }
 
 }
