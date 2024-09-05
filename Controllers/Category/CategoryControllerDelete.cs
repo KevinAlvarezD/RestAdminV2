@@ -1,15 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RestAdminV2.Controllers.Category
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class CategoryControllerDelete : ControllerBase
-    {
-        
+    public partial class CategoryController{
+        //Delete: api/Category/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            var category = await _context.Categorys.FindAsync(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            _context.Categorys.Remove(category);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
     }
 }
