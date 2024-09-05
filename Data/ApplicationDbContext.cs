@@ -22,6 +22,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<OrderDetails> OrderDetails { get; set; }
 
     public DbSet<Administrator> Administrators { get; set; }
+    
+    public DbSet<Category> Categorys { get; set; }
 
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
