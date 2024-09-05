@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RestAdmin.Models;
-using RestAdminV2.Controllers.Category;
+using RestAdminV2.Controllers;
 
 namespace RestAdminV2.Models;
 
