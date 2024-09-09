@@ -21,7 +21,7 @@ public class Payment
     [Display(Name = "Payment Date")]
     [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
     [Required(ErrorMessage = "The payment date is required.")]
-    public DateTime DatePayment { get; set; }
+    public DateOnly DatePayment { get; set; }
 
     [Column("amount")]
     [Required(ErrorMessage = "The amount is required.")]
