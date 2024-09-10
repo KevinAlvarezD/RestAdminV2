@@ -10,7 +10,7 @@ namespace RestAdminV2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Payment>>> GetPayments()
         {
-            var payments = await _context.Payments.Include(i => i.Invoice).ThenInclude(o => o.Ordered).ThenInclude(o => o.Customer).Include(i => i.Invoice).ThenInclude(o => o.Ordered).ThenInclude(o => o.Tables).ToListAsync();
+            var payments = await _context.Payments.Include(i => i.Invoice).ThenInclude(o => o.Order).ThenInclude(o => o.Customer).Include(i => i.Invoice).ThenInclude(o => o.Order).ThenInclude(o => o.Tables).ToListAsync();
             return Ok(payments);
         }
 

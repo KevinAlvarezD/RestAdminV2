@@ -12,7 +12,7 @@ namespace RestAdminV2.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "OrderedId",
+                name: "OrderId",
                 Tables: "Tables",
                 type: "int",
                 nullable: true);
@@ -31,13 +31,13 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AddColumn<int>(
                 name: "InvoiceIdInvoice",
-                Tables: "ordereds",
+                Tables: "Orders",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "OrderDetailsId",
-                Tables: "ordereds",
+                Tables: "Orders",
                 type: "int",
                 nullable: true);
 
@@ -48,7 +48,7 @@ namespace RestAdminV2.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "OrderedId",
+                name: "OrderId",
                 Tables: "customers",
                 type: "int",
                 nullable: true);
@@ -75,9 +75,9 @@ namespace RestAdminV2.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tables_OrderedId",
+                name: "IX_Tables_OrderId",
                 Tables: "Tables",
-                column: "OrderedId");
+                column: "OrderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Menus_CategoriesId",
@@ -90,13 +90,13 @@ namespace RestAdminV2.Migrations
                 column: "OrderDetailsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ordereds_InvoiceIdInvoice",
-                Tables: "ordereds",
+                name: "IX_Orders_InvoiceIdInvoice",
+                Tables: "Orders",
                 column: "InvoiceIdInvoice");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ordereds_OrderDetailsId",
-                Tables: "ordereds",
+                name: "IX_Orders_OrderDetailsId",
+                Tables: "Orders",
                 column: "OrderDetailsId");
 
             migrationBuilder.CreateIndex(
@@ -105,9 +105,9 @@ namespace RestAdminV2.Migrations
                 column: "PaymentIdPayment");
 
             migrationBuilder.CreateIndex(
-                name: "IX_customers_OrderedId",
+                name: "IX_customers_OrderId",
                 Tables: "customers",
-                column: "OrderedId");
+                column: "OrderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_IdMenu",
@@ -115,10 +115,10 @@ namespace RestAdminV2.Migrations
                 column: "IdMenu");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_customers_ordereds_OrderedId",
+                name: "FK_customers_Orders_OrderId",
                 Tables: "customers",
-                column: "OrderedId",
-                principalTables: "ordereds",
+                column: "OrderId",
+                principalTables: "Orders",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
@@ -129,15 +129,15 @@ namespace RestAdminV2.Migrations
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_ordereds_invoices_InvoiceIdInvoice",
-                Tables: "ordereds",
+                name: "FK_Orders_invoices_InvoiceIdInvoice",
+                Tables: "Orders",
                 column: "InvoiceIdInvoice",
                 principalTables: "invoices",
                 principalColumn: "id_invoice");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_ordereds_order_details_OrderDetailsId",
-                Tables: "ordereds",
+                name: "FK_Orders_order_details_OrderDetailsId",
+                Tables: "Orders",
                 column: "OrderDetailsId",
                 principalTables: "order_details",
                 principalColumn: "id");
@@ -157,10 +157,10 @@ namespace RestAdminV2.Migrations
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Tables_ordereds_OrderedId",
+                name: "FK_Tables_Orders_OrderId",
                 Tables: "Tables",
-                column: "OrderedId",
-                principalTables: "ordereds",
+                column: "OrderId",
+                principalTables: "Orders",
                 principalColumn: "id");
         }
 
@@ -168,7 +168,7 @@ namespace RestAdminV2.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_customers_ordereds_OrderedId",
+                name: "FK_customers_Orders_OrderId",
                 Tables: "customers");
 
             migrationBuilder.DropForeignKey(
@@ -176,12 +176,12 @@ namespace RestAdminV2.Migrations
                 Tables: "invoices");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ordereds_invoices_InvoiceIdInvoice",
-                Tables: "ordereds");
+                name: "FK_Orders_invoices_InvoiceIdInvoice",
+                Tables: "Orders");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ordereds_order_details_OrderDetailsId",
-                Tables: "ordereds");
+                name: "FK_Orders_order_details_OrderDetailsId",
+                Tables: "Orders");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Menus_Categories_CategoriesId",
@@ -192,14 +192,14 @@ namespace RestAdminV2.Migrations
                 Tables: "Menus");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Tables_ordereds_OrderedId",
+                name: "FK_Tables_Orders_OrderId",
                 Tables: "Tables");
 
             migrationBuilder.DropTables(
                 name: "Categories");
 
             migrationBuilder.DropIndex(
-                name: "IX_Tables_OrderedId",
+                name: "IX_Tables_OrderId",
                 Tables: "Tables");
 
             migrationBuilder.DropIndex(
@@ -211,23 +211,23 @@ namespace RestAdminV2.Migrations
                 Tables: "Menus");
 
             migrationBuilder.DropIndex(
-                name: "IX_ordereds_InvoiceIdInvoice",
-                Tables: "ordereds");
+                name: "IX_Orders_InvoiceIdInvoice",
+                Tables: "Orders");
 
             migrationBuilder.DropIndex(
-                name: "IX_ordereds_OrderDetailsId",
-                Tables: "ordereds");
+                name: "IX_Orders_OrderDetailsId",
+                Tables: "Orders");
 
             migrationBuilder.DropIndex(
                 name: "IX_invoices_PaymentIdPayment",
                 Tables: "invoices");
 
             migrationBuilder.DropIndex(
-                name: "IX_customers_OrderedId",
+                name: "IX_customers_OrderId",
                 Tables: "customers");
 
             migrationBuilder.DropColumn(
-                name: "OrderedId",
+                name: "OrderId",
                 Tables: "Tables");
 
             migrationBuilder.DropColumn(
@@ -240,18 +240,18 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.DropColumn(
                 name: "InvoiceIdInvoice",
-                Tables: "ordereds");
+                Tables: "Orders");
 
             migrationBuilder.DropColumn(
                 name: "OrderDetailsId",
-                Tables: "ordereds");
+                Tables: "Orders");
 
             migrationBuilder.DropColumn(
                 name: "PaymentIdPayment",
                 Tables: "invoices");
 
             migrationBuilder.DropColumn(
-                name: "OrderedId",
+                name: "OrderId",
                 Tables: "customers");
         }
     }

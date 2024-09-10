@@ -17,7 +17,7 @@ public class InvoiceService
                     var document = new Document(pdf);
 
                     document.Add(new Paragraph($"Invoice ID: {invoice.IdInvoice}"));
-                    document.Add(new Paragraph($"Order ID: {invoice.OrderedId}"));
+                    document.Add(new Paragraph($"Order ID: {invoice.OrderId}"));
                     document.Add(new Paragraph($"Date: {invoice.DateInvoice.ToShortDateString()}"));
                     document.Add(new Paragraph($"Total: {invoice.Total:C}"));
 

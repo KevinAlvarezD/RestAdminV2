@@ -11,40 +11,40 @@ namespace RestAdminV2.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_invoices_ordereds_id_order",
+                name: "FK_invoices_Orders_id_order",
                 Tables: "invoices");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ordereds_customers_id_customer",
-                Tables: "ordereds");
+                name: "FK_Orders_customers_id_customer",
+                Tables: "Orders");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ordereds_Tables_id_Tables",
-                Tables: "ordereds");
+                name: "FK_Orders_Tables_id_Tables",
+                Tables: "Orders");
 
             migrationBuilder.DropColumn(
                 name: "pdf_file",
                 Tables: "invoices");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_invoices_ordereds_id_order",
+                name: "FK_invoices_Orders_id_order",
                 Tables: "invoices",
                 column: "id_order",
-                principalTables: "ordereds",
+                principalTables: "Orders",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_ordereds_customers_id_customer",
-                Tables: "ordereds",
+                name: "FK_Orders_customers_id_customer",
+                Tables: "Orders",
                 column: "id_customer",
                 principalTables: "customers",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_ordereds_Tables_id_Tables",
-                Tables: "ordereds",
+                name: "FK_Orders_Tables_id_Tables",
+                Tables: "Orders",
                 column: "id_Tables",
                 principalTables: "Tables",
                 principalColumn: "id",
@@ -55,16 +55,16 @@ namespace RestAdminV2.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_invoices_ordereds_id_order",
+                name: "FK_invoices_Orders_id_order",
                 Tables: "invoices");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ordereds_customers_id_customer",
-                Tables: "ordereds");
+                name: "FK_Orders_customers_id_customer",
+                Tables: "Orders");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ordereds_Tables_id_Tables",
-                Tables: "ordereds");
+                name: "FK_Orders_Tables_id_Tables",
+                Tables: "Orders");
 
             migrationBuilder.AddColumn<byte[]>(
                 name: "pdf_file",
@@ -73,24 +73,24 @@ namespace RestAdminV2.Migrations
                 nullable: true);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_invoices_ordereds_id_order",
+                name: "FK_invoices_Orders_id_order",
                 Tables: "invoices",
                 column: "id_order",
-                principalTables: "ordereds",
+                principalTables: "Orders",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_ordereds_customers_id_customer",
-                Tables: "ordereds",
+                name: "FK_Orders_customers_id_customer",
+                Tables: "Orders",
                 column: "id_customer",
                 principalTables: "customers",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_ordereds_Tables_id_Tables",
-                Tables: "ordereds",
+                name: "FK_Orders_Tables_id_Tables",
+                Tables: "Orders",
                 column: "id_Tables",
                 principalTables: "Tables",
                 principalColumn: "id",

@@ -19,7 +19,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Payment> Payments { get; set; }
 
-    public DbSet<Ordered> Ordereds { get; set; }
+    public DbSet<Order> Orders { get; set; }
 
     public DbSet<OrderDetails> OrderDetails { get; set; }
 

@@ -17,7 +17,7 @@ namespace RestAdminV2.Migrations
                 {
                     id = Tables.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    id_ordered = Tables.Column<int>(type: "int", nullable: false),
+                    id_Order = Tables.Column<int>(type: "int", nullable: false),
                     id_Menu = Tables.Column<int>(type: "int", nullable: false),
                     quantity = Tables.Column<int>(type: "int", nullable: false),
                     unit_price = Tables.Column<double>(type: "double", nullable: false)
@@ -26,9 +26,9 @@ namespace RestAdminV2.Migrations
                 {
                     Tables.PrimaryKey("PK_order_details", x => x.id);
                     Tables.ForeignKey(
-                        name: "FK_order_details_ordereds_id_ordered",
-                        column: x => x.id_ordered,
-                        principalTables: "ordereds",
+                        name: "FK_order_details_Orders_id_Order",
+                        column: x => x.id_Order,
+                        principalTables: "Orders",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     Tables.ForeignKey(
@@ -41,9 +41,9 @@ namespace RestAdminV2.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_order_details_id_ordered",
+                name: "IX_order_details_id_Order",
                 Tables: "order_details",
-                column: "id_ordered");
+                column: "id_Order");
 
             migrationBuilder.CreateIndex(
                 name: "IX_order_details_id_Menu",

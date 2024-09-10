@@ -5,18 +5,18 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class OrderedController
+    public partial class OrderController
     {
-        // PUT: api/Ordered/5
+        // PUT: api/Order/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrdered(int id, Ordered ordered)
+        public async Task<IActionResult> PutOrder(int id, Order Order)
         {
-            if (id != ordered.Id)
+            if (id != Order.Id)
             {
-                return BadRequest("Ordered ID mismatch.");
+                return BadRequest("Order ID mismatch.");
             }
 
-            _context.Entry(ordered).State = EntityState.Modified;
+            _context.Entry(Order).State = EntityState.Modified;
 
             try
             {
@@ -24,7 +24,7 @@ namespace RestAdminV2.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!OrderedExists(id))
+                if (!OrderExists(id))
                 {
                     return NotFound();
                 }
@@ -37,9 +37,9 @@ namespace RestAdminV2.Controllers
             return NoContent();
         }
 
-        private bool OrderedExists(int id)
+        private bool OrderExists(int id)
         {
-            return _context.Ordereds.Any(e => e.Id == id);
+            return _context.Orders.Any(e => e.Id == id);
         }
     }
 }

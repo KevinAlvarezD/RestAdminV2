@@ -23,6 +23,6 @@ public class Tables
     public string State { get; set; }
 
     [JsonIgnore]
-    public virtual ICollection<Ordered> Ordereds { get; set; }
+    public virtual ICollection<Order> Orders { get; set; }
 
 }

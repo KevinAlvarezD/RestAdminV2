@@ -197,7 +197,7 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("datetime(6)")
                         .HasColumnName("date_invoice");
 
-                    b.Property<int>("OrderedId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("int")
                         .HasColumnName("id_order");
 
@@ -207,7 +207,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("IdInvoice");
 
-                    b.HasIndex("OrderedId");
+                    b.HasIndex("OrderId");
 
                     b.ToTables("invoices");
                 });
@@ -225,9 +225,9 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("int")
                         .HasColumnName("id_Menu");
 
-                    b.Property<int>("OrderedIded")
+                    b.Property<int>("OrderIded")
                         .HasColumnType("int")
-                        .HasColumnName("id_ordered");
+                        .HasColumnName("id_Order");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int")
@@ -241,12 +241,12 @@ namespace RestAdminV2.Migrations
 
                     b.HasIndex("IdMenu");
 
-                    b.HasIndex("OrderedIded");
+                    b.HasIndex("OrderIded");
 
                     b.ToTables("order_details");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Ordered", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -278,7 +278,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasIndex("IdTables");
 
-                    b.ToTables("ordereds");
+                    b.ToTables("Orders");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Payment", b =>
@@ -375,13 +375,13 @@ namespace RestAdminV2.Migrations
 
             modelBuilder.Entity("RestAdminV2.Models.Invoice", b =>
                 {
-                    b.HasOne("RestAdminV2.Models.Ordered", "Ordered")
+                    b.HasOne("RestAdminV2.Models.Order", "Order")
                         .WithMany("Invoices")
-                        .HasForeignKey("OrderedId")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Ordered");
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.OrderDetails", b =>
@@ -392,27 +392,27 @@ namespace RestAdminV2.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RestAdminV2.Models.Ordered", "Ordered")
+                    b.HasOne("RestAdminV2.Models.Order", "Order")
                         .WithMany("OrderDetails")
-                        .HasForeignKey("OrderedIded")
+                        .HasForeignKey("OrderIded")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Ordered");
+                    b.Navigation("Order");
 
                     b.Navigation("Menu");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Ordered", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Order", b =>
                 {
                     b.HasOne("RestAdminV2.Models.Customer", "Customer")
-                        .WithMany("Ordereds")
+                        .WithMany("Orders")
                         .HasForeignKey("IdCustomer")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("RestAdminV2.Models.Tables", "Tables")
-                        .WithMany("Ordereds")
+                        .WithMany("Orders")
                         .HasForeignKey("IdTables")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -435,7 +435,7 @@ namespace RestAdminV2.Migrations
 
             modelBuilder.Entity("RestAdminV2.Models.Customer", b =>
                 {
-                    b.Navigation("Ordereds");
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Invoice", b =>
@@ -443,7 +443,7 @@ namespace RestAdminV2.Migrations
                     b.Navigation("Payments");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Ordered", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Order", b =>
                 {
                     b.Navigation("Invoices");
 
@@ -457,7 +457,7 @@ namespace RestAdminV2.Migrations
 
             modelBuilder.Entity("RestAdminV2.Models.Tables", b =>
                 {
-                    b.Navigation("Ordereds");
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

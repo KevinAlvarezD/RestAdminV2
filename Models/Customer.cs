@@ -37,5 +37,5 @@ public class Customer
     public string Email { get; set; }
 
     [JsonIgnore]
-    public virtual ICollection<Ordered> Ordereds { get; set; }
+    public virtual ICollection<Order> Orders { get; set; }
 }

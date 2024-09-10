@@ -5,26 +5,26 @@
 namespace RestAdminV2.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateCategoriesOrderDetailsAndOrdered : Migration
+    public partial class UpdateCategoriesOrderDetailsAndOrder : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_customers_ordereds_OrderedId",
+                name: "FK_customers_Orders_OrderId",
                 Tables: "customers");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_invoices_ordereds_id_order",
+                name: "FK_invoices_Orders_id_order",
                 Tables: "invoices");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ordereds_customers_id_customer",
-                Tables: "ordereds");
+                name: "FK_Orders_customers_id_customer",
+                Tables: "Orders");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ordereds_Tables_id_Tables",
-                Tables: "ordereds");
+                name: "FK_Orders_Tables_id_Tables",
+                Tables: "Orders");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Menus_Categories_CategoriesId",
@@ -35,7 +35,7 @@ namespace RestAdminV2.Migrations
                 Tables: "Menus");
 
             migrationBuilder.DropIndex(
-                name: "IX_customers_OrderedId",
+                name: "IX_customers_OrderId",
                 Tables: "customers");
 
             migrationBuilder.DropColumn(
@@ -43,28 +43,28 @@ namespace RestAdminV2.Migrations
                 Tables: "Menus");
 
             migrationBuilder.DropColumn(
-                name: "OrderedId",
+                name: "OrderId",
                 Tables: "customers");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_invoices_ordereds_id_order",
+                name: "FK_invoices_Orders_id_order",
                 Tables: "invoices",
                 column: "id_order",
-                principalTables: "ordereds",
+                principalTables: "Orders",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_ordereds_customers_id_customer",
-                Tables: "ordereds",
+                name: "FK_Orders_customers_id_customer",
+                Tables: "Orders",
                 column: "id_customer",
                 principalTables: "customers",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_ordereds_Tables_id_Tables",
-                Tables: "ordereds",
+                name: "FK_Orders_Tables_id_Tables",
+                Tables: "Orders",
                 column: "id_Tables",
                 principalTables: "Tables",
                 principalColumn: "id",
@@ -75,16 +75,16 @@ namespace RestAdminV2.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_invoices_ordereds_id_order",
+                name: "FK_invoices_Orders_id_order",
                 Tables: "invoices");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ordereds_customers_id_customer",
-                Tables: "ordereds");
+                name: "FK_Orders_customers_id_customer",
+                Tables: "Orders");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ordereds_Tables_id_Tables",
-                Tables: "ordereds");
+                name: "FK_Orders_Tables_id_Tables",
+                Tables: "Orders");
 
             migrationBuilder.AddColumn<int>(
                 name: "CategoriesId",
@@ -93,7 +93,7 @@ namespace RestAdminV2.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "OrderedId",
+                name: "OrderId",
                 Tables: "customers",
                 type: "int",
                 nullable: true);
@@ -104,36 +104,36 @@ namespace RestAdminV2.Migrations
                 column: "CategoriesId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_customers_OrderedId",
+                name: "IX_customers_OrderId",
                 Tables: "customers",
-                column: "OrderedId");
+                column: "OrderId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_customers_ordereds_OrderedId",
+                name: "FK_customers_Orders_OrderId",
                 Tables: "customers",
-                column: "OrderedId",
-                principalTables: "ordereds",
+                column: "OrderId",
+                principalTables: "Orders",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_invoices_ordereds_id_order",
+                name: "FK_invoices_Orders_id_order",
                 Tables: "invoices",
                 column: "id_order",
-                principalTables: "ordereds",
+                principalTables: "Orders",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_ordereds_customers_id_customer",
-                Tables: "ordereds",
+                name: "FK_Orders_customers_id_customer",
+                Tables: "Orders",
                 column: "id_customer",
                 principalTables: "customers",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_ordereds_Tables_id_Tables",
-                Tables: "ordereds",
+                name: "FK_Orders_Tables_id_Tables",
+                Tables: "Orders",
                 column: "id_Tables",
                 principalTables: "Tables",
                 principalColumn: "id",

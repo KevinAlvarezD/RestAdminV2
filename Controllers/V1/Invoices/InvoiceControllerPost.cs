@@ -17,13 +17,13 @@ namespace RestAdminV2.Controllers
 
             try
             {
-                var ordered = await _context.Ordereds.FindAsync(invoice.OrderedId);
-                if (ordered == null)
+                var Order = await _context.Orders.FindAsync(invoice.OrderId);
+                if (Order == null)
                 {
-                    return NotFound($"Order with ID {invoice.OrderedId} not found.");
+                    return NotFound($"Order with ID {invoice.OrderId} not found.");
                 }
 
-                invoice.Ordered = ordered;
+                invoice.Order = Order;
 
                 byte[] pdfFile = _invoiceService.GenerateInvoicePdf(invoice);
 

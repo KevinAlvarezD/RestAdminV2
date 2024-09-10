@@ -6,18 +6,18 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class OrderedController
+    public partial class OrderController
     {
-        // GET: api/Ordered/TopMenus?month=9
+        // GET: api/Order/TopMenus?month=9
         [HttpGet("TopMenus")]
-        public async Task<ActionResult<IEnumerable<Ordered>>> GetTopMenus(int month)
+        public async Task<ActionResult<IEnumerable<Order>>> GetTopMenus(int month)
         {
             {
                 var topMenus = await _context.OrderDetails
                     .Include(od => od.Menu)
-                    .Include(od => od.Ordered)
+                    .Include(od => od.Order)
                         .ThenInclude(o => o.Invoices)
-                    .Where(od => od.Ordered.Invoices
+                    .Where(od => od.Order.Invoices
                         .Any(i => i.DateInvoice.Month == month)) // Verifica el mes en todas las fechas de las facturas
                     .GroupBy(od => new { od.Menu.Id, od.Menu.Name })
                     .Select(g => new

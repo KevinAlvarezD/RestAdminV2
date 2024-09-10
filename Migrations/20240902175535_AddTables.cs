@@ -106,7 +106,7 @@ namespace RestAdminV2.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTables(
-                name: "ordereds",
+                name: "Orders",
                 columns: Tables => new
                 {
                     id = Tables.Column<int>(type: "int", nullable: false)
@@ -119,15 +119,15 @@ namespace RestAdminV2.Migrations
                 },
                 constraints: Tables =>
                 {
-                    Tables.PrimaryKey("PK_ordereds", x => x.id);
+                    Tables.PrimaryKey("PK_Orders", x => x.id);
                     Tables.ForeignKey(
-                        name: "FK_ordereds_customers_id_customer",
+                        name: "FK_Orders_customers_id_customer",
                         column: x => x.id_customer,
                         principalTables: "customers",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     Tables.ForeignKey(
-                        name: "FK_ordereds_Tables_id_Tables",
+                        name: "FK_Orders_Tables_id_Tables",
                         column: x => x.id_Tables,
                         principalTables: "Tables",
                         principalColumn: "id",
@@ -149,9 +149,9 @@ namespace RestAdminV2.Migrations
                 {
                     Tables.PrimaryKey("PK_invoices", x => x.id_invoice);
                     Tables.ForeignKey(
-                        name: "FK_invoices_ordereds_id_order",
+                        name: "FK_invoices_Orders_id_order",
                         column: x => x.id_order,
-                        principalTables: "ordereds",
+                        principalTables: "Orders",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -163,13 +163,13 @@ namespace RestAdminV2.Migrations
                 column: "id_order");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ordereds_id_customer",
-                Tables: "ordereds",
+                name: "IX_Orders_id_customer",
+                Tables: "Orders",
                 column: "id_customer");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ordereds_id_Tables",
-                Tables: "ordereds",
+                name: "IX_Orders_id_Tables",
+                Tables: "Orders",
                 column: "id_Tables");
         }
 
@@ -189,7 +189,7 @@ namespace RestAdminV2.Migrations
                 name: "Menus");
 
             migrationBuilder.DropTables(
-                name: "ordereds");
+                name: "Orders");
 
             migrationBuilder.DropTables(
                 name: "customers");

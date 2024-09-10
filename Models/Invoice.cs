@@ -21,7 +21,7 @@ public class Invoice
     [Column("table_id")]
     [Required(ErrorMessage = "The order ID is required..")]
     [Range(1, int.MaxValue, ErrorMessage = "The order ID must be a positive number.")]
-    public int OrderedId { get; set; }
+    public int OrderId { get; set; }
 
     [Column("items")]
     public ICollection<Menu> Items { get; set; }
@@ -40,8 +40,8 @@ public class Invoice
 
 
     //Foreing Links
-    [ForeignKey("OrderedId")]
-    public virtual Ordered Ordered { get; set; }
+    [ForeignKey("OrderId")]
+    public virtual Order Order { get; set; }
 
     [JsonIgnore]
     public virtual ICollection<Payment> Payments { get; set; }

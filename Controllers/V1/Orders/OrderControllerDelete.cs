@@ -3,19 +3,19 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class OrderedController
+    public partial class OrderController
     {
-        // DELETE: api/Ordered/5
+        // DELETE: api/Order/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteOrdered(int id)
+        public async Task<IActionResult> DeleteOrder(int id)
         {
-            var ordered = await _context.Ordereds.FindAsync(id);
-            if (ordered == null)
+            var Order = await _context.Orders.FindAsync(id);
+            if (Order == null)
             {
                 return NotFound();
             }
 
-            _context.Ordereds.Remove(ordered);
+            _context.Orders.Remove(Order);
             await _context.SaveChangesAsync();
 
             return NoContent();

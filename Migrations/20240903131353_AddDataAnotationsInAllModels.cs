@@ -70,7 +70,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "name",
-                Tables: "ordereds",
+                Tables: "Orders",
                 type: "varchar(90)",
                 maxLength: 90,
                 nullable: true,
@@ -186,7 +186,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "name",
-                Tables: "ordereds",
+                Tables: "Orders",
                 type: "varchar(50)",
                 maxLength: 50,
                 nullable: true,
