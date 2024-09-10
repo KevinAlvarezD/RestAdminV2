@@ -12,12 +12,12 @@ namespace RestAdminV2.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Categories_products_IdProduct",
+                name: "FK_Categories_Menus_IdMenu",
                 Tables: "Categories");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_products_Categories_CategoriesId",
-                Tables: "products");
+                name: "FK_Menus_Categories_CategoriesId",
+                Tables: "Menus");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Categories",
@@ -28,9 +28,9 @@ namespace RestAdminV2.Migrations
                 newName: "Categories");
 
             migrationBuilder.RenameIndex(
-                name: "IX_Categories_IdProduct",
+                name: "IX_Categories_IdMenu",
                 Tables: "Categories",
-                newName: "IX_Categories_IdProduct");
+                newName: "IX_Categories_IdMenu");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Categories",
@@ -57,15 +57,15 @@ namespace RestAdminV2.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Categories_products_IdProduct",
+                name: "FK_Categories_Menus_IdMenu",
                 Tables: "Categories",
-                column: "IdProduct",
-                principalTables: "products",
+                column: "IdMenu",
+                principalTables: "Menus",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_products_Categories_CategoriesId",
-                Tables: "products",
+                name: "FK_Menus_Categories_CategoriesId",
+                Tables: "Menus",
                 column: "CategoriesId",
                 principalTables: "Categories",
                 principalColumn: "id");
@@ -75,12 +75,12 @@ namespace RestAdminV2.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Categories_products_IdProduct",
+                name: "FK_Categories_Menus_IdMenu",
                 Tables: "Categories");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_products_Categories_CategoriesId",
-                Tables: "products");
+                name: "FK_Menus_Categories_CategoriesId",
+                Tables: "Menus");
 
             migrationBuilder.DropTables(
                 name: "companys");
@@ -94,9 +94,9 @@ namespace RestAdminV2.Migrations
                 newName: "Categories");
 
             migrationBuilder.RenameIndex(
-                name: "IX_Categories_IdProduct",
+                name: "IX_Categories_IdMenu",
                 Tables: "Categories",
-                newName: "IX_Categories_IdProduct");
+                newName: "IX_Categories_IdMenu");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Categories",
@@ -104,15 +104,15 @@ namespace RestAdminV2.Migrations
                 column: "id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Categories_products_IdProduct",
+                name: "FK_Categories_Menus_IdMenu",
                 Tables: "Categories",
-                column: "IdProduct",
-                principalTables: "products",
+                column: "IdMenu",
+                principalTables: "Menus",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_products_Categories_CategoriesId",
-                Tables: "products",
+                name: "FK_Menus_Categories_CategoriesId",
+                Tables: "Menus",
                 column: "CategoriesId",
                 principalTables: "Categories",
                 principalColumn: "id");

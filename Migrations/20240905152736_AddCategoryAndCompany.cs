@@ -19,13 +19,13 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AddColumn<int>(
                 name: "CategoriesId",
-                Tables: "products",
+                Tables: "Menus",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "OrderDetailsId",
-                Tables: "products",
+                Tables: "Menus",
                 type: "int",
                 nullable: true);
 
@@ -61,15 +61,15 @@ namespace RestAdminV2.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     name = Tables.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    IdProduct = Tables.Column<int>(type: "int", nullable: true)
+                    IdMenu = Tables.Column<int>(type: "int", nullable: true)
                 },
                 constraints: Tables =>
                 {
                     Tables.PrimaryKey("PK_Categories", x => x.id);
                     Tables.ForeignKey(
-                        name: "FK_Categories_products_IdProduct",
-                        column: x => x.IdProduct,
-                        principalTables: "products",
+                        name: "FK_Categories_Menus_IdMenu",
+                        column: x => x.IdMenu,
+                        principalTables: "Menus",
                         principalColumn: "id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
@@ -80,13 +80,13 @@ namespace RestAdminV2.Migrations
                 column: "OrderedId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_products_CategoriesId",
-                Tables: "products",
+                name: "IX_Menus_CategoriesId",
+                Tables: "Menus",
                 column: "CategoriesId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_products_OrderDetailsId",
-                Tables: "products",
+                name: "IX_Menus_OrderDetailsId",
+                Tables: "Menus",
                 column: "OrderDetailsId");
 
             migrationBuilder.CreateIndex(
@@ -110,9 +110,9 @@ namespace RestAdminV2.Migrations
                 column: "OrderedId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categories_IdProduct",
+                name: "IX_Categories_IdMenu",
                 Tables: "Categories",
-                column: "IdProduct");
+                column: "IdMenu");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_customers_ordereds_OrderedId",
@@ -143,15 +143,15 @@ namespace RestAdminV2.Migrations
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_products_Categories_CategoriesId",
-                Tables: "products",
+                name: "FK_Menus_Categories_CategoriesId",
+                Tables: "Menus",
                 column: "CategoriesId",
                 principalTables: "Categories",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_products_order_details_OrderDetailsId",
-                Tables: "products",
+                name: "FK_Menus_order_details_OrderDetailsId",
+                Tables: "Menus",
                 column: "OrderDetailsId",
                 principalTables: "order_details",
                 principalColumn: "id");
@@ -184,12 +184,12 @@ namespace RestAdminV2.Migrations
                 Tables: "ordereds");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_products_Categories_CategoriesId",
-                Tables: "products");
+                name: "FK_Menus_Categories_CategoriesId",
+                Tables: "Menus");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_products_order_details_OrderDetailsId",
-                Tables: "products");
+                name: "FK_Menus_order_details_OrderDetailsId",
+                Tables: "Menus");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Tables_ordereds_OrderedId",
@@ -203,12 +203,12 @@ namespace RestAdminV2.Migrations
                 Tables: "Tables");
 
             migrationBuilder.DropIndex(
-                name: "IX_products_CategoriesId",
-                Tables: "products");
+                name: "IX_Menus_CategoriesId",
+                Tables: "Menus");
 
             migrationBuilder.DropIndex(
-                name: "IX_products_OrderDetailsId",
-                Tables: "products");
+                name: "IX_Menus_OrderDetailsId",
+                Tables: "Menus");
 
             migrationBuilder.DropIndex(
                 name: "IX_ordereds_InvoiceIdInvoice",
@@ -232,11 +232,11 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.DropColumn(
                 name: "CategoriesId",
-                Tables: "products");
+                Tables: "Menus");
 
             migrationBuilder.DropColumn(
                 name: "OrderDetailsId",
-                Tables: "products");
+                Tables: "Menus");
 
             migrationBuilder.DropColumn(
                 name: "InvoiceIdInvoice",

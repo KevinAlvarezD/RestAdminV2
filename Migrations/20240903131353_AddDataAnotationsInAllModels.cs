@@ -30,7 +30,7 @@ namespace RestAdminV2.Migrations
                 .OldAnnotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.UpdateData(
-                Tables: "products",
+                Tables: "Menus",
                 keyColumn: "name",
                 keyValue: null,
                 column: "name",
@@ -38,7 +38,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "name",
-                Tables: "products",
+                Tables: "Menus",
                 type: "varchar(50)",
                 maxLength: 50,
                 nullable: false,
@@ -163,7 +163,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "name",
-                Tables: "products",
+                Tables: "Menus",
                 type: "varchar(50)",
                 maxLength: 50,
                 nullable: true,

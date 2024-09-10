@@ -3,19 +3,19 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class ProductController
+    public partial class MenuController
     {
-        // DELETE: api/products/5
+        // DELETE: api/Menus/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct(int id)
+        public async Task<IActionResult> DeleteMenu(int id)
         {
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
+            var Menu = await _context.Menus.FindAsync(id);
+            if (Menu == null)
             {
                 return NotFound();
             }
 
-            _context.Products.Remove(product);
+            _context.Menus.Remove(Menu);
             await _context.SaveChangesAsync();
 
             return NoContent();

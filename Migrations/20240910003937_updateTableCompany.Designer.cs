@@ -20,7 +20,7 @@ namespace RestAdminV2.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("MenuVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
@@ -221,9 +221,9 @@ namespace RestAdminV2.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("IdProduct")
+                    b.Property<int>("IdMenu")
                         .HasColumnType("int")
-                        .HasColumnName("id_product");
+                        .HasColumnName("id_Menu");
 
                     b.Property<int>("OrderedIded")
                         .HasColumnType("int")
@@ -239,7 +239,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdProduct");
+                    b.HasIndex("IdMenu");
 
                     b.HasIndex("OrderedIded");
 
@@ -315,7 +315,7 @@ namespace RestAdminV2.Migrations
                     b.ToTables("payments");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Product", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Menu", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -346,7 +346,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTables("products");
+                    b.ToTables("Menus");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Tables", b =>
@@ -386,9 +386,9 @@ namespace RestAdminV2.Migrations
 
             modelBuilder.Entity("RestAdminV2.Models.OrderDetails", b =>
                 {
-                    b.HasOne("RestAdminV2.Models.Product", "Product")
+                    b.HasOne("RestAdminV2.Models.Menu", "Menu")
                         .WithMany("OrderDetails")
-                        .HasForeignKey("IdProduct")
+                        .HasForeignKey("IdMenu")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -400,7 +400,7 @@ namespace RestAdminV2.Migrations
 
                     b.Navigation("Ordered");
 
-                    b.Navigation("Product");
+                    b.Navigation("Menu");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Ordered", b =>
@@ -450,7 +450,7 @@ namespace RestAdminV2.Migrations
                     b.Navigation("OrderDetails");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Product", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Menu", b =>
                 {
                     b.Navigation("OrderDetails");
                 });

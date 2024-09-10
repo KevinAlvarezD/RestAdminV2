@@ -20,7 +20,7 @@ namespace RestAdminV2.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("MenuVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
@@ -182,7 +182,7 @@ namespace RestAdminV2.Migrations
                     b.ToTables("payments");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Product", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Menu", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -212,7 +212,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTables("products");
+                    b.ToTables("Menus");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Tables", b =>

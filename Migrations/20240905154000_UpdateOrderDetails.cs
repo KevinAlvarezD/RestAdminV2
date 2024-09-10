@@ -11,16 +11,16 @@ namespace RestAdminV2.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_products_order_details_OrderDetailsId",
-                Tables: "products");
+                name: "FK_Menus_order_details_OrderDetailsId",
+                Tables: "Menus");
 
             migrationBuilder.DropIndex(
-                name: "IX_products_OrderDetailsId",
-                Tables: "products");
+                name: "IX_Menus_OrderDetailsId",
+                Tables: "Menus");
 
             migrationBuilder.DropColumn(
                 name: "OrderDetailsId",
-                Tables: "products");
+                Tables: "Menus");
         }
 
         /// <inheritdoc />
@@ -28,18 +28,18 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.AddColumn<int>(
                 name: "OrderDetailsId",
-                Tables: "products",
+                Tables: "Menus",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_products_OrderDetailsId",
-                Tables: "products",
+                name: "IX_Menus_OrderDetailsId",
+                Tables: "Menus",
                 column: "OrderDetailsId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_products_order_details_OrderDetailsId",
-                Tables: "products",
+                name: "FK_Menus_order_details_OrderDetailsId",
+                Tables: "Menus",
                 column: "OrderDetailsId",
                 principalTables: "order_details",
                 principalColumn: "id");

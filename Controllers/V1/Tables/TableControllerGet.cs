@@ -14,7 +14,7 @@ namespace RestAdminV2.Controllers
             return Ok(Tables);
         }
 
-        // GET: api/products/5
+        // GET: api/Menus/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Tables>> GetTables(int id)
         {

@@ -4,15 +4,15 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class TablesController
+    public partial class PreInvoiceController
     {
-        // PUT: api/Menus/5
+        // PUT: api/invoice/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTables(int id, [FromBody] Tables Tables)
+        public async Task<IActionResult> UpdatePreInvoice(int id, [FromBody] PreInvoice Preinvoice)
         {
-            if (id != Tables.Id)
+            if (id != Preinvoice.Id)
             {
-                return BadRequest("Tables ID mismatch.");
+                return BadRequest("Invoice ID mismatch.");
             }
 
             if (!ModelState.IsValid)
@@ -20,7 +20,7 @@ namespace RestAdminV2.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Entry(Tables).State = EntityState.Modified;
+            _context.Entry(Preinvoice).State = EntityState.Modified;
 
             try
             {
@@ -28,7 +28,7 @@ namespace RestAdminV2.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TablesExists(id))
+                if (!InvoiceExists(id))
                 {
                     return NotFound();
                 }
@@ -41,9 +41,9 @@ namespace RestAdminV2.Controllers
             return NoContent();
         }
 
-        private bool TablesExists(int id)
+        private bool InvoiceExists(int id)
         {
-            return _context.Tables.Any(e => e.Id == id);
+            return _context.Invoices.Any(e => e.Id == id);
         }
     }
 }

@@ -4,15 +4,15 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class ProductController
+    public partial class MenuController
     {
-        // PUT: api/products/5
+        // PUT: api/Menus/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(int id, [FromBody] Product product)
+        public async Task<IActionResult> UpdateMenu(int id, [FromBody] Menu menu)
         {
-            if (id != product.Id)
+            if (id != menu.Id)
             {
-                return BadRequest("Product ID mismatch.");
+                return BadRequest("Menu ID mismatch.");
             }
 
             if (!ModelState.IsValid)
@@ -20,7 +20,7 @@ namespace RestAdminV2.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Entry(product).State = EntityState.Modified;
+            _context.Entry(menu).State = EntityState.Modified;
 
             try
             {
@@ -28,7 +28,7 @@ namespace RestAdminV2.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductExists(id))
+                if (!MenuExists(id))
                 {
                     return NotFound();
                 }
@@ -41,9 +41,9 @@ namespace RestAdminV2.Controllers
             return NoContent();
         }
 
-        private bool ProductExists(int id)
+        private bool MenuExists(int id)
         {
-            return _context.Products.Any(e => e.Id == id);
+            return _context.Menus.Any(e => e.Id == id);
         }
     }
 }

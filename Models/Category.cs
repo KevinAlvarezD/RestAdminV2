@@ -20,5 +20,5 @@ public class Categories
 
     [JsonIgnore]
     [NotMapped]
-    public virtual ICollection<Product> Products { get; set; }
+    public virtual ICollection<Menu> Menus { get; set; }
 }

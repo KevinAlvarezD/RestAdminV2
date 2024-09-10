@@ -70,7 +70,7 @@ namespace RestAdminV2.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTables(
-                name: "products",
+                name: "Menus",
                 columns: Tables => new
                 {
                     id = Tables.Column<int>(type: "int", nullable: false)
@@ -85,7 +85,7 @@ namespace RestAdminV2.Migrations
                 },
                 constraints: Tables =>
                 {
-                    Tables.PrimaryKey("PK_products", x => x.id);
+                    Tables.PrimaryKey("PK_Menus", x => x.id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -186,7 +186,7 @@ namespace RestAdminV2.Migrations
                 name: "payments");
 
             migrationBuilder.DropTables(
-                name: "products");
+                name: "Menus");
 
             migrationBuilder.DropTables(
                 name: "ordereds");

@@ -27,12 +27,12 @@ namespace RestAdminV2.Migrations
                 Tables: "ordereds");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_products_Categories_CategoriesId",
-                Tables: "products");
+                name: "FK_Menus_Categories_CategoriesId",
+                Tables: "Menus");
 
             migrationBuilder.DropIndex(
-                name: "IX_products_CategoriesId",
-                Tables: "products");
+                name: "IX_Menus_CategoriesId",
+                Tables: "Menus");
 
             migrationBuilder.DropIndex(
                 name: "IX_customers_OrderedId",
@@ -40,7 +40,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.DropColumn(
                 name: "CategoriesId",
-                Tables: "products");
+                Tables: "Menus");
 
             migrationBuilder.DropColumn(
                 name: "OrderedId",
@@ -88,7 +88,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AddColumn<int>(
                 name: "CategoriesId",
-                Tables: "products",
+                Tables: "Menus",
                 type: "int",
                 nullable: true);
 
@@ -99,8 +99,8 @@ namespace RestAdminV2.Migrations
                 nullable: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_products_CategoriesId",
-                Tables: "products",
+                name: "IX_Menus_CategoriesId",
+                Tables: "Menus",
                 column: "CategoriesId");
 
             migrationBuilder.CreateIndex(
@@ -140,8 +140,8 @@ namespace RestAdminV2.Migrations
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_products_Categories_CategoriesId",
-                Tables: "products",
+                name: "FK_Menus_Categories_CategoriesId",
+                Tables: "Menus",
                 column: "CategoriesId",
                 principalTables: "Categories",
                 principalColumn: "id");
