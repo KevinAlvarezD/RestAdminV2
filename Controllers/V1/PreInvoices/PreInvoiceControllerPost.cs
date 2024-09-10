@@ -7,7 +7,7 @@ namespace RestAdminV2.Controllers
     {
         // POST: api/Menus
         [HttpPost]
-        public async Task<ActionResult<Menu>> CreatePreinvoice([FromBody] PreInvoice Preinvoice)
+        public async Task<ActionResult<Product>> CreatePreinvoice([FromBody] PreInvoice Preinvoice)
         {
             if (!ModelState.IsValid)
             {

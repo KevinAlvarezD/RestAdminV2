@@ -24,7 +24,7 @@ public class Invoice
     public int OrderId { get; set; }
 
     [Column("items")]
-    public ICollection<Menu> Items { get; set; }
+    public ICollection<Product> Items { get; set; }
 
     [Column("total")]
     [Range(0.01, double.MaxValue, ErrorMessage = "The total must be a positive number greater than zero.")]

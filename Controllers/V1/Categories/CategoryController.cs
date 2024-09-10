@@ -3,7 +3,7 @@ using RestAdminV2.Models;
 namespace RestAdmin.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public partial class CategoriesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

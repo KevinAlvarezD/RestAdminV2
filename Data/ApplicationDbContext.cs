@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using RestAdminV2.Models;
+using RestAdminV2.Seeders;
 
 namespace RestAdminV2.Models;
 
 public class ApplicationDbContext : DbContext
 {
-    public DbSet<Menu> Menus { get; set; }
+    public DbSet<Product> Products { get; set; }
 
     public DbSet<Kitchen> Kitchens { get; set; }
 
@@ -20,7 +21,7 @@ public class ApplicationDbContext : DbContext
     public DbSet<Order> Orders { get; set; }
 
     public DbSet<Client> Clients { get; set; }
-    
+
     public DbSet<Categories> Categories { get; set; }
 
     public DbSet<Company> Companys { get; set; }
@@ -29,6 +30,13 @@ public class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        ProductSeeder.Seed(modelBuilder);
+    }
+
 
 
 }

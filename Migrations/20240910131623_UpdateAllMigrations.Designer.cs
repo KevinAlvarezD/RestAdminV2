@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestAdminV2.Models;
 
@@ -11,9 +12,11 @@ using RestAdminV2.Models;
 namespace RestAdminV2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240910131623_UpdateAllMigrations")]
+    partial class UpdateAllMigrations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -174,6 +177,64 @@ namespace RestAdminV2.Migrations
                     b.ToTable("kitchen");
                 });
 
+            modelBuilder.Entity("RestAdminV2.Models.Menu", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Category")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("category");
+
+                    b.Property<double>("Cost")
+                        .HasColumnType("double")
+                        .HasColumnName("cost");
+
+                    b.Property<string>("ImageURL")
+                        .HasMaxLength(255)
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("image_url");
+
+                    b.Property<int?>("InvoiceId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("KitchenId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("name");
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PreInvoiceId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double")
+                        .HasColumnName("price");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InvoiceId");
+
+                    b.HasIndex("KitchenId");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("PreInvoiceId");
+
+                    b.ToTable("menu");
+                });
+
             modelBuilder.Entity("RestAdminV2.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -232,59 +293,6 @@ namespace RestAdminV2.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("pre_invoices");
-                });
-
-            modelBuilder.Entity("RestAdminV2.Models.Product", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Category")
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)")
-                        .HasColumnName("category");
-
-                    b.Property<double>("Cost")
-                        .HasColumnType("double")
-                        .HasColumnName("cost");
-
-                    b.Property<string>("ImageURL")
-                        .HasMaxLength(255)
-                        .HasColumnType("varchar(255)")
-                        .HasColumnName("image_url");
-
-                    b.Property<int?>("InvoiceId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)")
-                        .HasColumnName("name");
-
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("PreInvoiceId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("double")
-                        .HasColumnName("price");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("InvoiceId");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("PreInvoiceId");
-
-                    b.ToTable("products");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Tables", b =>
@@ -348,16 +356,24 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("varchar(25)")
                         .HasColumnName("phone");
 
+                    b.Property<string>("Roles")
+                        .HasColumnType("longtext")
+                        .HasColumnName("roles");
+
                     b.HasKey("Id");
 
                     b.ToTable("users");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Product", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Menu", b =>
                 {
                     b.HasOne("RestAdminV2.Models.Invoice", null)
                         .WithMany("Items")
                         .HasForeignKey("InvoiceId");
+
+                    b.HasOne("RestAdminV2.Models.Kitchen", null)
+                        .WithMany("Items")
+                        .HasForeignKey("KitchenId");
 
                     b.HasOne("RestAdminV2.Models.Order", null)
                         .WithMany("Items")
@@ -369,6 +385,11 @@ namespace RestAdminV2.Migrations
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Invoice", b =>
+                {
+                    b.Navigation("Items");
+                });
+
+            modelBuilder.Entity("RestAdminV2.Models.Kitchen", b =>
                 {
                     b.Navigation("Items");
                 });

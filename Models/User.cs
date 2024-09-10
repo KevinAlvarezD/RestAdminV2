@@ -41,7 +41,4 @@ public class Users
     [Required(ErrorMessage = "The address is required.")]
     public string Address { get; set; }
 
-    [Column("roles")]
-    public ICollection<Rule> Roles { get; set; }
-
 }

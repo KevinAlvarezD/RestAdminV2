@@ -3,11 +3,11 @@ using RestAdminV2.Models;
 namespace RestAdmin.Controllers
 {
     [ApiController]
-    [Route("api/v1/[controller]")]
-    public partial class CompanyController : ControllerBase
+    [Route("api/[controller]")]
+    public partial class KitchenController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        public CompanyController(ApplicationDbContext context)
+        public KitchenController(ApplicationDbContext context)
         {
             _context = context;
         }
