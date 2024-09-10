@@ -10,7 +10,7 @@ namespace RestAdminV2.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateInvoice(int id, [FromBody] Invoice invoice)
         {
-            if (id != invoice.IdInvoice)
+            if (id != invoice.Id)
             {
                 return BadRequest("Invoice ID mismatch.");
             }
@@ -43,7 +43,7 @@ namespace RestAdminV2.Controllers
 
         private bool InvoiceExists(int id)
         {
-            return _context.Invoices.Any(e => e.IdInvoice == id);
+            return _context.Invoices.Any(e => e.Id == id);
         }
     }
 }

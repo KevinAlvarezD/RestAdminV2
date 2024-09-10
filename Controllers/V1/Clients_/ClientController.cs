@@ -5,11 +5,11 @@ namespace RestAdminV2.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public partial class ClientController : ControllerBase
+    public partial class ClientsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public ClientController(ApplicationDbContext context)
+        public ClientsController(ApplicationDbContext context)
         {
             _context = context;
         }

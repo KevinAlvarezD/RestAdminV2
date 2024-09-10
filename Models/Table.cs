@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 
 namespace RestAdminV2.Models;
-[Table("Tables")]
+[Table("tables")]
 
 public class Tables
 {

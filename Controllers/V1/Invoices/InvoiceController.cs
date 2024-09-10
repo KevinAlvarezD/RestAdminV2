@@ -8,12 +8,10 @@ namespace RestAdminV2.Controllers
     public partial class InvoiceController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        private readonly InvoiceService _invoiceService;
 
         public InvoiceController(ApplicationDbContext context)
         {
             _context = context;
-            _invoiceService = new InvoiceService();
         }
     }
 }

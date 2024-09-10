@@ -1,15 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using RestAdminV2.Models;
-
-namespace RestAdminV2.Controllers
+namespace RestAdmin.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public partial class OrderDetailsController : ControllerBase
+    public partial class CompanyController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-
-        public OrderDetailsController(ApplicationDbContext context)
+        public CompanyController(ApplicationDbContext context)
         {
             _context = context;
         }

@@ -4,7 +4,7 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class ClientController
+    public partial class ClientsController
     {
         // PUT: api/Client/5
         [HttpPut("{id}")]
