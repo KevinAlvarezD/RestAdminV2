@@ -2,11 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class InvoiceController
+    public partial class ProductController
     {
         // DELETE: api/invoice/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteInvoice(int id)
+        public async Task<IActionResult> DeleteProduct(int id)
         {
             var invoice = await _context.Invoices.FindAsync(id);
             if (invoice == null)
@@ -20,4 +20,5 @@ namespace RestAdminV2.Controllers
             return NoContent();
         }
     }
+
 }
