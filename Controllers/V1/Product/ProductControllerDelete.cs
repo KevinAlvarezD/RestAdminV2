@@ -1,15 +1,24 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace RestAdminV2.Controllers.V1.Product
+namespace RestAdminV2.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ProductControllerDelete : ControllerBase
+    public partial class ProductController
     {
-        
+        // DELETE: api/invoice/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var invoice = await _context.Invoices.FindAsync(id);
+            if (invoice == null)
+            {
+                return NotFound();
+            }
+
+            _context.Invoices.Remove(invoice);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
+
 }
