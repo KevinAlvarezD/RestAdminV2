@@ -5,18 +5,18 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class EmployeeController
+    public partial class UsersController
     {
-        // PUT: api/Employee/5
+        // PUT: api/Users/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEmployee(int id, Employee employee)
+        public async Task<IActionResult> PutUsers(int id, Users Users)
         {
-            if (id != employee.Id)
+            if (id != Users.Id)
             {
-                return BadRequest("Employee ID mismatch.");
+                return BadRequest("Users ID mismatch.");
             }
 
-            _context.Entry(employee).State = EntityState.Modified;
+            _context.Entry(Users).State = EntityState.Modified;
 
             try
             {
@@ -24,7 +24,7 @@ namespace RestAdminV2.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EmployeeExists(id))
+                if (!UsersExists(id))
                 {
                     return NotFound();
                 }
@@ -37,9 +37,9 @@ namespace RestAdminV2.Controllers
             return NoContent();
         }
 
-        private bool EmployeeExists(int id)
+        private bool UsersExists(int id)
         {
-            return _context.Employees.Any(e => e.Id == id);
+            return _context.Users.Any(e => e.Id == id);
         }
     }
 }

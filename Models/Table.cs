@@ -4,23 +4,23 @@ using System.Text.Json.Serialization;
 
 
 namespace RestAdminV2.Models;
-[Table("tables")]
+[Table("Tables")]
 
-public class Table
+public class Tables
 {
     [Key]
     [Column("id")]
     public int Id { get; set; }
 
-    [Column("table_number")]
-    [MaxLength(10, ErrorMessage = "The table number must be at most {1} characters.")]
-    [Required(ErrorMessage = "The table number is required.")]
-    public string TableNumber { get; set; }
+    [Column("name")]
+    [MaxLength(10, ErrorMessage = "The Tables number must be at most {1} characters.")]
+    [Required(ErrorMessage = "The Tables number is required.")]
+    public string name { get; set; }
 
-    [Column("capacity")]
-    [Range(1, int.MaxValue, ErrorMessage = "The capacity must be a positive number greater than zero.")]
-    [Required(ErrorMessage = "The capacity is required.")]
-    public int Capacity { get; set; }
+    [Column("state")]
+    [MaxLength(15, ErrorMessage = "The Tables number must be at most {1} characters.")]
+    [Required(ErrorMessage = "The Tables number is required.")]
+    public string State { get; set; }
 
     [JsonIgnore]
     public virtual ICollection<Ordered> Ordereds { get; set; }

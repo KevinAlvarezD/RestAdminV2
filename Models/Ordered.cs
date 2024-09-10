@@ -8,7 +8,7 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Models;
 
-[Table("ordereds")]
+[Tables("ordereds")]
 public class Ordered
 {
     [Key]
@@ -25,23 +25,23 @@ public class Ordered
     [Range(1, int.MaxValue, ErrorMessage = "The customer ID must be a positive number.")]
     public int IdCustomer { get; set; }
 
-    [Column("id_table")]
-    [Required(ErrorMessage = "The table ID is required.")]
-    [Range(1, int.MaxValue, ErrorMessage = "The table ID must be a positive number.")]
-    public int IdTable { get; set; }
+    [Column("id_Tables")]
+    [Required(ErrorMessage = "The Tables ID is required.")]
+    [Range(1, int.MaxValue, ErrorMessage = "The Tables ID must be a positive number.")]
+    public int IdTables { get; set; }
 
-    [Column("employee")]
-    [Required(ErrorMessage = "The employeeis required.")]
-    [Range(1, int.MaxValue, ErrorMessage = "The employee must be a positive number.")]
-    public int Employee { get; set; }
+    [Column("Users")]
+    [Required(ErrorMessage = "The Usersis required.")]
+    [Range(1, int.MaxValue, ErrorMessage = "The Users must be a positive number.")]
+    public int Users { get; set; }
 
 
     //Foreing Links
     [ForeignKey("IdCustomer")]
     public virtual Customer Customer { get; set; }
 
-    [ForeignKey("IdTable")]
-    public virtual Table Table { get; set; }
+    [ForeignKey("IdTables")]
+    public virtual Tables Tables { get; set; }
 
 
     [JsonIgnore]

@@ -12,14 +12,14 @@ namespace RestAdminV2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Ordered>>> GetOrdereds()
         {
-            return await _context.Ordereds.Include(i => i.Customer).Include(i => i.Table).ToListAsync();
+            return await _context.Ordereds.Include(i => i.Customer).Include(i => i.Tables).ToListAsync();
         }
 
         // GET: api/Ordered/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Ordered>> GetOrdered(int id)
         {
-            var ordered = await _context.Ordereds.Include(i => i.Customer).Include(i => i.Table).FirstOrDefaultAsync(i => i.Id == id);
+            var ordered = await _context.Ordereds.Include(i => i.Customer).Include(i => i.Tables).FirstOrDefaultAsync(i => i.Id == id);
             if (ordered == null)
             {
                 return NotFound();

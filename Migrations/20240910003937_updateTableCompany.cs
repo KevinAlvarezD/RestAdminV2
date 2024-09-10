@@ -5,7 +5,7 @@
 namespace RestAdminV2.Migrations
 {
     /// <inheritdoc />
-    public partial class updateTableCompany : Migration
+    public partial class updateTablesCompany : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

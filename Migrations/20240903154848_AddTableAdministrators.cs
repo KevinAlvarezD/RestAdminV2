@@ -6,27 +6,27 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RestAdminV2.Migrations
 {
     /// <inheritdoc />
-    public partial class AddTableAdministrators : Migration
+    public partial class AddTablesAdministrators : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
+            migrationBuilder.CreateTables(
                 name: "administrators",
-                columns: table => new
+                columns: Tables => new
                 {
-                    id_administrator = table.Column<int>(type: "int", nullable: false)
+                    id_administrator = Tables.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(type: "varchar(90)", maxLength: 90, nullable: true)
+                    name = Tables.Column<string>(type: "varchar(90)", maxLength: 90, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    username = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                    username = Tables.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    password = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
+                    password = Tables.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
-                constraints: table =>
+                constraints: Tables =>
                 {
-                    table.PrimaryKey("PK_administrators", x => x.id_administrator);
+                    Tables.PrimaryKey("PK_administrators", x => x.id_administrator);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
         }
@@ -34,7 +34,7 @@ namespace RestAdminV2.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
+            migrationBuilder.DropTables(
                 name: "administrators");
         }
     }

@@ -11,15 +11,15 @@ namespace RestAdminV2.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.UpdateData(
-                table: "tables",
-                keyColumn: "table_number",
+                Tables: "Tables",
+                keyColumn: "Tables_number",
                 keyValue: null,
-                column: "table_number",
+                column: "Tables_number",
                 value: "");
 
             migrationBuilder.AlterColumn<string>(
-                name: "table_number",
-                table: "tables",
+                name: "Tables_number",
+                Tables: "Tables",
                 type: "varchar(10)",
                 maxLength: 10,
                 nullable: false,
@@ -30,7 +30,7 @@ namespace RestAdminV2.Migrations
                 .OldAnnotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.UpdateData(
-                table: "products",
+                Tables: "products",
                 keyColumn: "name",
                 keyValue: null,
                 column: "name",
@@ -38,7 +38,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "name",
-                table: "products",
+                Tables: "products",
                 type: "varchar(50)",
                 maxLength: 50,
                 nullable: false,
@@ -50,7 +50,7 @@ namespace RestAdminV2.Migrations
                 .OldAnnotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.UpdateData(
-                table: "payments",
+                Tables: "payments",
                 keyColumn: "payment_method",
                 keyValue: null,
                 column: "payment_method",
@@ -58,7 +58,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "payment_method",
-                table: "payments",
+                Tables: "payments",
                 type: "varchar(50)",
                 maxLength: 50,
                 nullable: false,
@@ -70,7 +70,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "name",
-                table: "ordereds",
+                Tables: "ordereds",
                 type: "varchar(90)",
                 maxLength: 90,
                 nullable: true,
@@ -83,13 +83,13 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AddColumn<byte[]>(
                 name: "pdf_file",
-                table: "invoices",
+                Tables: "invoices",
                 type: "longblob",
                 nullable: true);
 
             migrationBuilder.AlterColumn<string>(
                 name: "role",
-                table: "employees",
+                Tables: "Users",
                 type: "varchar(90)",
                 maxLength: 90,
                 nullable: true,
@@ -102,7 +102,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "name",
-                table: "employees",
+                Tables: "Users",
                 type: "varchar(90)",
                 maxLength: 90,
                 nullable: true,
@@ -115,7 +115,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "phone_number",
-                table: "customers",
+                Tables: "customers",
                 type: "varchar(25)",
                 maxLength: 25,
                 nullable: true,
@@ -128,7 +128,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "name",
-                table: "customers",
+                Tables: "customers",
                 type: "varchar(90)",
                 maxLength: 90,
                 nullable: true,
@@ -141,7 +141,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "email",
-                table: "customers",
+                Tables: "customers",
                 type: "varchar(255)",
                 maxLength: 255,
                 nullable: true,
@@ -158,11 +158,11 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.DropColumn(
                 name: "pdf_file",
-                table: "invoices");
+                Tables: "invoices");
 
             migrationBuilder.AlterColumn<string>(
-                name: "table_number",
-                table: "tables",
+                name: "Tables_number",
+                Tables: "Tables",
                 type: "longtext",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -173,7 +173,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "name",
-                table: "products",
+                Tables: "products",
                 type: "varchar(50)",
                 maxLength: 50,
                 nullable: true,
@@ -185,7 +185,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "payment_method",
-                table: "payments",
+                Tables: "payments",
                 type: "longtext",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -196,7 +196,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "name",
-                table: "ordereds",
+                Tables: "ordereds",
                 type: "varchar(50)",
                 maxLength: 50,
                 nullable: true,
@@ -209,7 +209,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "role",
-                table: "employees",
+                Tables: "Users",
                 type: "varchar(255)",
                 maxLength: 255,
                 nullable: true,
@@ -222,7 +222,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "name",
-                table: "employees",
+                Tables: "Users",
                 type: "varchar(255)",
                 maxLength: 255,
                 nullable: true,
@@ -235,7 +235,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "phone_number",
-                table: "customers",
+                Tables: "customers",
                 type: "varchar(50)",
                 maxLength: 50,
                 nullable: true,
@@ -248,7 +248,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "name",
-                table: "customers",
+                Tables: "customers",
                 type: "varchar(50)",
                 maxLength: 50,
                 nullable: true,
@@ -261,7 +261,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "email",
-                table: "customers",
+                Tables: "customers",
                 type: "varchar(50)",
                 maxLength: 50,
                 nullable: true,

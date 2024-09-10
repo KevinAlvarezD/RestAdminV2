@@ -12,15 +12,15 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_Categories_products_IdProduct",
-                table: "Categories");
+                Tables: "Categories");
 
             migrationBuilder.DropIndex(
                 name: "IX_Categories_IdProduct",
-                table: "Categories");
+                Tables: "Categories");
 
             migrationBuilder.DropColumn(
                 name: "IdProduct",
-                table: "Categories");
+                Tables: "Categories");
         }
 
         /// <inheritdoc />
@@ -28,20 +28,20 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.AddColumn<int>(
                 name: "IdProduct",
-                table: "Categories",
+                Tables: "Categories",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_IdProduct",
-                table: "Categories",
+                Tables: "Categories",
                 column: "IdProduct");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Categories_products_IdProduct",
-                table: "Categories",
+                Tables: "Categories",
                 column: "IdProduct",
-                principalTable: "products",
+                principalTables: "products",
                 principalColumn: "id");
         }
     }

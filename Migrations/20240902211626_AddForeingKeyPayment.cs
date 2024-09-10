@@ -12,14 +12,14 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.CreateIndex(
                 name: "IX_payments_id_invoice",
-                table: "payments",
+                Tables: "payments",
                 column: "id_invoice");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_payments_invoices_id_invoice",
-                table: "payments",
+                Tables: "payments",
                 column: "id_invoice",
-                principalTable: "invoices",
+                principalTables: "invoices",
                 principalColumn: "id_invoice",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -29,11 +29,11 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_payments_invoices_id_invoice",
-                table: "payments");
+                Tables: "payments");
 
             migrationBuilder.DropIndex(
                 name: "IX_payments_id_invoice",
-                table: "payments");
+                Tables: "payments");
         }
     }
 }

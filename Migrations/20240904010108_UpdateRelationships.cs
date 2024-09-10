@@ -12,41 +12,41 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_invoices_ordereds_id_order",
-                table: "invoices");
+                Tables: "invoices");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_ordereds_customers_id_customer",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ordereds_tables_id_table",
-                table: "ordereds");
+                name: "FK_ordereds_Tables_id_Tables",
+                Tables: "ordereds");
 
             migrationBuilder.DropColumn(
                 name: "pdf_file",
-                table: "invoices");
+                Tables: "invoices");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_invoices_ordereds_id_order",
-                table: "invoices",
+                Tables: "invoices",
                 column: "id_order",
-                principalTable: "ordereds",
+                principalTables: "ordereds",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_ordereds_customers_id_customer",
-                table: "ordereds",
+                Tables: "ordereds",
                 column: "id_customer",
-                principalTable: "customers",
+                principalTables: "customers",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_ordereds_tables_id_table",
-                table: "ordereds",
-                column: "id_table",
-                principalTable: "tables",
+                name: "FK_ordereds_Tables_id_Tables",
+                Tables: "ordereds",
+                column: "id_Tables",
+                principalTables: "Tables",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -56,43 +56,43 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_invoices_ordereds_id_order",
-                table: "invoices");
+                Tables: "invoices");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_ordereds_customers_id_customer",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ordereds_tables_id_table",
-                table: "ordereds");
+                name: "FK_ordereds_Tables_id_Tables",
+                Tables: "ordereds");
 
             migrationBuilder.AddColumn<byte[]>(
                 name: "pdf_file",
-                table: "invoices",
+                Tables: "invoices",
                 type: "longblob",
                 nullable: true);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_invoices_ordereds_id_order",
-                table: "invoices",
+                Tables: "invoices",
                 column: "id_order",
-                principalTable: "ordereds",
+                principalTables: "ordereds",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_ordereds_customers_id_customer",
-                table: "ordereds",
+                Tables: "ordereds",
                 column: "id_customer",
-                principalTable: "customers",
+                principalTables: "customers",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_ordereds_tables_id_table",
-                table: "ordereds",
-                column: "id_table",
-                principalTable: "tables",
+                name: "FK_ordereds_Tables_id_Tables",
+                Tables: "ordereds",
+                column: "id_Tables",
+                principalTables: "Tables",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Cascade);
         }

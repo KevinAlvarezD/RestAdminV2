@@ -9,9 +9,9 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Customer> Customers { get; set; }
 
-    public DbSet<Table> Tables { get; set; }
+    public DbSet<Tables> Tables { get; set; }
 
-    public DbSet<Employee> Employees { get; set; }
+    public DbSet<Users> Users { get; set; }
 
     public DbSet<Invoice> Invoices { get; set; }
 

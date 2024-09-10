@@ -12,61 +12,61 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_customers_ordereds_OrderedId",
-                table: "customers");
+                Tables: "customers");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_invoices_ordereds_id_order",
-                table: "invoices");
+                Tables: "invoices");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_ordereds_customers_id_customer",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ordereds_tables_id_table",
-                table: "ordereds");
+                name: "FK_ordereds_Tables_id_Tables",
+                Tables: "ordereds");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_products_Categories_CategoriesId",
-                table: "products");
+                Tables: "products");
 
             migrationBuilder.DropIndex(
                 name: "IX_products_CategoriesId",
-                table: "products");
+                Tables: "products");
 
             migrationBuilder.DropIndex(
                 name: "IX_customers_OrderedId",
-                table: "customers");
+                Tables: "customers");
 
             migrationBuilder.DropColumn(
                 name: "CategoriesId",
-                table: "products");
+                Tables: "products");
 
             migrationBuilder.DropColumn(
                 name: "OrderedId",
-                table: "customers");
+                Tables: "customers");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_invoices_ordereds_id_order",
-                table: "invoices",
+                Tables: "invoices",
                 column: "id_order",
-                principalTable: "ordereds",
+                principalTables: "ordereds",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_ordereds_customers_id_customer",
-                table: "ordereds",
+                Tables: "ordereds",
                 column: "id_customer",
-                principalTable: "customers",
+                principalTables: "customers",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_ordereds_tables_id_table",
-                table: "ordereds",
-                column: "id_table",
-                principalTable: "tables",
+                name: "FK_ordereds_Tables_id_Tables",
+                Tables: "ordereds",
+                column: "id_Tables",
+                principalTables: "Tables",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -76,74 +76,74 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_invoices_ordereds_id_order",
-                table: "invoices");
+                Tables: "invoices");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_ordereds_customers_id_customer",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_ordereds_tables_id_table",
-                table: "ordereds");
+                name: "FK_ordereds_Tables_id_Tables",
+                Tables: "ordereds");
 
             migrationBuilder.AddColumn<int>(
                 name: "CategoriesId",
-                table: "products",
+                Tables: "products",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "OrderedId",
-                table: "customers",
+                Tables: "customers",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_products_CategoriesId",
-                table: "products",
+                Tables: "products",
                 column: "CategoriesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_customers_OrderedId",
-                table: "customers",
+                Tables: "customers",
                 column: "OrderedId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_customers_ordereds_OrderedId",
-                table: "customers",
+                Tables: "customers",
                 column: "OrderedId",
-                principalTable: "ordereds",
+                principalTables: "ordereds",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_invoices_ordereds_id_order",
-                table: "invoices",
+                Tables: "invoices",
                 column: "id_order",
-                principalTable: "ordereds",
+                principalTables: "ordereds",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_ordereds_customers_id_customer",
-                table: "ordereds",
+                Tables: "ordereds",
                 column: "id_customer",
-                principalTable: "customers",
+                principalTables: "customers",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_ordereds_tables_id_table",
-                table: "ordereds",
-                column: "id_table",
-                principalTable: "tables",
+                name: "FK_ordereds_Tables_id_Tables",
+                Tables: "ordereds",
+                column: "id_Tables",
+                principalTables: "Tables",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_products_Categories_CategoriesId",
-                table: "products",
+                Tables: "products",
                 column: "CategoriesId",
-                principalTable: "Categories",
+                principalTables: "Categories",
                 principalColumn: "id");
         }
     }

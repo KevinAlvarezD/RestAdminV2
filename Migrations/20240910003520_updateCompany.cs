@@ -12,28 +12,28 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Categories",
-                table: "Categories");
+                Tables: "Categories");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_companys",
-                table: "companys");
+                Tables: "companys");
 
-            migrationBuilder.RenameTable(
+            migrationBuilder.RenameTables(
                 name: "Categories",
                 newName: "categories");
 
-            migrationBuilder.RenameTable(
+            migrationBuilder.RenameTables(
                 name: "companys",
                 newName: "company");
 
             migrationBuilder.RenameColumn(
                 name: "image_url",
-                table: "company",
+                Tables: "company",
                 newName: "logo_url");
 
             migrationBuilder.AddColumn<string>(
                 name: "email",
-                table: "company",
+                Tables: "company",
                 type: "varchar(255)",
                 maxLength: 255,
                 nullable: true)
@@ -41,7 +41,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AddColumn<string>(
                 name: "nit",
-                table: "company",
+                Tables: "company",
                 type: "varchar(50)",
                 maxLength: 50,
                 nullable: false,
@@ -50,7 +50,7 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AddColumn<string>(
                 name: "phone",
-                table: "company",
+                Tables: "company",
                 type: "varchar(25)",
                 maxLength: 25,
                 nullable: true)
@@ -58,12 +58,12 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_categories",
-                table: "categories",
+                Tables: "categories",
                 column: "id");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_company",
-                table: "company",
+                Tables: "company",
                 column: "id");
         }
 
@@ -72,45 +72,45 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.DropPrimaryKey(
                 name: "PK_categories",
-                table: "categories");
+                Tables: "categories");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_company",
-                table: "company");
+                Tables: "company");
 
             migrationBuilder.DropColumn(
                 name: "email",
-                table: "company");
+                Tables: "company");
 
             migrationBuilder.DropColumn(
                 name: "nit",
-                table: "company");
+                Tables: "company");
 
             migrationBuilder.DropColumn(
                 name: "phone",
-                table: "company");
+                Tables: "company");
 
-            migrationBuilder.RenameTable(
+            migrationBuilder.RenameTables(
                 name: "categories",
                 newName: "Categories");
 
-            migrationBuilder.RenameTable(
+            migrationBuilder.RenameTables(
                 name: "company",
                 newName: "companys");
 
             migrationBuilder.RenameColumn(
                 name: "logo_url",
-                table: "companys",
+                Tables: "companys",
                 newName: "image_url");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Categories",
-                table: "Categories",
+                Tables: "Categories",
                 column: "id");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_companys",
-                table: "companys",
+                Tables: "companys",
                 column: "id");
         }
     }

@@ -13,61 +13,61 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_Categories_products_IdProduct",
-                table: "Categories");
+                Tables: "Categories");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_products_Categories_CategoriesId",
-                table: "products");
+                Tables: "products");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Categories",
-                table: "Categories");
+                Tables: "Categories");
 
-            migrationBuilder.RenameTable(
+            migrationBuilder.RenameTables(
                 name: "Categories",
                 newName: "Categories");
 
             migrationBuilder.RenameIndex(
                 name: "IX_Categories_IdProduct",
-                table: "Categories",
+                Tables: "Categories",
                 newName: "IX_Categories_IdProduct");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Categories",
-                table: "Categories",
+                Tables: "Categories",
                 column: "id");
 
-            migrationBuilder.CreateTable(
+            migrationBuilder.CreateTables(
                 name: "companys",
-                columns: table => new
+                columns: Tables => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    id = Tables.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                    name = Tables.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    address = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                    address = Tables.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    image_url = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
+                    image_url = Tables.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
-                constraints: table =>
+                constraints: Tables =>
                 {
-                    table.PrimaryKey("PK_companys", x => x.id);
+                    Tables.PrimaryKey("PK_companys", x => x.id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Categories_products_IdProduct",
-                table: "Categories",
+                Tables: "Categories",
                 column: "IdProduct",
-                principalTable: "products",
+                principalTables: "products",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_products_Categories_CategoriesId",
-                table: "products",
+                Tables: "products",
                 column: "CategoriesId",
-                principalTable: "Categories",
+                principalTables: "Categories",
                 principalColumn: "id");
         }
 
@@ -76,45 +76,45 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_Categories_products_IdProduct",
-                table: "Categories");
+                Tables: "Categories");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_products_Categories_CategoriesId",
-                table: "products");
+                Tables: "products");
 
-            migrationBuilder.DropTable(
+            migrationBuilder.DropTables(
                 name: "companys");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Categories",
-                table: "Categories");
+                Tables: "Categories");
 
-            migrationBuilder.RenameTable(
+            migrationBuilder.RenameTables(
                 name: "Categories",
                 newName: "Categories");
 
             migrationBuilder.RenameIndex(
                 name: "IX_Categories_IdProduct",
-                table: "Categories",
+                Tables: "Categories",
                 newName: "IX_Categories_IdProduct");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Categories",
-                table: "Categories",
+                Tables: "Categories",
                 column: "id");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Categories_products_IdProduct",
-                table: "Categories",
+                Tables: "Categories",
                 column: "IdProduct",
-                principalTable: "products",
+                principalTables: "products",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_products_Categories_CategoriesId",
-                table: "products",
+                Tables: "products",
                 column: "CategoriesId",
-                principalTable: "Categories",
+                principalTables: "Categories",
                 principalColumn: "id");
         }
     }

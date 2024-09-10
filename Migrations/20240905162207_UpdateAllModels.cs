@@ -12,51 +12,51 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_invoices_payments_PaymentIdPayment",
-                table: "invoices");
+                Tables: "invoices");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_ordereds_invoices_InvoiceIdInvoice",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_ordereds_order_details_OrderDetailsId",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_tables_ordereds_OrderedId",
-                table: "tables");
+                name: "FK_Tables_ordereds_OrderedId",
+                Tables: "Tables");
 
             migrationBuilder.DropIndex(
-                name: "IX_tables_OrderedId",
-                table: "tables");
+                name: "IX_Tables_OrderedId",
+                Tables: "Tables");
 
             migrationBuilder.DropIndex(
                 name: "IX_ordereds_InvoiceIdInvoice",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropIndex(
                 name: "IX_ordereds_OrderDetailsId",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropIndex(
                 name: "IX_invoices_PaymentIdPayment",
-                table: "invoices");
+                Tables: "invoices");
 
             migrationBuilder.DropColumn(
                 name: "OrderedId",
-                table: "tables");
+                Tables: "Tables");
 
             migrationBuilder.DropColumn(
                 name: "InvoiceIdInvoice",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropColumn(
                 name: "OrderDetailsId",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropColumn(
                 name: "PaymentIdPayment",
-                table: "invoices");
+                Tables: "invoices");
         }
 
         /// <inheritdoc />
@@ -64,74 +64,74 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.AddColumn<int>(
                 name: "OrderedId",
-                table: "tables",
+                Tables: "Tables",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "InvoiceIdInvoice",
-                table: "ordereds",
+                Tables: "ordereds",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "OrderDetailsId",
-                table: "ordereds",
+                Tables: "ordereds",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "PaymentIdPayment",
-                table: "invoices",
+                Tables: "invoices",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_tables_OrderedId",
-                table: "tables",
+                name: "IX_Tables_OrderedId",
+                Tables: "Tables",
                 column: "OrderedId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ordereds_InvoiceIdInvoice",
-                table: "ordereds",
+                Tables: "ordereds",
                 column: "InvoiceIdInvoice");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ordereds_OrderDetailsId",
-                table: "ordereds",
+                Tables: "ordereds",
                 column: "OrderDetailsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_invoices_PaymentIdPayment",
-                table: "invoices",
+                Tables: "invoices",
                 column: "PaymentIdPayment");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_invoices_payments_PaymentIdPayment",
-                table: "invoices",
+                Tables: "invoices",
                 column: "PaymentIdPayment",
-                principalTable: "payments",
+                principalTables: "payments",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_ordereds_invoices_InvoiceIdInvoice",
-                table: "ordereds",
+                Tables: "ordereds",
                 column: "InvoiceIdInvoice",
-                principalTable: "invoices",
+                principalTables: "invoices",
                 principalColumn: "id_invoice");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_ordereds_order_details_OrderDetailsId",
-                table: "ordereds",
+                Tables: "ordereds",
                 column: "OrderDetailsId",
-                principalTable: "order_details",
+                principalTables: "order_details",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_tables_ordereds_OrderedId",
-                table: "tables",
+                name: "FK_Tables_ordereds_OrderedId",
+                Tables: "Tables",
                 column: "OrderedId",
-                principalTable: "ordereds",
+                principalTables: "ordereds",
                 principalColumn: "id");
         }
     }

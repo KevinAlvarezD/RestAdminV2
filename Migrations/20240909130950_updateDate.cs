@@ -13,7 +13,7 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.AlterColumn<DateOnly>(
                 name: "date_payment",
-                table: "payments",
+                Tables: "payments",
                 type: "date",
                 nullable: false,
                 oldClrType: typeof(DateTime),
@@ -25,7 +25,7 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.AlterColumn<DateTime>(
                 name: "date_payment",
-                table: "payments",
+                Tables: "payments",
                 type: "datetime(6)",
                 nullable: false,
                 oldClrType: typeof(DateOnly),

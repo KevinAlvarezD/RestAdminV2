@@ -12,146 +12,146 @@ namespace RestAdminV2.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
+            migrationBuilder.CreateTables(
                 name: "customers",
-                columns: table => new
+                columns: Tables => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    id = Tables.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                    name = Tables.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    address = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                    address = Tables.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    phone_number = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                    phone_number = Tables.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    email = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                    email = Tables.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
-                constraints: table =>
+                constraints: Tables =>
                 {
-                    table.PrimaryKey("PK_customers", x => x.id);
+                    Tables.PrimaryKey("PK_customers", x => x.id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
-                name: "employees",
-                columns: table => new
+            migrationBuilder.CreateTables(
+                name: "Users",
+                columns: Tables => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    id = Tables.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
+                    name = Tables.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    role = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
+                    role = Tables.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    schedule = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    schedule = Tables.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
-                constraints: table =>
+                constraints: Tables =>
                 {
-                    table.PrimaryKey("PK_employees", x => x.id);
+                    Tables.PrimaryKey("PK_Users", x => x.id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            migrationBuilder.CreateTables(
                 name: "payments",
-                columns: table => new
+                columns: Tables => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    id = Tables.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    id_invoice = table.Column<int>(type: "int", nullable: false),
-                    date_payment = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    amount = table.Column<double>(type: "double", nullable: false),
-                    payment_method = table.Column<string>(type: "longtext", nullable: true)
+                    id_invoice = Tables.Column<int>(type: "int", nullable: false),
+                    date_payment = Tables.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    amount = Tables.Column<double>(type: "double", nullable: false),
+                    payment_method = Tables.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
-                constraints: table =>
+                constraints: Tables =>
                 {
-                    table.PrimaryKey("PK_payments", x => x.id);
+                    Tables.PrimaryKey("PK_payments", x => x.id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            migrationBuilder.CreateTables(
                 name: "products",
-                columns: table => new
+                columns: Tables => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    id = Tables.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    image_url = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
+                    image_url = Tables.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                    name = Tables.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    description = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
+                    description = Tables.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    price = table.Column<double>(type: "double", nullable: false)
+                    price = Tables.Column<double>(type: "double", nullable: false)
                 },
-                constraints: table =>
+                constraints: Tables =>
                 {
-                    table.PrimaryKey("PK_products", x => x.id);
+                    Tables.PrimaryKey("PK_products", x => x.id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
-                name: "tables",
-                columns: table => new
+            migrationBuilder.CreateTables(
+                name: "Tables",
+                columns: Tables => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    id = Tables.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    table_number = table.Column<string>(type: "longtext", nullable: true)
+                    Tables_number = Tables.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    capacity = table.Column<int>(type: "int", nullable: false)
+                    capacity = Tables.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
+                constraints: Tables =>
                 {
-                    table.PrimaryKey("PK_tables", x => x.id);
+                    Tables.PrimaryKey("PK_Tables", x => x.id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            migrationBuilder.CreateTables(
                 name: "ordereds",
-                columns: table => new
+                columns: Tables => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    id = Tables.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
+                    name = Tables.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    id_customer = table.Column<int>(type: "int", nullable: false),
-                    id_table = table.Column<int>(type: "int", nullable: false),
-                    employee = table.Column<int>(type: "int", nullable: false)
+                    id_customer = Tables.Column<int>(type: "int", nullable: false),
+                    id_Tables = Tables.Column<int>(type: "int", nullable: false),
+                    Users = Tables.Column<int>(type: "int", nullable: false)
                 },
-                constraints: table =>
+                constraints: Tables =>
                 {
-                    table.PrimaryKey("PK_ordereds", x => x.id);
-                    table.ForeignKey(
+                    Tables.PrimaryKey("PK_ordereds", x => x.id);
+                    Tables.ForeignKey(
                         name: "FK_ordereds_customers_id_customer",
                         column: x => x.id_customer,
-                        principalTable: "customers",
+                        principalTables: "customers",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ordereds_tables_id_table",
-                        column: x => x.id_table,
-                        principalTable: "tables",
+                    Tables.ForeignKey(
+                        name: "FK_ordereds_Tables_id_Tables",
+                        column: x => x.id_Tables,
+                        principalTables: "Tables",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
-            migrationBuilder.CreateTable(
+            migrationBuilder.CreateTables(
                 name: "invoices",
-                columns: table => new
+                columns: Tables => new
                 {
-                    id_invoice = table.Column<int>(type: "int", nullable: false)
+                    id_invoice = Tables.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    id_order = table.Column<int>(type: "int", nullable: false),
-                    date_invoice = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    total = table.Column<double>(type: "double", nullable: false)
+                    id_order = Tables.Column<int>(type: "int", nullable: false),
+                    date_invoice = Tables.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    total = Tables.Column<double>(type: "double", nullable: false)
                 },
-                constraints: table =>
+                constraints: Tables =>
                 {
-                    table.PrimaryKey("PK_invoices", x => x.id_invoice);
-                    table.ForeignKey(
+                    Tables.PrimaryKey("PK_invoices", x => x.id_invoice);
+                    Tables.ForeignKey(
                         name: "FK_invoices_ordereds_id_order",
                         column: x => x.id_order,
-                        principalTable: "ordereds",
+                        principalTables: "ordereds",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 })
@@ -159,43 +159,43 @@ namespace RestAdminV2.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_invoices_id_order",
-                table: "invoices",
+                Tables: "invoices",
                 column: "id_order");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ordereds_id_customer",
-                table: "ordereds",
+                Tables: "ordereds",
                 column: "id_customer");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ordereds_id_table",
-                table: "ordereds",
-                column: "id_table");
+                name: "IX_ordereds_id_Tables",
+                Tables: "ordereds",
+                column: "id_Tables");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "employees");
+            migrationBuilder.DropTables(
+                name: "Users");
 
-            migrationBuilder.DropTable(
+            migrationBuilder.DropTables(
                 name: "invoices");
 
-            migrationBuilder.DropTable(
+            migrationBuilder.DropTables(
                 name: "payments");
 
-            migrationBuilder.DropTable(
+            migrationBuilder.DropTables(
                 name: "products");
 
-            migrationBuilder.DropTable(
+            migrationBuilder.DropTables(
                 name: "ordereds");
 
-            migrationBuilder.DropTable(
+            migrationBuilder.DropTables(
                 name: "customers");
 
-            migrationBuilder.DropTable(
-                name: "tables");
+            migrationBuilder.DropTables(
+                name: "Tables");
         }
     }
 }

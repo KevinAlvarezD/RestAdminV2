@@ -13,154 +13,154 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.AddColumn<int>(
                 name: "OrderedId",
-                table: "tables",
+                Tables: "Tables",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "CategoriesId",
-                table: "products",
+                Tables: "products",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "OrderDetailsId",
-                table: "products",
+                Tables: "products",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "InvoiceIdInvoice",
-                table: "ordereds",
+                Tables: "ordereds",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "OrderDetailsId",
-                table: "ordereds",
+                Tables: "ordereds",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "PaymentIdPayment",
-                table: "invoices",
+                Tables: "invoices",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "OrderedId",
-                table: "customers",
+                Tables: "customers",
                 type: "int",
                 nullable: true);
 
-            migrationBuilder.CreateTable(
+            migrationBuilder.CreateTables(
                 name: "Categories",
-                columns: table => new
+                columns: Tables => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
+                    id = Tables.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
+                    name = Tables.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    IdProduct = table.Column<int>(type: "int", nullable: true)
+                    IdProduct = Tables.Column<int>(type: "int", nullable: true)
                 },
-                constraints: table =>
+                constraints: Tables =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.id);
-                    table.ForeignKey(
+                    Tables.PrimaryKey("PK_Categories", x => x.id);
+                    Tables.ForeignKey(
                         name: "FK_Categories_products_IdProduct",
                         column: x => x.IdProduct,
-                        principalTable: "products",
+                        principalTables: "products",
                         principalColumn: "id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_tables_OrderedId",
-                table: "tables",
+                name: "IX_Tables_OrderedId",
+                Tables: "Tables",
                 column: "OrderedId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_products_CategoriesId",
-                table: "products",
+                Tables: "products",
                 column: "CategoriesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_products_OrderDetailsId",
-                table: "products",
+                Tables: "products",
                 column: "OrderDetailsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ordereds_InvoiceIdInvoice",
-                table: "ordereds",
+                Tables: "ordereds",
                 column: "InvoiceIdInvoice");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ordereds_OrderDetailsId",
-                table: "ordereds",
+                Tables: "ordereds",
                 column: "OrderDetailsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_invoices_PaymentIdPayment",
-                table: "invoices",
+                Tables: "invoices",
                 column: "PaymentIdPayment");
 
             migrationBuilder.CreateIndex(
                 name: "IX_customers_OrderedId",
-                table: "customers",
+                Tables: "customers",
                 column: "OrderedId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_IdProduct",
-                table: "Categories",
+                Tables: "Categories",
                 column: "IdProduct");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_customers_ordereds_OrderedId",
-                table: "customers",
+                Tables: "customers",
                 column: "OrderedId",
-                principalTable: "ordereds",
+                principalTables: "ordereds",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_invoices_payments_PaymentIdPayment",
-                table: "invoices",
+                Tables: "invoices",
                 column: "PaymentIdPayment",
-                principalTable: "payments",
+                principalTables: "payments",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_ordereds_invoices_InvoiceIdInvoice",
-                table: "ordereds",
+                Tables: "ordereds",
                 column: "InvoiceIdInvoice",
-                principalTable: "invoices",
+                principalTables: "invoices",
                 principalColumn: "id_invoice");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_ordereds_order_details_OrderDetailsId",
-                table: "ordereds",
+                Tables: "ordereds",
                 column: "OrderDetailsId",
-                principalTable: "order_details",
+                principalTables: "order_details",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_products_Categories_CategoriesId",
-                table: "products",
+                Tables: "products",
                 column: "CategoriesId",
-                principalTable: "Categories",
+                principalTables: "Categories",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_products_order_details_OrderDetailsId",
-                table: "products",
+                Tables: "products",
                 column: "OrderDetailsId",
-                principalTable: "order_details",
+                principalTables: "order_details",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_tables_ordereds_OrderedId",
-                table: "tables",
+                name: "FK_Tables_ordereds_OrderedId",
+                Tables: "Tables",
                 column: "OrderedId",
-                principalTable: "ordereds",
+                principalTables: "ordereds",
                 principalColumn: "id");
         }
 
@@ -169,90 +169,90 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_customers_ordereds_OrderedId",
-                table: "customers");
+                Tables: "customers");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_invoices_payments_PaymentIdPayment",
-                table: "invoices");
+                Tables: "invoices");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_ordereds_invoices_InvoiceIdInvoice",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_ordereds_order_details_OrderDetailsId",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_products_Categories_CategoriesId",
-                table: "products");
+                Tables: "products");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_products_order_details_OrderDetailsId",
-                table: "products");
+                Tables: "products");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_tables_ordereds_OrderedId",
-                table: "tables");
+                name: "FK_Tables_ordereds_OrderedId",
+                Tables: "Tables");
 
-            migrationBuilder.DropTable(
+            migrationBuilder.DropTables(
                 name: "Categories");
 
             migrationBuilder.DropIndex(
-                name: "IX_tables_OrderedId",
-                table: "tables");
+                name: "IX_Tables_OrderedId",
+                Tables: "Tables");
 
             migrationBuilder.DropIndex(
                 name: "IX_products_CategoriesId",
-                table: "products");
+                Tables: "products");
 
             migrationBuilder.DropIndex(
                 name: "IX_products_OrderDetailsId",
-                table: "products");
+                Tables: "products");
 
             migrationBuilder.DropIndex(
                 name: "IX_ordereds_InvoiceIdInvoice",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropIndex(
                 name: "IX_ordereds_OrderDetailsId",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropIndex(
                 name: "IX_invoices_PaymentIdPayment",
-                table: "invoices");
+                Tables: "invoices");
 
             migrationBuilder.DropIndex(
                 name: "IX_customers_OrderedId",
-                table: "customers");
+                Tables: "customers");
 
             migrationBuilder.DropColumn(
                 name: "OrderedId",
-                table: "tables");
+                Tables: "Tables");
 
             migrationBuilder.DropColumn(
                 name: "CategoriesId",
-                table: "products");
+                Tables: "products");
 
             migrationBuilder.DropColumn(
                 name: "OrderDetailsId",
-                table: "products");
+                Tables: "products");
 
             migrationBuilder.DropColumn(
                 name: "InvoiceIdInvoice",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropColumn(
                 name: "OrderDetailsId",
-                table: "ordereds");
+                Tables: "ordereds");
 
             migrationBuilder.DropColumn(
                 name: "PaymentIdPayment",
-                table: "invoices");
+                Tables: "invoices");
 
             migrationBuilder.DropColumn(
                 name: "OrderedId",
-                table: "customers");
+                Tables: "customers");
         }
     }
 }
