@@ -54,7 +54,7 @@ namespace RestAdminV2.Migrations
                     b.ToTable("administrators");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Category", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Categories", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -71,7 +71,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("categorys");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Company", b =>

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 
 namespace RestAdminV2.Models;
-[Table("categorys")]
-public class Category
+[Table("categories")]
+public class Categories
 {
     [Key]
     [Column("id")]

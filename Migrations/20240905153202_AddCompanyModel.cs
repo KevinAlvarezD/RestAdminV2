@@ -12,29 +12,29 @@ namespace RestAdminV2.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Category_products_IdProduct",
-                table: "Category");
+                name: "FK_Categories_products_IdProduct",
+                table: "Categories");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_products_Category_CategoryId",
+                name: "FK_products_Categories_CategoriesId",
                 table: "products");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_Category",
-                table: "Category");
+                name: "PK_Categories",
+                table: "Categories");
 
             migrationBuilder.RenameTable(
-                name: "Category",
-                newName: "categorys");
+                name: "Categories",
+                newName: "Categories");
 
             migrationBuilder.RenameIndex(
-                name: "IX_Category_IdProduct",
-                table: "categorys",
-                newName: "IX_categorys_IdProduct");
+                name: "IX_Categories_IdProduct",
+                table: "Categories",
+                newName: "IX_Categories_IdProduct");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_categorys",
-                table: "categorys",
+                name: "PK_Categories",
+                table: "Categories",
                 column: "id");
 
             migrationBuilder.CreateTable(
@@ -57,17 +57,17 @@ namespace RestAdminV2.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_categorys_products_IdProduct",
-                table: "categorys",
+                name: "FK_Categories_products_IdProduct",
+                table: "Categories",
                 column: "IdProduct",
                 principalTable: "products",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_products_categorys_CategoryId",
+                name: "FK_products_Categories_CategoriesId",
                 table: "products",
-                column: "CategoryId",
-                principalTable: "categorys",
+                column: "CategoriesId",
+                principalTable: "Categories",
                 principalColumn: "id");
         }
 
@@ -75,46 +75,46 @@ namespace RestAdminV2.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_categorys_products_IdProduct",
-                table: "categorys");
+                name: "FK_Categories_products_IdProduct",
+                table: "Categories");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_products_categorys_CategoryId",
+                name: "FK_products_Categories_CategoriesId",
                 table: "products");
 
             migrationBuilder.DropTable(
                 name: "companys");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_categorys",
-                table: "categorys");
+                name: "PK_Categories",
+                table: "Categories");
 
             migrationBuilder.RenameTable(
-                name: "categorys",
-                newName: "Category");
+                name: "Categories",
+                newName: "Categories");
 
             migrationBuilder.RenameIndex(
-                name: "IX_categorys_IdProduct",
-                table: "Category",
-                newName: "IX_Category_IdProduct");
+                name: "IX_Categories_IdProduct",
+                table: "Categories",
+                newName: "IX_Categories_IdProduct");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_Category",
-                table: "Category",
+                name: "PK_Categories",
+                table: "Categories",
                 column: "id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Category_products_IdProduct",
-                table: "Category",
+                name: "FK_Categories_products_IdProduct",
+                table: "Categories",
                 column: "IdProduct",
                 principalTable: "products",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_products_Category_CategoryId",
+                name: "FK_products_Categories_CategoriesId",
                 table: "products",
-                column: "CategoryId",
-                principalTable: "Category",
+                column: "CategoriesId",
+                principalTable: "Categories",
                 principalColumn: "id");
         }
     }

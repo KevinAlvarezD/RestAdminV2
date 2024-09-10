@@ -4,18 +4,18 @@ using RestAdminV2.Models;
 
 namespace RestAdmin.Controllers
 {
-   public partial class CategoryController
+   public partial class CategoriesController
     {
-        // PUT: api/Category/5
+        // PUT: api/Categories/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id, Category category)
+        public async Task<IActionResult> PutCategories(int id, Categories Categories)
         {
-            if (id != category.Id)
+            if (id != Categories.Id)
             {
-                return BadRequest("Category ID mismatch.");
+                return BadRequest("Categories ID mismatch.");
             }
 
-            _context.Entry(category).State = EntityState.Modified;
+            _context.Entry(Categories).State = EntityState.Modified;
 
             try
             {
@@ -23,7 +23,7 @@ namespace RestAdmin.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(id))
+                if (!CategoriesExists(id))
                 {
                     return NotFound();
                 }
@@ -36,9 +36,9 @@ namespace RestAdmin.Controllers
             return NoContent();
         }
 
-        private bool CategoryExists(int id)
+        private bool CategoriesExists(int id)
         {
-            return _context.Categorys.Any(item => item.Id == id);
+            return _context.Categories.Any(item => item.Id == id);
         }
     }
 }

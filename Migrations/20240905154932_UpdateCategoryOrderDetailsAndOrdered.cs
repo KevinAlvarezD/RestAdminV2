@@ -5,7 +5,7 @@
 namespace RestAdminV2.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateCategoryOrderDetailsAndOrdered : Migration
+    public partial class UpdateCategoriesOrderDetailsAndOrdered : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,11 +27,11 @@ namespace RestAdminV2.Migrations
                 table: "ordereds");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_products_categorys_CategoryId",
+                name: "FK_products_Categories_CategoriesId",
                 table: "products");
 
             migrationBuilder.DropIndex(
-                name: "IX_products_CategoryId",
+                name: "IX_products_CategoriesId",
                 table: "products");
 
             migrationBuilder.DropIndex(
@@ -39,7 +39,7 @@ namespace RestAdminV2.Migrations
                 table: "customers");
 
             migrationBuilder.DropColumn(
-                name: "CategoryId",
+                name: "CategoriesId",
                 table: "products");
 
             migrationBuilder.DropColumn(
@@ -87,7 +87,7 @@ namespace RestAdminV2.Migrations
                 table: "ordereds");
 
             migrationBuilder.AddColumn<int>(
-                name: "CategoryId",
+                name: "CategoriesId",
                 table: "products",
                 type: "int",
                 nullable: true);
@@ -99,9 +99,9 @@ namespace RestAdminV2.Migrations
                 nullable: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_products_CategoryId",
+                name: "IX_products_CategoriesId",
                 table: "products",
-                column: "CategoryId");
+                column: "CategoriesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_customers_OrderedId",
@@ -140,10 +140,10 @@ namespace RestAdminV2.Migrations
                 onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_products_categorys_CategoryId",
+                name: "FK_products_Categories_CategoriesId",
                 table: "products",
-                column: "CategoryId",
-                principalTable: "categorys",
+                column: "CategoriesId",
+                principalTable: "Categories",
                 principalColumn: "id");
         }
     }

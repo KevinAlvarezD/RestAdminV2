@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RestAdminV2.Migrations
 {
     /// <inheritdoc />
-    public partial class AddCategoryAndCompany : Migration
+    public partial class AddCategoriesAndCompany : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,7 @@ namespace RestAdminV2.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "CategoryId",
+                name: "CategoriesId",
                 table: "products",
                 type: "int",
                 nullable: true);
@@ -54,7 +54,7 @@ namespace RestAdminV2.Migrations
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "Category",
+                name: "Categories",
                 columns: table => new
                 {
                     id = table.Column<int>(type: "int", nullable: false)
@@ -65,9 +65,9 @@ namespace RestAdminV2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.id);
+                    table.PrimaryKey("PK_Categories", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Category_products_IdProduct",
+                        name: "FK_Categories_products_IdProduct",
                         column: x => x.IdProduct,
                         principalTable: "products",
                         principalColumn: "id");
@@ -80,9 +80,9 @@ namespace RestAdminV2.Migrations
                 column: "OrderedId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_products_CategoryId",
+                name: "IX_products_CategoriesId",
                 table: "products",
-                column: "CategoryId");
+                column: "CategoriesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_products_OrderDetailsId",
@@ -110,8 +110,8 @@ namespace RestAdminV2.Migrations
                 column: "OrderedId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Category_IdProduct",
-                table: "Category",
+                name: "IX_Categories_IdProduct",
+                table: "Categories",
                 column: "IdProduct");
 
             migrationBuilder.AddForeignKey(
@@ -143,10 +143,10 @@ namespace RestAdminV2.Migrations
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_products_Category_CategoryId",
+                name: "FK_products_Categories_CategoriesId",
                 table: "products",
-                column: "CategoryId",
-                principalTable: "Category",
+                column: "CategoriesId",
+                principalTable: "Categories",
                 principalColumn: "id");
 
             migrationBuilder.AddForeignKey(
@@ -184,7 +184,7 @@ namespace RestAdminV2.Migrations
                 table: "ordereds");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_products_Category_CategoryId",
+                name: "FK_products_Categories_CategoriesId",
                 table: "products");
 
             migrationBuilder.DropForeignKey(
@@ -196,14 +196,14 @@ namespace RestAdminV2.Migrations
                 table: "tables");
 
             migrationBuilder.DropTable(
-                name: "Category");
+                name: "Categories");
 
             migrationBuilder.DropIndex(
                 name: "IX_tables_OrderedId",
                 table: "tables");
 
             migrationBuilder.DropIndex(
-                name: "IX_products_CategoryId",
+                name: "IX_products_CategoriesId",
                 table: "products");
 
             migrationBuilder.DropIndex(
@@ -231,7 +231,7 @@ namespace RestAdminV2.Migrations
                 table: "tables");
 
             migrationBuilder.DropColumn(
-                name: "CategoryId",
+                name: "CategoriesId",
                 table: "products");
 
             migrationBuilder.DropColumn(

@@ -54,7 +54,7 @@ namespace RestAdminV2.Migrations
                     b.ToTable("administrators");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Category", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Categories", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -76,7 +76,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasIndex("IdProduct");
 
-                    b.ToTable("categorys");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Company", b =>
@@ -333,7 +333,7 @@ namespace RestAdminV2.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int?>("CategoriesId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -361,7 +361,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("CategoriesId");
 
                     b.HasIndex("OrderDetailsId");
 
@@ -397,7 +397,7 @@ namespace RestAdminV2.Migrations
                     b.ToTable("tables");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Category", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Categories", b =>
                 {
                     b.HasOne("RestAdminV2.Models.Product", "Product")
                         .WithMany()
@@ -487,9 +487,9 @@ namespace RestAdminV2.Migrations
 
             modelBuilder.Entity("RestAdminV2.Models.Product", b =>
                 {
-                    b.HasOne("RestAdminV2.Models.Category", null)
+                    b.HasOne("RestAdminV2.Models.Categories", null)
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoriesId");
 
                     b.HasOne("RestAdminV2.Models.OrderDetails", null)
                         .WithMany("Products")
@@ -503,7 +503,7 @@ namespace RestAdminV2.Migrations
                         .HasForeignKey("OrderedId");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Category", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Categories", b =>
                 {
                     b.Navigation("Products");
                 });

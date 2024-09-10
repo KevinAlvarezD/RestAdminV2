@@ -4,10 +4,10 @@ namespace RestAdmin.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public partial class CategoryController : ControllerBase
+    public partial class CategoriesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-        public CategoryController(ApplicationDbContext context)
+        public CategoriesController(ApplicationDbContext context)
         {
             _context = context;
         }

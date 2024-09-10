@@ -12,8 +12,8 @@ using RestAdminV2.Models;
 namespace RestAdminV2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240905160739_UpdateCategory")]
-    partial class UpdateCategory
+    [Migration("20240905160739_UpdateCategories")]
+    partial class UpdateCategories
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,7 +54,7 @@ namespace RestAdminV2.Migrations
                     b.ToTable("administrators");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Category", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Categories", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -76,7 +76,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasIndex("IdProduct");
 
-                    b.ToTable("categorys");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Company", b =>
@@ -382,7 +382,7 @@ namespace RestAdminV2.Migrations
                     b.ToTable("tables");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Category", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Categories", b =>
                 {
                     b.HasOne("RestAdminV2.Models.Product", "Product")
                         .WithMany()

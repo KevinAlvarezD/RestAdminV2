@@ -23,7 +23,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Administrator> Administrators { get; set; }
     
-    public DbSet<Category> Categorys { get; set; }
+    public DbSet<Categories> Categories { get; set; }
 
     public DbSet<Company> Companys { get; set; }
 

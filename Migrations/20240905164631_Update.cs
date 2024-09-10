@@ -11,16 +11,16 @@ namespace RestAdminV2.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_categorys_products_IdProduct",
-                table: "categorys");
+                name: "FK_Categories_products_IdProduct",
+                table: "Categories");
 
             migrationBuilder.DropIndex(
-                name: "IX_categorys_IdProduct",
-                table: "categorys");
+                name: "IX_Categories_IdProduct",
+                table: "Categories");
 
             migrationBuilder.DropColumn(
                 name: "IdProduct",
-                table: "categorys");
+                table: "Categories");
         }
 
         /// <inheritdoc />
@@ -28,18 +28,18 @@ namespace RestAdminV2.Migrations
         {
             migrationBuilder.AddColumn<int>(
                 name: "IdProduct",
-                table: "categorys",
+                table: "Categories",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_categorys_IdProduct",
-                table: "categorys",
+                name: "IX_Categories_IdProduct",
+                table: "Categories",
                 column: "IdProduct");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_categorys_products_IdProduct",
-                table: "categorys",
+                name: "FK_Categories_products_IdProduct",
+                table: "Categories",
                 column: "IdProduct",
                 principalTable: "products",
                 principalColumn: "id");
