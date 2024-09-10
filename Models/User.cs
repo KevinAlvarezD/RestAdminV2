@@ -7,7 +7,7 @@ namespace RestAdminV2.Models;
 
 
 [Table("users")]
-public class Users
+public class User
 {
     [Key]
     [Column("id")]
@@ -41,4 +41,9 @@ public class Users
     [Required(ErrorMessage = "The address is required.")]
     public string Address { get; set; }
 
+
+    [Column("role")]
+    [MaxLength(255, ErrorMessage = "The field must be at most {1} characters.")]
+    [Required(ErrorMessage = "The role is required.")]
+    public string Role { get; set; }
 }

@@ -12,7 +12,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Tables> Tables { get; set; }
 
-    public DbSet<Users> Users { get; set; }
+    public DbSet<User> Users { get; set; }
 
     public DbSet<Invoice> Invoices { get; set; }
 
