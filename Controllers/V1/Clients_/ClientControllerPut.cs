@@ -4,23 +4,18 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class InvoiceController
+    public partial class ClientsController
     {
-        // PUT: api/invoice/5
+        // PUT: api/Client/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateInvoice(int id, [FromBody] Invoice invoice)
+        public async Task<IActionResult> PutClient(int id, Client Client)
         {
-            if (id != invoice.Id)
+            if (id != Client.Id)
             {
-                return BadRequest("Invoice ID mismatch.");
+                return BadRequest("Client ID mismatch.");
             }
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _context.Entry(invoice).State = EntityState.Modified;
+            _context.Entry(Client).State = EntityState.Modified;
 
             try
             {
@@ -28,7 +23,7 @@ namespace RestAdminV2.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!InvoiceExists(id))
+                if (!ClientExists(id))
                 {
                     return NotFound();
                 }
@@ -41,9 +36,9 @@ namespace RestAdminV2.Controllers
             return NoContent();
         }
 
-        private bool InvoiceExists(int id)
+        private bool ClientExists(int id)
         {
-            return _context.Invoices.Any(e => e.Id == id);
+            return _context.Clients.Any(e => e.Id == id);
         }
     }
 }

@@ -4,13 +4,13 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class InvoiceController
+    public partial class PreInvoiceController
     {
         // PUT: api/invoice/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateInvoice(int id, [FromBody] Invoice invoice)
+        public async Task<IActionResult> UpdatePreInvoice(int id, [FromBody] PreInvoice Preinvoice)
         {
-            if (id != invoice.Id)
+            if (id != Preinvoice.Id)
             {
                 return BadRequest("Invoice ID mismatch.");
             }
@@ -20,7 +20,7 @@ namespace RestAdminV2.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Entry(invoice).State = EntityState.Modified;
+            _context.Entry(Preinvoice).State = EntityState.Modified;
 
             try
             {

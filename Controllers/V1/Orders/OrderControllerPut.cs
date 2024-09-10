@@ -2,25 +2,21 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestAdminV2.Models;
 
+
 namespace RestAdminV2.Controllers
 {
-    public partial class InvoiceController
+    public partial class OrderController
     {
-        // PUT: api/invoice/5
+        // PUT: api/Order/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateInvoice(int id, [FromBody] Invoice invoice)
+        public async Task<IActionResult> PutOrder(int id, Order Order)
         {
-            if (id != invoice.Id)
+            if (id != Order.Id)
             {
-                return BadRequest("Invoice ID mismatch.");
+                return BadRequest("Order ID mismatch.");
             }
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            _context.Entry(invoice).State = EntityState.Modified;
+            _context.Entry(Order).State = EntityState.Modified;
 
             try
             {
@@ -28,7 +24,7 @@ namespace RestAdminV2.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!InvoiceExists(id))
+                if (!OrderExists(id))
                 {
                     return NotFound();
                 }
@@ -41,9 +37,9 @@ namespace RestAdminV2.Controllers
             return NoContent();
         }
 
-        private bool InvoiceExists(int id)
+        private bool OrderExists(int id)
         {
-            return _context.Invoices.Any(e => e.Id == id);
+            return _context.Orders.Any(e => e.Id == id);
         }
     }
 }

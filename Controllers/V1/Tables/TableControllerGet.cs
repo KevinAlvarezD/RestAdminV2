@@ -4,28 +4,28 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class TableController
+    public partial class TablesController
     {
-        // GET: api/Table
+        // GET: api/Tables
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Table>>> GetTables()
+        public async Task<ActionResult<IEnumerable<Tables>>> GetTables()
         {
-            var tables = await _context.Tables.ToListAsync();
-            return Ok(tables);
+            var Tables = await _context.Tables.ToListAsync();
+            return Ok(Tables);
         }
 
-        // GET: api/products/5
+        // GET: api/Menus/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Table>> GetTable(int id)
+        public async Task<ActionResult<Tables>> GetTables(int id)
         {
-            var table = await _context.Tables.FindAsync(id);
+            var Tables = await _context.Tables.FindAsync(id);
 
-            if (table == null)
+            if (Tables == null)
             {
                 return NotFound();
             }
 
-            return Ok(table);
+            return Ok(Tables);
         }
     }
 }

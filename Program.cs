@@ -21,7 +21,6 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(mySqlConnection, ServerVersion.Parse("8.0.20-mysql")));
 
-builder.Services.AddScoped<InvoiceService>();
 
 builder.Services.AddCors(options =>
 {

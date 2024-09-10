@@ -3,21 +3,21 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class TablesController
+    public partial class MenuController
     {
-        // POST: api/Tables
+        // POST: api/Menus
         [HttpPost]
-        public async Task<ActionResult<Tables>> CreateTables([FromBody] Tables Tables)
+        public async Task<ActionResult<Menu>> CreateMenu([FromBody] Menu menu)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Tables.Add(Tables);
+            _context.Menus.Add(menu);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetTables), new { id = Tables.Id }, Tables);
+            return CreatedAtAction(nameof(GetMenu), new { id = menu.Id }, menu);
         }
     }
 }

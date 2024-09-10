@@ -6,8 +6,8 @@ using System.Text.Json.Serialization;
 namespace RestAdminV2.Models;
 
 
-[Table("invoices")]
-public class Invoice
+[Table("pre_invoices")]
+public class PreInvoice
 {
     [Key]
     [Column("id")]
@@ -26,6 +26,11 @@ public class Invoice
     [Column("items")]
     public ICollection<Menu> Items { get; set; }
 
+    [Column("observations")]
+    [MaxLength(155, ErrorMessage = "The observations must be at most {1} characters.")]
+    [Required(ErrorMessage = "The observations is required.")]
+    public string Observations { get; set; }
+
     [Column("total")]
     [Range(0.01, double.MaxValue, ErrorMessage = "The total must be a positive number greater than zero.")]
     [DataType(DataType.Currency, ErrorMessage = "The total must be in a valid currency format.")]
@@ -37,6 +42,7 @@ public class Invoice
     [Range(typeof(DateTime), "1950-01-01", "2100-12-31", ErrorMessage = "The date must be between 01/01/1950 and 31/12/2100.")]
     [Required(ErrorMessage = "The invoice date is required.")]
     public DateTime DateInvoice { get; set; }
+
 
 
 }

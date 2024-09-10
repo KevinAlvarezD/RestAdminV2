@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 
 namespace RestAdminV2.Models;
-[Table("categorys")]
-public class Category
+[Table("categories")]
+public class Categories
 {
     [Key]
     [Column("id")]
@@ -18,7 +18,4 @@ public class Category
     [Required(ErrorMessage = "The name is required.")]
     public string Name { get; set; }
 
-    [JsonIgnore]
-    [NotMapped]
-    public virtual ICollection<Product> Products { get; set; }
 }

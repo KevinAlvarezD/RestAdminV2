@@ -1,18 +1,21 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
 
 
 namespace RestAdminV2.Models;
-[Table("company")]
-public class Company
+
+
+[Table("users")]
+public class Users
 {
     [Key]
     [Column("id")]
     public int Id { get; set; }
 
     [Column("name")]
-    [MaxLength(50, ErrorMessage = "The field must be at most {1} characters.")]
-    [Required(ErrorMessage = "The name is required.")]
+    [MinLength(5, ErrorMessage = "The Name field must be at least {1} characters.")]
+    [MaxLength(90, ErrorMessage = "The Name field must be at most {1} characters.")]
     public string Name { get; set; }
 
     [Column("email")]
@@ -21,10 +24,10 @@ public class Company
     [MaxLength(255, ErrorMessage = "The Email field must be at most {1} characters.")]
     public string Email { get; set; }
 
-    [Column("nit")]
-    [MaxLength(50, ErrorMessage = "The field must be at most {1} characters.")]
-    [Required(ErrorMessage = "The field is required.")]
-    public string Nit { get; set; }
+    [Column("password")]
+    [MinLength(5, ErrorMessage = "The password field must be at least {1} characters.")]
+    [MaxLength(255, ErrorMessage = "The Password field must be at most {1} characters.")]
+    public string Password { get; set; }
 
     [Column("phone")]
     [MinLength(5, ErrorMessage = "The Telefono field be at least {1} characters.")]
@@ -38,9 +41,7 @@ public class Company
     [Required(ErrorMessage = "The address is required.")]
     public string Address { get; set; }
 
-    [Column("logo_url")]
-    [MaxLength(255, ErrorMessage = "The field must be at most {1} characters.")]
-    [DataType(DataType.ImageUrl, ErrorMessage = "The field must be a valid URL.")]
-    [Required(ErrorMessage = "The address is required.")]
-    public string LogoURL { get; set; }
+    [Column("roles")]
+    public ICollection<Rule> Roles { get; set; }
+
 }

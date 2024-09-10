@@ -4,15 +4,15 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class TableController
+    public partial class TablesController
     {
-        // PUT: api/products/5
+        // PUT: api/Menus/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTable(int id, [FromBody] Table table)
+        public async Task<IActionResult> UpdateTables(int id, [FromBody] Tables Tables)
         {
-            if (id != table.Id)
+            if (id != Tables.Id)
             {
-                return BadRequest("Table ID mismatch.");
+                return BadRequest("Tables ID mismatch.");
             }
 
             if (!ModelState.IsValid)
@@ -20,7 +20,7 @@ namespace RestAdminV2.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Entry(table).State = EntityState.Modified;
+            _context.Entry(Tables).State = EntityState.Modified;
 
             try
             {
@@ -28,7 +28,7 @@ namespace RestAdminV2.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TableExists(id))
+                if (!TablesExists(id))
                 {
                     return NotFound();
                 }
@@ -41,7 +41,7 @@ namespace RestAdminV2.Controllers
             return NoContent();
         }
 
-        private bool TableExists(int id)
+        private bool TablesExists(int id)
         {
             return _context.Tables.Any(e => e.Id == id);
         }
