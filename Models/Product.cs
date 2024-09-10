@@ -5,8 +5,8 @@ using System.Text.Json.Serialization;
 
 namespace RestAdminV2.Models;
 
-[Table("menu")]
-public class Menu
+[Table("products")]
+public class Product
 {
     [Key]
     [Column("id")]
@@ -39,40 +39,27 @@ public class Menu
     public string Category { get; set; }
 
 
-    // Clave foránea
-    [ForeignKey("Kitchen")]
-    [Column("kitchen_id")]
-    public int KitchenId { get; set; }
+    // // Clave foránea
+    // [ForeignKey("Kitchen")]
+    // [Column("kitchen_id")]
+    // public int KitchenId { get; set; }
 
-    // Propiedad de navegación
-    public Kitchen Kitchen { get; set; }
+    // // Propiedad de navegación
+    // public Kitchen Kitchen { get; set; }
 
-    //Foreign Links
-    [JsonIgnore]
-    [NotMapped]
-    [ForeignKey("order_id")]
-    public virtual Order OrderID { get; set; }
+    // //Foreign Links
+    // [JsonIgnore]
+    // [NotMapped]
+    // [ForeignKey("order_id")]
+    // public virtual Order OrderID { get; set; }
 
-    [JsonIgnore]
-    [NotMapped]
-    [ForeignKey("invoice_id")]
-    public virtual Invoice InvoiceID { get; set; }
+    // [JsonIgnore]
+    // [NotMapped]
+    // [ForeignKey("invoice_id")]
+    // public virtual Invoice InvoiceID { get; set; }
 
-    [JsonIgnore]
-    [NotMapped]
-    [ForeignKey("pre_invoice_id")]
-    public virtual PreInvoice PreInvoiceID { get; set; }
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // [JsonIgnore]
+    // [NotMapped]
+    // [ForeignKey("pre_invoice_id")]
+    // public virtual PreInvoice PreInvoiceID { get; set; }
 }

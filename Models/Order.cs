@@ -21,7 +21,7 @@ public class Order
     public int OrderId { get; set; }
 
     [Column("items")]
-    public ICollection<Menu> Items { get; set; }
+    public ICollection<Product> Items { get; set; }
 
     [Column("observations")]
     [MaxLength(155, ErrorMessage = "The observations must be at most {1} characters.")]

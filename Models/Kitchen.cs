@@ -28,8 +28,8 @@ public class Kitchen
     public string Observations { get; set; }
 
 
-    [NotMapped]
-    [ForeignKey("menu_id")]
-    public virtual Menu MenuID { get; set; }
+    // [NotMapped]
+    // [ForeignKey("menu_id")]
+    // public virtual Menu MenuID { get; set; }
 
 }

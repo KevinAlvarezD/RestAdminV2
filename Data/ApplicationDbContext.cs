@@ -5,7 +5,7 @@ namespace RestAdminV2.Models;
 
 public class ApplicationDbContext : DbContext
 {
-    public DbSet<Menu> Menus { get; set; }
+    public DbSet<Product> Products { get; set; }
 
     public DbSet<Kitchen> Kitchens { get; set; }
 
