@@ -12,7 +12,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Tables> Tables { get; set; }
 
-    public DbSet<Users> Users { get; set; }
+    public DbSet<User> Users { get; set; }
 
     public DbSet<Invoice> Invoices { get; set; }
 
@@ -25,6 +25,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<Categories> Categories { get; set; }
 
     public DbSet<Company> Companys { get; set; }
+
+    public DbSet<Role> Roles { get; set; }
 
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
