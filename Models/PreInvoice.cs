@@ -44,11 +44,5 @@ public class PreInvoice
     public DateTime DateInvoice { get; set; }
 
 
-    //Foreing Links
-    [ForeignKey("OrderId")]
-    public virtual Order Order { get; set; }
-
-    [JsonIgnore]
-    public virtual ICollection<Payment> Payments { get; set; }
 
 }

@@ -39,7 +39,5 @@ public class Menu
     public string Category { get; set; }
 
 
-    [JsonIgnore]
-    public virtual ICollection<OrderDetails> OrderDetails { get; set; }
 
 }

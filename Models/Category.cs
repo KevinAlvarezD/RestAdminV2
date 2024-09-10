@@ -18,7 +18,4 @@ public class Categories
     [Required(ErrorMessage = "The name is required.")]
     public string Name { get; set; }
 
-    [JsonIgnore]
-    [NotMapped]
-    public virtual ICollection<Menu> Menus { get; set; }
 }

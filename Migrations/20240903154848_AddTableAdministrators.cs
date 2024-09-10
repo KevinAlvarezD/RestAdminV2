@@ -6,16 +6,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RestAdminV2.Migrations
 {
     /// <inheritdoc />
-    public partial class AddTablesAdministrators : Migration
+    public partial class AddTablesClients : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTables(
-                name: "administrators",
+                name: "Clients",
                 columns: Tables => new
                 {
-                    id_administrator = Tables.Column<int>(type: "int", nullable: false)
+                    id_Client = Tables.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     name = Tables.Column<string>(type: "varchar(90)", maxLength: 90, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -26,7 +26,7 @@ namespace RestAdminV2.Migrations
                 },
                 constraints: Tables =>
                 {
-                    Tables.PrimaryKey("PK_administrators", x => x.id_administrator);
+                    Tables.PrimaryKey("PK_Clients", x => x.id_Client);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
         }
@@ -35,7 +35,7 @@ namespace RestAdminV2.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTables(
-                name: "administrators");
+                name: "Clients");
         }
     }
 }

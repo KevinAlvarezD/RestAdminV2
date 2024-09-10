@@ -22,12 +22,12 @@ namespace RestAdminV2.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("RestAdminV2.Models.Administrator", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Client", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("id_administrator");
+                        .HasColumnName("id_Client");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
@@ -48,7 +48,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTables("administrators");
+                    b.ToTables("Clients");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Categories", b =>
@@ -119,7 +119,7 @@ namespace RestAdminV2.Migrations
                     b.ToTables("company");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Customer", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Kitchen", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -150,7 +150,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTables("customers");
+                    b.ToTables("Kitchens");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Users", b =>
@@ -256,9 +256,9 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Users");
 
-                    b.Property<int>("IdCustomer")
+                    b.Property<int>("IdKitchen")
                         .HasColumnType("int")
-                        .HasColumnName("id_customer");
+                        .HasColumnName("id_Kitchen");
 
                     b.Property<int>("IdTables")
                         .HasColumnType("int")
@@ -271,7 +271,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdCustomer");
+                    b.HasIndex("IdKitchen");
 
                     b.HasIndex("IdTables");
 
@@ -402,9 +402,9 @@ namespace RestAdminV2.Migrations
 
             modelBuilder.Entity("RestAdminV2.Models.Order", b =>
                 {
-                    b.HasOne("RestAdminV2.Models.Customer", "Customer")
+                    b.HasOne("RestAdminV2.Models.Kitchen", "Kitchen")
                         .WithMany("Orders")
-                        .HasForeignKey("IdCustomer")
+                        .HasForeignKey("IdKitchen")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -414,7 +414,7 @@ namespace RestAdminV2.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Customer");
+                    b.Navigation("Kitchen");
 
                     b.Navigation("Tables");
                 });
@@ -430,7 +430,7 @@ namespace RestAdminV2.Migrations
                     b.Navigation("Invoice");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Customer", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Kitchen", b =>
                 {
                     b.Navigation("Orders");
                 });

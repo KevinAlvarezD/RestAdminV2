@@ -3,19 +3,19 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class CustomerController
+    public partial class ClientController
     {
-        // DELETE: api/Customer/5
+        // DELETE: api/Client/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCustomer(int id)
+        public async Task<IActionResult> DeleteClient(int id)
         {
-            var customer = await _context.Customers.FindAsync(id);
-            if (customer == null)
+            var Client = await _context.Clients.FindAsync(id);
+            if (Client == null)
             {
                 return NotFound();
             }
 
-            _context.Customers.Remove(customer);
+            _context.Clients.Remove(Client);
             await _context.SaveChangesAsync();
 
             return NoContent();

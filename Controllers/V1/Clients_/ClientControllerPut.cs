@@ -4,18 +4,18 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class AdministratorController
+    public partial class ClientController
     {
-        // PUT: api/Administrator/5
+        // PUT: api/Client/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAdministrator(int id, Administrator administrator)
+        public async Task<IActionResult> PutClient(int id, Client Client)
         {
-            if (id != administrator.Id)
+            if (id != Client.Id)
             {
-                return BadRequest("Administrator ID mismatch.");
+                return BadRequest("Client ID mismatch.");
             }
 
-            _context.Entry(administrator).State = EntityState.Modified;
+            _context.Entry(Client).State = EntityState.Modified;
 
             try
             {
@@ -23,7 +23,7 @@ namespace RestAdminV2.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!administratorExists(id))
+                if (!ClientExists(id))
                 {
                     return NotFound();
                 }
@@ -36,9 +36,9 @@ namespace RestAdminV2.Controllers
             return NoContent();
         }
 
-        private bool administratorExists(int id)
+        private bool ClientExists(int id)
         {
-            return _context.Administrators.Any(e => e.Id == id);
+            return _context.Clients.Any(e => e.Id == id);
         }
     }
 }

@@ -1,15 +1,14 @@
-
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Text.Json.Serialization;
-using RestAdminV2.Models;
-
+using System.Threading.Tasks;
 
 
 namespace RestAdminV2.Models;
 
-[Table("orders")]
-public class Order
+[Table("kitchen")]
+public class Kitchen
 {
     [Key]
     [Column("id")]
@@ -27,6 +26,5 @@ public class Order
     [MaxLength(155, ErrorMessage = "The observations must be at most {1} characters.")]
     [Required(ErrorMessage = "The observations is required.")]
     public string Observations { get; set; }
-
 
 }

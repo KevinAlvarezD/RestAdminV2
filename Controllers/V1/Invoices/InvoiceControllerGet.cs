@@ -10,7 +10,7 @@ namespace RestAdminV2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Invoice>>> GetInvoices()
         {
-            var invoices = await _context.Invoices.Include(i => i.Order).ThenInclude(o => o.Customer).Include(i => i.Order).ThenInclude(o => o.Tables).ToListAsync();
+            var invoices = await _context.Invoices.ToListAsync();
             return Ok(invoices);
         }
 
@@ -18,9 +18,7 @@ namespace RestAdminV2.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Invoice>> GetInvoice(int id)
         {
-            var invoice = await _context.Invoices
-                .Include(i => i.Order)
-                .FirstOrDefaultAsync(i => i.IdInvoice == id);
+            var invoice = await _context.Invoices.FirstOrDefaultAsync(i => i.Id == id);
 
             if (invoice == null)
             {

@@ -22,7 +22,5 @@ public class Tables
     [Required(ErrorMessage = "The Tables number is required.")]
     public string State { get; set; }
 
-    [JsonIgnore]
-    public virtual ICollection<Order> Orders { get; set; }
 
 }

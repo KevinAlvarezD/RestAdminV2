@@ -12,8 +12,8 @@ using RestAdminV2.Models;
 namespace RestAdminV2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240903154848_AddTablesAdministrators")]
-    partial class AddTablesAdministrators
+    [Migration("20240903154848_AddTablesClients")]
+    partial class AddTablesClients
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -87,12 +87,12 @@ namespace RestAdminV2.Migrations
                     b.ToTables("Users");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Administrator", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Client", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("id_administrator");
+                        .HasColumnName("id_Client");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
@@ -113,7 +113,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTables("administrators");
+                    b.ToTables("Clients");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Invoice", b =>
