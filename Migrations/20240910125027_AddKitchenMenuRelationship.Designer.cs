@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestAdminV2.Models;
 
@@ -11,9 +12,11 @@ using RestAdminV2.Models;
 namespace RestAdminV2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240910125027_AddKitchenMenuRelationship")]
+    partial class AddKitchenMenuRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -369,7 +372,7 @@ namespace RestAdminV2.Migrations
                         .WithMany("Items")
                         .HasForeignKey("InvoiceId");
 
-                    b.HasOne("RestAdminV2.Models.Kitchen", "Kitchen")
+                    b.HasOne("RestAdminV2.Models.Kitchen", null)
                         .WithMany("Items")
                         .HasForeignKey("KitchenId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -382,8 +385,6 @@ namespace RestAdminV2.Migrations
                     b.HasOne("RestAdminV2.Models.PreInvoice", null)
                         .WithMany("Items")
                         .HasForeignKey("PreInvoiceId");
-
-                    b.Navigation("Kitchen");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Invoice", b =>

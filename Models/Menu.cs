@@ -35,8 +35,43 @@ public class Menu
     public string ImageURL { get; set; }
 
     [Column("category")]
-    [MaxLength(15, ErrorMessage = "The field must be at most {1} characters.")]
+    [MaxLength(50, ErrorMessage = "The field must be at most {1} characters.")]
     public string Category { get; set; }
+
+
+    // Clave foránea
+    [ForeignKey("Kitchen")]
+    [Column("kitchen_id")]
+    public int KitchenId { get; set; }
+
+    // Propiedad de navegación
+    public Kitchen Kitchen { get; set; }
+
+    //Foreign Links
+    [JsonIgnore]
+    [NotMapped]
+    [ForeignKey("order_id")]
+    public virtual Order OrderID { get; set; }
+
+    [JsonIgnore]
+    [NotMapped]
+    [ForeignKey("invoice_id")]
+    public virtual Invoice InvoiceID { get; set; }
+
+    [JsonIgnore]
+    [NotMapped]
+    [ForeignKey("pre_invoice_id")]
+    public virtual PreInvoice PreInvoiceID { get; set; }
+
+
+
+
+
+
+
+
+
+
 
 
 

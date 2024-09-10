@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestAdminV2.Models;
 
@@ -11,9 +12,11 @@ using RestAdminV2.Models;
 namespace RestAdminV2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240910122706_InitialCreateUpdate")]
+    partial class InitialCreateUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -165,7 +168,7 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("varchar(155)")
                         .HasColumnName("observations");
 
-                    b.Property<int>("TableId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("int")
                         .HasColumnName("table_id");
 
@@ -200,9 +203,8 @@ namespace RestAdminV2.Migrations
                     b.Property<int?>("InvoiceId")
                         .HasColumnType("int");
 
-                    b.Property<int>("KitchenId")
-                        .HasColumnType("int")
-                        .HasColumnName("kitchen_id");
+                    b.Property<int?>("KitchenId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -369,11 +371,9 @@ namespace RestAdminV2.Migrations
                         .WithMany("Items")
                         .HasForeignKey("InvoiceId");
 
-                    b.HasOne("RestAdminV2.Models.Kitchen", "Kitchen")
+                    b.HasOne("RestAdminV2.Models.Kitchen", null)
                         .WithMany("Items")
-                        .HasForeignKey("KitchenId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("KitchenId");
 
                     b.HasOne("RestAdminV2.Models.Order", null)
                         .WithMany("Items")
@@ -382,8 +382,6 @@ namespace RestAdminV2.Migrations
                     b.HasOne("RestAdminV2.Models.PreInvoice", null)
                         .WithMany("Items")
                         .HasForeignKey("PreInvoiceId");
-
-                    b.Navigation("Kitchen");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Invoice", b =>

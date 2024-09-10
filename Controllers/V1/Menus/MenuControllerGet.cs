@@ -10,7 +10,7 @@ namespace RestAdminV2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Menu>>> GetMenus()
         {
-            var Menus = await _context.Menus.ToListAsync();
+            var Menus = await _context.Menus.Include(m => m.InvoiceID).Include(m => m.KitchenId).Include(m => m.OrderID).Include(m => m.PreInvoiceID).ToListAsync();
             return Ok(Menus);
         }
 
@@ -18,7 +18,7 @@ namespace RestAdminV2.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Menu>> GetMenu(int id)
         {
-            var Menu = await _context.Menus.FindAsync(id);
+            var Menu = await _context.Menus.Include(m => m.InvoiceID).Include(m => m.KitchenId).Include(m => m.OrderID).Include(m => m.PreInvoiceID).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Menu == null)
             {
