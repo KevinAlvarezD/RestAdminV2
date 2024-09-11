@@ -27,7 +27,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<Company> Companys { get; set; }
 
     public DbSet<Role> Roles { get; set; }
-
+    public DbSet<OrderProduct> OrderProducts { get; set; }
+    
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
@@ -36,13 +37,15 @@ public class ApplicationDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        CategorySeeder.Seed(modelBuilder);
         ProductSeeder.Seed(modelBuilder);
-        base.OnModelCreating(modelBuilder);
-        UserSeeder.Seed(modelBuilder);
-        base.OnModelCreating(modelBuilder);
-        ClientSeeder.Seed(modelBuilder);
-        base.OnModelCreating(modelBuilder);
         RoleSeeder.Seed(modelBuilder);
+        UserSeeder.Seed(modelBuilder);
+        ClientSeeder.Seed(modelBuilder);
+        TableSeeder.Seed(modelBuilder);
+        CompanySeeder.Seed(modelBuilder);
+
+       
     }
 
 

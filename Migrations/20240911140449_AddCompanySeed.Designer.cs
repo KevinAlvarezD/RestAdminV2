@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestAdminV2.Models;
 
@@ -11,9 +12,11 @@ using RestAdminV2.Models;
 namespace RestAdminV2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240911140449_AddCompanySeed")]
+    partial class AddCompanySeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -244,38 +247,13 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("varchar(155)")
                         .HasColumnName("observations");
 
-                    b.Property<int>("TablesId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("int")
-                        .HasColumnName("tables_id");
+                        .HasColumnName("table_id");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TablesId");
 
                     b.ToTable("orders");
-                });
-
-            modelBuilder.Entity("RestAdminV2.Models.OrderProduct", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("order_products");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.PreInvoice", b =>
@@ -318,7 +296,8 @@ namespace RestAdminV2.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("id");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
@@ -344,6 +323,9 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("varchar(50)")
                         .HasColumnName("name");
 
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("PreInvoiceId")
                         .HasColumnType("int");
 
@@ -356,6 +338,8 @@ namespace RestAdminV2.Migrations
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("InvoiceId");
+
+                    b.HasIndex("OrderId");
 
                     b.HasIndex("PreInvoiceId");
 
@@ -695,39 +679,9 @@ namespace RestAdminV2.Migrations
                         });
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Order", b =>
-                {
-                    b.HasOne("RestAdminV2.Models.Tables", "Tables")
-                        .WithMany()
-                        .HasForeignKey("TablesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Tables");
-                });
-
-            modelBuilder.Entity("RestAdminV2.Models.OrderProduct", b =>
-                {
-                    b.HasOne("RestAdminV2.Models.Order", "Order")
-                        .WithMany("OrderProducts")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RestAdminV2.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("RestAdminV2.Models.Product", b =>
                 {
-                    b.HasOne("RestAdminV2.Models.Categories", "Category")
+                    b.HasOne("RestAdminV2.Models.Categories", "Categories")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -737,11 +691,15 @@ namespace RestAdminV2.Migrations
                         .WithMany("Items")
                         .HasForeignKey("InvoiceId");
 
+                    b.HasOne("RestAdminV2.Models.Order", null)
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId");
+
                     b.HasOne("RestAdminV2.Models.PreInvoice", null)
                         .WithMany("Items")
                         .HasForeignKey("PreInvoiceId");
 
-                    b.Navigation("Category");
+                    b.Navigation("Categories");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.User", b =>
@@ -762,7 +720,7 @@ namespace RestAdminV2.Migrations
 
             modelBuilder.Entity("RestAdminV2.Models.Order", b =>
                 {
-                    b.Navigation("OrderProducts");
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.PreInvoice", b =>

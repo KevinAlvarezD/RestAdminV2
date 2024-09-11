@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestAdminV2.Models;
 
@@ -11,9 +12,11 @@ using RestAdminV2.Models;
 namespace RestAdminV2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240911122116_AddNewMigration")]
+    partial class AddNewMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,33 +43,6 @@ namespace RestAdminV2.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("categories");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Bebidas"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Comidas"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Postres"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Entradas"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Domicilios"
-                        });
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Client", b =>
@@ -161,18 +137,6 @@ namespace RestAdminV2.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("company");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "Cra 50 40 90",
-                            Email = "administracionilforno@ilforno.com",
-                            LogoURL = "https://images.rappi.com/restaurants_logo/il-forno-logo1-1568819470999.png",
-                            Name = "Il Forno",
-                            Nit = "49879684184",
-                            Phone = "3242144893"
-                        });
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Invoice", b =>
@@ -244,38 +208,13 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("varchar(155)")
                         .HasColumnName("observations");
 
-                    b.Property<int>("TablesId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("int")
-                        .HasColumnName("tables_id");
+                        .HasColumnName("table_id");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TablesId");
 
                     b.ToTable("orders");
-                });
-
-            modelBuilder.Entity("RestAdminV2.Models.OrderProduct", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("order_products");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.PreInvoice", b =>
@@ -318,13 +257,15 @@ namespace RestAdminV2.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("id");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int")
-                        .HasColumnName("category_id");
+                    b.Property<string>("Category")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("category");
 
                     b.Property<double>("Cost")
                         .HasColumnType("double")
@@ -344,6 +285,9 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("varchar(50)")
                         .HasColumnName("name");
 
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("PreInvoiceId")
                         .HasColumnType("int");
 
@@ -353,9 +297,9 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
                     b.HasIndex("InvoiceId");
+
+                    b.HasIndex("OrderId");
 
                     b.HasIndex("PreInvoiceId");
 
@@ -365,7 +309,7 @@ namespace RestAdminV2.Migrations
                         new
                         {
                             Id = 1,
-                            CategoryId = 1,
+                            Category = "Bebidas",
                             Cost = 2100.0,
                             ImageURL = "https://res.cloudinary.com/dfdvjpaja/image/upload/v1725641772/j1sfl0ooipp2lfnaznbx.jpg",
                             Name = "Coca cola 400ml",
@@ -374,7 +318,7 @@ namespace RestAdminV2.Migrations
                         new
                         {
                             Id = 2,
-                            CategoryId = 2,
+                            Category = "Comida",
                             Cost = 9000.0,
                             ImageURL = "https://res.cloudinary.com/dfdvjpaja/image/upload/v1725641834/oeicuuwbem09deuyizwp.jpg",
                             Name = "Hamburguesa",
@@ -383,7 +327,7 @@ namespace RestAdminV2.Migrations
                         new
                         {
                             Id = 3,
-                            CategoryId = 2,
+                            Category = "Comida",
                             Cost = 12000.0,
                             ImageURL = "https://res.cloudinary.com/dfdvjpaja/image/upload/v1725641861/ix9ooxdajnvxijwq7bwv.jpg",
                             Name = "Pizza Peperoni",
@@ -392,7 +336,7 @@ namespace RestAdminV2.Migrations
                         new
                         {
                             Id = 4,
-                            CategoryId = 1,
+                            Category = "Bebidas",
                             Cost = 3500.0,
                             ImageURL = "https://res.cloudinary.com/dfdvjpaja/image/upload/v1725669032/zoc4meht10bhophsaz7z.jpg",
                             Name = "Postobon 1.5lt",
@@ -401,7 +345,7 @@ namespace RestAdminV2.Migrations
                         new
                         {
                             Id = 5,
-                            CategoryId = 1,
+                            Category = "Bebidas",
                             Cost = 2500.0,
                             ImageURL = "https://res.cloudinary.com/dfdvjpaja/image/upload/v1725669102/wtymyqe8qug10utjrhmj.jpg",
                             Name = "Michelada clasica",
@@ -410,64 +354,10 @@ namespace RestAdminV2.Migrations
                         new
                         {
                             Id = 6,
-                            CategoryId = 1,
+                            Category = "Bebidas",
                             Cost = 3500.0,
                             ImageURL = "https://res.cloudinary.com/dfdvjpaja/image/upload/v1725669255/kg6sllhrux2qs3wogknz.jpg",
                             Name = "Michelada cereza",
-                            Price = 7000.0
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CategoryId = 4,
-                            Cost = 5000.0,
-                            ImageURL = "https://assets.unileversolutions.com/recipes-v2/219942.jpg",
-                            Name = "Bruschetta",
-                            Price = 12000.0
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CategoryId = 4,
-                            Cost = 12000.0,
-                            ImageURL = "https://www.jocooks.com/wp-content/uploads/2022/04/tacos-al-pastor-feature-1.jpg",
-                            Name = "Tacos al Pastor",
-                            Price = 25000.0
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CategoryId = 4,
-                            Cost = 3500.0,
-                            ImageURL = "https://www.elespectador.com/resizer/tyGJPN_YmWpagQFeXq_YYOxAKjY=/arc-anglerfish-arc2-prod-elespectador/public/2AVD5Z6Y2ZFWHETPQGCPLMNK4A.jpg",
-                            Name = "Ceviche",
-                            Price = 7000.0
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CategoryId = 3,
-                            Cost = 3500.0,
-                            ImageURL = "https://escuelamundopastel.com/wp-content/uploads/2018/11/ORGANIZACI%C3%93N-DE-EVENTOS-10.png",
-                            Name = "Cheesecake",
-                            Price = 7000.0
-                        },
-                        new
-                        {
-                            Id = 11,
-                            CategoryId = 3,
-                            Cost = 3500.0,
-                            ImageURL = "https://badun.nestle.es/imgserver/v1/80/1290x742/ac5fa47c04dd-brownie-de-chocolate-negro.jpg",
-                            Name = "Brownie",
-                            Price = 6000.0
-                        },
-                        new
-                        {
-                            Id = 12,
-                            CategoryId = 3,
-                            Cost = 3500.0,
-                            ImageURL = "https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/6BE1C69C-69FB-4957-96EA-D76159076661/Derivates/BA406212-38AE-4EA0-B4D5-591514C21C2D.jpg",
-                            Name = "Tiramisu",
                             Price = 7000.0
                         });
                 });
@@ -518,53 +408,21 @@ namespace RestAdminV2.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("varchar(10)")
-                        .HasColumnName("name");
-
                     b.Property<string>("State")
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("varchar(15)")
                         .HasColumnName("state");
 
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)")
+                        .HasColumnName("name");
+
                     b.HasKey("Id");
 
                     b.ToTable("tables");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Mesa 1",
-                            State = "Cocinando"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Mesa 2",
-                            State = "Por Facturar"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Mesa 3",
-                            State = "Ocupada"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Mesa 4",
-                            State = "Disponible"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Mesa 5",
-                            State = "Disponible"
-                        });
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.User", b =>
@@ -695,53 +553,19 @@ namespace RestAdminV2.Migrations
                         });
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Order", b =>
-                {
-                    b.HasOne("RestAdminV2.Models.Tables", "Tables")
-                        .WithMany()
-                        .HasForeignKey("TablesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Tables");
-                });
-
-            modelBuilder.Entity("RestAdminV2.Models.OrderProduct", b =>
-                {
-                    b.HasOne("RestAdminV2.Models.Order", "Order")
-                        .WithMany("OrderProducts")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RestAdminV2.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("RestAdminV2.Models.Product", b =>
                 {
-                    b.HasOne("RestAdminV2.Models.Categories", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("RestAdminV2.Models.Invoice", null)
                         .WithMany("Items")
                         .HasForeignKey("InvoiceId");
 
+                    b.HasOne("RestAdminV2.Models.Order", null)
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId");
+
                     b.HasOne("RestAdminV2.Models.PreInvoice", null)
                         .WithMany("Items")
                         .HasForeignKey("PreInvoiceId");
-
-                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.User", b =>
@@ -762,7 +586,7 @@ namespace RestAdminV2.Migrations
 
             modelBuilder.Entity("RestAdminV2.Models.Order", b =>
                 {
-                    b.Navigation("OrderProducts");
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.PreInvoice", b =>

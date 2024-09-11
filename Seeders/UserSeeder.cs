@@ -21,7 +21,7 @@ namespace RestAdminV2.Seeders
                     Password =  "riwi1234",
                     Phone = "3242144893",
                     Address = "Cra 50 40 90",
-                    Role = "Mesero"
+                    RoleId = 1
                 },
                 new User
                 {
@@ -31,7 +31,7 @@ namespace RestAdminV2.Seeders
                     Password =  "Susana1901",
                     Phone = "3004001077",
                     Address = "Cra 50a 36 90",
-                    Role = "Administrador"
+                    RoleId = 2
                 },
                 new User
                 {
@@ -41,17 +41,17 @@ namespace RestAdminV2.Seeders
                     Password =  "21354",
                     Phone = "333245884",
                     Address = "Cra 59a 66 57",
-                    Role = "Cajero"
+                    RoleId = 3
                 },
                 new User
                 {
                     Id = 4,
-                    Name = "Mickey Londoño",
-                    Email = "Mickey@gmail.com",
+                    Name = "Alejandro Londoño",
+                    Email = "Alejandro@gmail.com",
                     Password =  "12345678",
                     Phone = "3123456789",
                     Address = "Cra 45 67 89",
-                    Role = "Mesero"
+                    RoleId = 2
                 },
                 new User
                 {   
@@ -61,7 +61,7 @@ namespace RestAdminV2.Seeders
                     Password =  "987654321",
                     Phone = "3132145678",
                     Address = "Cra 40 50 60",
-                    Role = "Administrador"
+                    RoleId = 2
                 },
                 new User
                 {
@@ -71,7 +71,7 @@ namespace RestAdminV2.Seeders
                     Password = "laura2024",
                     Phone = "3221234567",
                     Address = "Cra 55 33 44",
-                    Role = "Mesero"
+                    RoleId = 3
                 },
                 new User
                 {
@@ -81,7 +81,7 @@ namespace RestAdminV2.Seeders
                     Password = "admin2024",
                     Phone = "3209876543",
                     Address = "Cra 60 35 78",
-                    Role = "Administrador"
+                    RoleId = 1
                 },
                 new User
                 {
@@ -91,7 +91,7 @@ namespace RestAdminV2.Seeders
                     Password = "cashier2024",
                     Phone = "3111239876",
                     Address = "Cra 42 55 88",
-                    Role = "Cajero"
+                    RoleId = 1
                 }
             );
         }    

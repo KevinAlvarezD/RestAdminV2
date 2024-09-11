@@ -10,7 +10,7 @@ namespace RestAdminV2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProduct()
         {
-            var products = await _context.Products.ToListAsync();
+            var products = await _context.Products.Include(p=>p.Category).ToListAsync();
             return Ok(products);
         }
 
@@ -18,7 +18,7 @@ namespace RestAdminV2.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            var product = await _context.Products.FirstOrDefaultAsync(i => i.Id == id);
+            var product = await _context.Products.Include(p=>p.Category).FirstOrDefaultAsync(i => i.Id == id);
 
             if (product == null)
             {

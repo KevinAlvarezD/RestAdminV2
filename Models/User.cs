@@ -42,8 +42,10 @@ public class User
     public string Address { get; set; }
 
 
-    [Column("role")]
-    [MaxLength(255, ErrorMessage = "The field must be at most {1} characters.")]
-    [Required(ErrorMessage = "The role is required.")]
-    public string Role { get; set; }
+    [Column("role_id")]
+    public int RoleId { get; set; } // Clave foránea
+
+    [ForeignKey("RoleId")]
+    public Role Role { get; set; } // Propiedad de navegación
+
 }
