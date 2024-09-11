@@ -37,6 +37,12 @@ public class ApplicationDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         ProductSeeder.Seed(modelBuilder);
+        base.OnModelCreating(modelBuilder);
+        UserSeeder.Seed(modelBuilder);
+        base.OnModelCreating(modelBuilder);
+        ClientSeeder.Seed(modelBuilder);
+        base.OnModelCreating(modelBuilder);
+        RoleSeeder.Seed(modelBuilder);
     }
 
 

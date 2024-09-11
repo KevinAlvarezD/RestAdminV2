@@ -15,7 +15,7 @@ namespace RestAdminV2.Seeders
                
                 new User
                 {
-                    Id = 172443449,
+                    Id = 1,
                     Name = "Erik Uribe",
                     Email = "erik@elmejor.com",
                     Password =  "riwi1234",
@@ -25,7 +25,7 @@ namespace RestAdminV2.Seeders
                 },
                 new User
                 {
-                    Id = 1724434496,
+                    Id = 2,
                     Name = "Alejandro Echavarria",
                     Email = "aechavarriaj@gmail.com",
                     Password =  "Susana1901",
@@ -35,7 +35,7 @@ namespace RestAdminV2.Seeders
                 },
                 new User
                 {
-                    Id = 1724434495,
+                    Id = 3,
                     Name = "Alejandro Castrillón",
                     Email = "alejomi192005@gmail.com",
                     Password =  "21354",
@@ -45,7 +45,7 @@ namespace RestAdminV2.Seeders
                 },
                 new User
                 {
-                    Id = 1724434497,
+                    Id = 4,
                     Name = "Mickey Londoño",
                     Email = "Mickey@gmail.com",
                     Password =  "12345678",
@@ -55,7 +55,7 @@ namespace RestAdminV2.Seeders
                 },
                 new User
                 {   
-                    Id = 1724434498,
+                    Id = 5,
                     Name = "Kevin Alvarez",
                     Email = "kev@gmail.com",
                     Password =  "987654321",
@@ -65,7 +65,7 @@ namespace RestAdminV2.Seeders
                 },
                 new User
                 {
-                    Id = 1724434499,
+                    Id = 6,
                     Name = "Laura Jimenez",
                     Email = "laura.jimenez@restadmin.com",
                     Password = "laura2024",
@@ -75,7 +75,7 @@ namespace RestAdminV2.Seeders
                 },
                 new User
                 {
-                    Id = 1724434500,
+                    Id = 7,
                     Name = "Carlos Mejia",
                     Email = "carlos.mejia@restadmin.com",
                     Password = "admin2024",
@@ -85,7 +85,7 @@ namespace RestAdminV2.Seeders
                 },
                 new User
                 {
-                    Id = 1724434501,
+                    Id = 8,
                     Name = "Diana Lopez",
                     Email = "diana.lopez@restadmin.com",
                     Password = "cashier2024",
