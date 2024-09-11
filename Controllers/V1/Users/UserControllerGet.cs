@@ -4,26 +4,26 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class UsersController
+    public partial class UserController
     {
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Users>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
             return await _context.Users.ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Users>> GetUsers(int id)
+        public async Task<ActionResult<User>> GetUser(int id)
         {
-            var Users = await _context.Users.FindAsync(id);
-            if (Users == null)
+            var User = await _context.Users.FindAsync(id);
+            if (User == null)
             {
                 return NotFound();
             }
 
-            return Users;
+            return User;
         }
     }
 }

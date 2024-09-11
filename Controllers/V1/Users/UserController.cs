@@ -4,12 +4,12 @@ using RestAdminV2.Models;
 namespace RestAdminV2.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    public partial class UsersController : ControllerBase
+    [Route("api/v1/[controller]")]
+    public partial class UserController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public UsersController (ApplicationDbContext context)
+        public UserController (ApplicationDbContext context)
         {
             _context = context;
         }
