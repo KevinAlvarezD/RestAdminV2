@@ -15,7 +15,7 @@ public class Tables
     [Column("name")]
     [MaxLength(10, ErrorMessage = "The Tables number must be at most {1} characters.")]
     [Required(ErrorMessage = "The Tables number is required.")]
-    public string name { get; set; }
+    public string Name { get; set; }
 
     [Column("state")]
     [MaxLength(15, ErrorMessage = "The Tables number must be at most {1} characters.")]

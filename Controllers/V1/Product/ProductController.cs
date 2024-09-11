@@ -4,7 +4,7 @@ using RestAdminV2.Models;
 namespace RestAdminV2.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     public partial class ProductController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

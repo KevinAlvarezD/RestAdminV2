@@ -23,9 +23,6 @@ public class Invoice
     [Range(1, int.MaxValue, ErrorMessage = "The order ID must be a positive number.")]
     public int OrderId { get; set; }
 
-    [Column("items")]
-    public ICollection<Product> Items { get; set; }
-
     [Column("total")]
     [Range(0.01, double.MaxValue, ErrorMessage = "The total must be a positive number greater than zero.")]
     [DataType(DataType.Currency, ErrorMessage = "The total must be in a valid currency format.")]

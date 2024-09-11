@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
+
 
 
 namespace RestAdminV2.Models;
@@ -9,7 +9,6 @@ namespace RestAdminV2.Models;
 public class Product
 {
     [Key]
-    [Column("id")]
     public int Id { get; set; }
 
     [Column("name")]
@@ -34,32 +33,12 @@ public class Product
     [DataType(DataType.ImageUrl, ErrorMessage = "The field must be a valid URL.")]
     public string ImageURL { get; set; }
 
-    [Column("category")]
-    [MaxLength(50, ErrorMessage = "The field must be at most {1} characters.")]
-    public string Category { get; set; }
+    [Column("category_id")]
+    public int CategoryId { get; set; } 
+
+    [ForeignKey("CategoryId")]
+    public Categories Category { get; set; } 
 
 
-    // // Clave foránea
-    // [ForeignKey("Kitchen")]
-    // [Column("kitchen_id")]
-    // public int KitchenId { get; set; }
 
-    // // Propiedad de navegación
-    // public Kitchen Kitchen { get; set; }
-
-    // //Foreign Links
-    // [JsonIgnore]
-    // [NotMapped]
-    // [ForeignKey("order_id")]
-    // public virtual Order OrderID { get; set; }
-
-    // [JsonIgnore]
-    // [NotMapped]
-    // [ForeignKey("invoice_id")]
-    // public virtual Invoice InvoiceID { get; set; }
-
-    // [JsonIgnore]
-    // [NotMapped]
-    // [ForeignKey("pre_invoice_id")]
-    // public virtual PreInvoice PreInvoiceID { get; set; }
 }

@@ -10,14 +10,14 @@ namespace RestAdminV2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users.Include(u => u.Role).ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
-            var User = await _context.Users.FindAsync(id);
+            var User = await _context.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.Id == id);
             if (User == null)
             {
                 return NotFound();

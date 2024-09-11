@@ -23,9 +23,6 @@ public class PreInvoice
     [Range(1, int.MaxValue, ErrorMessage = "The order ID must be a positive number.")]
     public int OrderId { get; set; }
 
-    [Column("items")]
-    public ICollection<Product> Items { get; set; }
-
     [Column("observations")]
     [MaxLength(155, ErrorMessage = "The observations must be at most {1} characters.")]
     [Required(ErrorMessage = "The observations is required.")]
