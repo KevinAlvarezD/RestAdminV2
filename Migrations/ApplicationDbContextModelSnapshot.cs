@@ -335,17 +335,11 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("varchar(255)")
                         .HasColumnName("image_url");
 
-                    b.Property<int?>("InvoiceId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)")
                         .HasColumnName("name");
-
-                    b.Property<int?>("PreInvoiceId")
-                        .HasColumnType("int");
 
                     b.Property<double>("Price")
                         .HasColumnType("double")
@@ -354,10 +348,6 @@ namespace RestAdminV2.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("InvoiceId");
-
-                    b.HasIndex("PreInvoiceId");
 
                     b.ToTable("products");
 
@@ -733,14 +723,6 @@ namespace RestAdminV2.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RestAdminV2.Models.Invoice", null)
-                        .WithMany("Items")
-                        .HasForeignKey("InvoiceId");
-
-                    b.HasOne("RestAdminV2.Models.PreInvoice", null)
-                        .WithMany("Items")
-                        .HasForeignKey("PreInvoiceId");
-
                     b.Navigation("Category");
                 });
 
@@ -755,19 +737,9 @@ namespace RestAdminV2.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Invoice", b =>
-                {
-                    b.Navigation("Items");
-                });
-
             modelBuilder.Entity("RestAdminV2.Models.Order", b =>
                 {
                     b.Navigation("OrderProducts");
-                });
-
-            modelBuilder.Entity("RestAdminV2.Models.PreInvoice", b =>
-                {
-                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

@@ -28,7 +28,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Role> Roles { get; set; }
     public DbSet<OrderProduct> OrderProducts { get; set; }
-    
+
 
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
@@ -45,7 +45,7 @@ public class ApplicationDbContext : DbContext
         TableSeeder.Seed(modelBuilder);
         CompanySeeder.Seed(modelBuilder);
 
-       
+
     }
 
 

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
+
 
 
 namespace RestAdminV2.Models;
@@ -38,5 +38,7 @@ public class Product
 
     [ForeignKey("CategoryId")]
     public Categories Category { get; set; } 
+
+
 
 }

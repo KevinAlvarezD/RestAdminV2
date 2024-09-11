@@ -12,8 +12,8 @@ using RestAdminV2.Models;
 namespace RestAdminV2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240911142125_AddOrder")]
-    partial class AddOrder
+    [Migration("20240911173730_updateAndResolveProblems")]
+    partial class updateAndResolveProblems
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -247,21 +247,38 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("varchar(155)")
                         .HasColumnName("observations");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int>("TablesId")
                         .HasColumnType("int")
-                        .HasColumnName("product_id");
-
-                    b.Property<int>("TableId")
-                        .HasColumnType("int")
-                        .HasColumnName("table_id");
+                        .HasColumnName("tables_id");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("TableId");
+                    b.HasIndex("TablesId");
 
                     b.ToTable("orders");
+                });
+
+            modelBuilder.Entity("RestAdminV2.Models.OrderProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("order_products");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.PreInvoice", b =>
@@ -304,8 +321,7 @@ namespace RestAdminV2.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
+                        .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
@@ -322,17 +338,11 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("varchar(255)")
                         .HasColumnName("image_url");
 
-                    b.Property<int?>("InvoiceId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)")
                         .HasColumnName("name");
-
-                    b.Property<int?>("PreInvoiceId")
-                        .HasColumnType("int");
 
                     b.Property<double>("Price")
                         .HasColumnType("double")
@@ -341,10 +351,6 @@ namespace RestAdminV2.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("InvoiceId");
-
-                    b.HasIndex("PreInvoiceId");
 
                     b.ToTable("products");
 
@@ -684,40 +690,43 @@ namespace RestAdminV2.Migrations
 
             modelBuilder.Entity("RestAdminV2.Models.Order", b =>
                 {
+                    b.HasOne("RestAdminV2.Models.Tables", "Tables")
+                        .WithMany()
+                        .HasForeignKey("TablesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tables");
+                });
+
+            modelBuilder.Entity("RestAdminV2.Models.OrderProduct", b =>
+                {
+                    b.HasOne("RestAdminV2.Models.Order", "Order")
+                        .WithMany("OrderProducts")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("RestAdminV2.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RestAdminV2.Models.Tables", "Tables")
-                        .WithMany()
-                        .HasForeignKey("TableId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Order");
 
                     b.Navigation("Product");
-
-                    b.Navigation("Tables");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Product", b =>
                 {
-                    b.HasOne("RestAdminV2.Models.Categories", "Categories")
+                    b.HasOne("RestAdminV2.Models.Categories", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RestAdminV2.Models.Invoice", null)
-                        .WithMany("Items")
-                        .HasForeignKey("InvoiceId");
-
-                    b.HasOne("RestAdminV2.Models.PreInvoice", null)
-                        .WithMany("Items")
-                        .HasForeignKey("PreInvoiceId");
-
-                    b.Navigation("Categories");
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.User", b =>
@@ -731,14 +740,9 @@ namespace RestAdminV2.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("RestAdminV2.Models.Invoice", b =>
+            modelBuilder.Entity("RestAdminV2.Models.Order", b =>
                 {
-                    b.Navigation("Items");
-                });
-
-            modelBuilder.Entity("RestAdminV2.Models.PreInvoice", b =>
-                {
-                    b.Navigation("Items");
+                    b.Navigation("OrderProducts");
                 });
 #pragma warning restore 612, 618
         }
