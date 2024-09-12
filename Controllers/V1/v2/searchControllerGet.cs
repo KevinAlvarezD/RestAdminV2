@@ -9,7 +9,7 @@ namespace RestAdminV2.Controllers
     {
 
        [HttpGet("salesByMonth")]
-        public async Task<ActionResult<IEnumerable<Invoice>>> SearchByMonth(int month)
+        public async Task<ActionResult<IEnumerable<PreInvoice>>> SearchByMonth(int month)
         {
             if (month < 1 || month > 12)
             {
