@@ -39,7 +39,7 @@ namespace RestAdminV2.Controllers
                 {
                     ProductId = product.Id,
                     Quantity = orderProductDTO.Quantity,
-                    Order = existingOrder
+                    OrderId = id 
                 });
             }
 
