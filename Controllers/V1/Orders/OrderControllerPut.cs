@@ -25,10 +25,8 @@ namespace RestAdminV2.Controllers
             existingOrder.TablesId = updateOrderDTO.TablesId;
             existingOrder.Observations = updateOrderDTO.Observations;
 
-            // Eliminar los productos existentes en la orden
             _context.OrderProducts.RemoveRange(existingOrder.OrderProducts);
 
-            // Agregar los nuevos productos con cantidades
             foreach (var orderProductDTO in updateOrderDTO.OrderProducts)
             {
                 var product = await _context.Products.FindAsync(orderProductDTO.ProductId);
@@ -45,7 +43,6 @@ namespace RestAdminV2.Controllers
                 });
             }
 
-            // Marcar la orden como modificada y guardar los cambios
             _context.Entry(existingOrder).State = EntityState.Modified;
 
             try
