@@ -8,22 +8,28 @@ namespace RestAdminV2.Controllers
     {
         // PUT: api/invoice/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateInvoice(int id, [FromBody] Invoice invoice)
+        public async Task<IActionResult> UpdateInvoice(int id, Invoice updatedInvoice)
         {
-            if (id != invoice.Id)
+            if (id != updatedInvoice.Id)
             {
-                return BadRequest("Invoice ID mismatch.");
+                return BadRequest("The invoice ID in the URL does not match the ID in the body.");
             }
 
-            if (!ModelState.IsValid)
+            var existingInvoice = await _context.Invoices.FindAsync(id);
+            if (existingInvoice == null)
             {
-                return BadRequest(ModelState);
+                return NotFound();
             }
 
-            _context.Entry(invoice).State = EntityState.Modified;
+            // Update the existing Invoice with the new values
+            existingInvoice.Number = updatedInvoice.Number;
+            existingInvoice.OrderId = updatedInvoice.OrderId;
+            existingInvoice.Total = updatedInvoice.Total;
+            existingInvoice.DateInvoice = updatedInvoice.DateInvoice;
 
             try
             {
+                // Save changes to the database
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -38,12 +44,7 @@ namespace RestAdminV2.Controllers
                 }
             }
 
-            return NoContent();
-        }
-
-        private bool InvoiceExists(int id)
-        {
-            return _context.Invoices.Any(e => e.Id == id);
+            return NoContent(); // Return 204 No Content on successful update
         }
     }
 }

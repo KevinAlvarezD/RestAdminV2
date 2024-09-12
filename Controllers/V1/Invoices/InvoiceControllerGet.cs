@@ -10,15 +10,14 @@ namespace RestAdminV2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Invoice>>> GetInvoices()
         {
-            var invoices = await _context.Invoices.ToListAsync();
-            return Ok(invoices);
+            return Ok(await _context.Invoices.ToListAsync());
         }
 
         // GET: api/invoice/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Invoice>> GetInvoice(int id)
         {
-            var invoice = await _context.Invoices.FirstOrDefaultAsync(i => i.Id == id);
+            var invoice = await _context.Invoices.FindAsync(id);
 
             if (invoice == null)
             {
@@ -27,5 +26,6 @@ namespace RestAdminV2.Controllers
 
             return Ok(invoice);
         }
+
     }
-}    
+}

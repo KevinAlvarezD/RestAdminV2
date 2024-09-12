@@ -7,21 +7,6 @@ namespace RestAdminV2.Controllers
 {
     public partial class PreInvoiceController
     {
-        // // POST: api/Menus
-        // [HttpPost]
-        // public async Task<ActionResult<PreInvoice>> CreatePreinvoice([FromBody] PreInvoice Preinvoice)
-        // {
-        //     if (!ModelState.IsValid)
-        //     {
-        //         return BadRequest(ModelState);
-        //     }
-
-        //     _context.PreInvoices.Add(Preinvoice);
-        //     await _context.SaveChangesAsync();
-
-        //     return CreatedAtAction(nameof(GetPreInvoice), new { id = Preinvoice.Id }, Preinvoice);
-        // }
-
 
         // POST: api/preinvoice/create-from-order/5
         [HttpPost("create-from-order/{orderId}")]

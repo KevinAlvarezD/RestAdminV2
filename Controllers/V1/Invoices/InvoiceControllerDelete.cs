@@ -17,7 +17,12 @@ namespace RestAdminV2.Controllers
             _context.Invoices.Remove(invoice);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return NoContent(); // Return 204 No Content on successful deletion
+        }
+
+        private bool InvoiceExists(int id)
+        {
+            return _context.Invoices.Any(e => e.Id == id);
         }
     }
 }
