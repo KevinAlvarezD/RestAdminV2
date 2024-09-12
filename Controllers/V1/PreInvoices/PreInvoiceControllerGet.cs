@@ -6,26 +6,48 @@ namespace RestAdminV2.Controllers
 {
     public partial class PreInvoiceController
     {
-        // GET: api/invoice
+        // // GET: api/invoice
+        // [HttpGet]
+        // public async Task<ActionResult<IEnumerable<PreInvoice>>> GetPreInvoices()
+        // {
+        //     var Preinvoices = await _context.PreInvoices.ToListAsync();
+        //     return Ok(Preinvoices);
+        // }
+
+        // // GET: api/invoice/5
+        // [HttpGet("{id}")]
+        // public async Task<ActionResult<PreInvoice>> GetPreInvoice(int id)
+        // {
+        //     var Preinvoice = await _context.PreInvoices.FirstOrDefaultAsync(i => i.Id == id);
+
+        //     if (Preinvoice == null)
+        //     {
+        //         return NotFound();
+        //     }
+
+        //     return Ok(Preinvoice);
+        // }
+
+        // GET: api/preinvoice
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PreInvoice>>> GetPreInvoices()
         {
-            var Preinvoices = await _context.PreInvoices.ToListAsync();
-            return Ok(Preinvoices);
+            var preInvoices = await _context.PreInvoices.ToListAsync();
+            return Ok(preInvoices);
         }
 
-        // GET: api/invoice/5
+        // GET: api/preinvoice/5
         [HttpGet("{id}")]
         public async Task<ActionResult<PreInvoice>> GetPreInvoice(int id)
         {
-            var Preinvoice = await _context.PreInvoices.FirstOrDefaultAsync(i => i.Id == id);
+            var preInvoice = await _context.PreInvoices.FindAsync(id);
 
-            if (Preinvoice == null)
+            if (preInvoice == null)
             {
                 return NotFound();
             }
 
-            return Ok(Preinvoice);
+            return Ok(preInvoice);
         }
     }
-}    
+}

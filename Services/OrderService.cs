@@ -1,52 +1,53 @@
-// using System;
-// using System.Collections.Generic;
-// using System.Linq;
-// using System.Threading.Tasks;
-// using RestAdminV2.Models;
-// using RestAdminV2.DTOs;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using RestAdminV2.Models;
+using RestAdminV2.DTOs;
+using Microsoft.EntityFrameworkCore;
 
-// namespace RestAdminV2.Services
-// {
-//     public class OrderService
-//     {
-//         private readonly ApplicationDbContext _context;
+namespace RestAdminV2.Services
+{
+    public class OrderService
+    {
+        private readonly ApplicationDbContext _context;
 
-//         public OrderService(ApplicationDbContext context)
-//         {
-//             _context = context;
-//         }
+        public OrderService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
-//         public PreOrderDTO GetPreOrder(int orderId)
-//         {
-//             var orderProducts = _context.OrderProducts
-//                 .Where(op => op.OrderId == orderId)
-//                 .Include(op => op.Product)
-//                 .ToList();
+        public PreOrderDTO GetPreOrder(int orderId)
+        {
+            var orderProducts = _context.OrderProducts
+                .Where(op => op.OrderId == orderId)
+                .Include(op => op.Product)
+                .ToList();
 
-//             var preOrder = new PreOrder
-//             {
-//                 OrderId = orderId,
-//                 OrderProducts = orderProducts
-//             };
+            var preOrder = new PreOrderDTO
+            {
+                OrderId = orderId,
+                OrderProducts = orderProducts
+            };
 
-//             return preOrder;
-//         }
+            return preOrder;
+        }
 
-//         public void CreatePreInvoiceFromOrder(int orderId)
-//         {
-//             var preOrder = GetPreOrder(orderId);
-//             var total = preOrder.CalculateTotal();
+        public void CreatePreInvoiceFromOrder(int orderId)
+        {
+            var preOrder = GetPreOrder(orderId);
+            var total = preOrder.CalculateTotal();
 
-//             var preInvoice = new PreInvoice
-//             {
-//                 OrderId = orderId,
-//                 Total = total,
-//                 DateInvoice = DateTime.Now,
-//                 Observations = "Generated from order"
-//             };
+            var preInvoice = new PreInvoice
+            {
+                OrderId = orderId,
+                Total = total,
+                DateInvoice = DateTime.Now,
+                Observations = "Generated from order"
+            };
 
-//             _context.PreInvoices.Add(preInvoice);
-//             _context.SaveChanges();
-//         }
-//     }
-// }
+            _context.PreInvoices.Add(preInvoice);
+            _context.SaveChanges();
+        }
+    }
+}
