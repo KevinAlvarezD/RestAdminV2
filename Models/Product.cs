@@ -39,6 +39,8 @@ public class Product
     [ForeignKey("CategoryId")]
     public Categories Category { get; set; } 
 
+    
+
 
 
 }

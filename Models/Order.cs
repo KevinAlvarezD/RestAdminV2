@@ -20,7 +20,6 @@ namespace RestAdminV2.Models
         [ForeignKey("TablesId")]
         public Tables Tables { get; set; }
 
-        [JsonIgnore]
         public ICollection<OrderProduct> OrderProducts { get; set; }
 
         [Column("observations")]
