@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using RestAdminV2.DTOs;
 using RestAdminV2.Models;
 
 
@@ -9,14 +10,40 @@ namespace RestAdminV2.Controllers
     {
         // PUT: api/Order/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrder(int id, Order Order)
+        public async Task<IActionResult> PutOrder(int id, UpdateOrderDTO updateOrderDTO)
         {
-            if (id != Order.Id)
+            var existingOrder = await _context.Orders
+                .Include(o => o.OrderProducts)
+                .ThenInclude(op => op.Product)
+                .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (existingOrder == null)
             {
-                return BadRequest("Order ID mismatch.");
+                return NotFound();
             }
 
-            _context.Entry(Order).State = EntityState.Modified;
+            existingOrder.TablesId = updateOrderDTO.TablesId;
+            existingOrder.Observations = updateOrderDTO.Observations;
+
+            _context.OrderProducts.RemoveRange(existingOrder.OrderProducts);
+
+            foreach (var orderProductDTO in updateOrderDTO.OrderProducts)
+            {
+                var product = await _context.Products.FindAsync(orderProductDTO.ProductId);
+                if (product == null)
+                {
+                    return BadRequest($"Product with ID {orderProductDTO.ProductId} not found.");
+                }
+
+                existingOrder.OrderProducts.Add(new OrderProduct
+                {
+                    ProductId = product.Id,
+                    Quantity = orderProductDTO.Quantity,
+                    OrderId = id 
+                });
+            }
+
+            _context.Entry(existingOrder).State = EntityState.Modified;
 
             try
             {
