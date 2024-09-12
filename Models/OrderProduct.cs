@@ -16,5 +16,10 @@
         [ForeignKey("Product")]
         public int ProductId { get; set; }
         public Product Product { get; set; }
+
+        [Column("quantity")]
+        [Required(ErrorMessage = "The quantity is required.")]
+        public int Quantity { get; set; }
+        
     
     }
