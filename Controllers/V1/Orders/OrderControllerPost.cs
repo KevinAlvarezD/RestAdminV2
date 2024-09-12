@@ -25,7 +25,6 @@ public async Task<ActionResult<OrderDTO>> PostOrder(CreateOrderDTO createOrderDT
         OrderProducts = new List<OrderProduct>()
     };
 
-    // Agregar productos a la orden
     foreach (var orderProductDTO in createOrderDTO.OrderProducts)
     {
         var product = await _context.Products.FindAsync(orderProductDTO.ProductId);
@@ -42,11 +41,9 @@ public async Task<ActionResult<OrderDTO>> PostOrder(CreateOrderDTO createOrderDT
         });
     }
 
-    // Agregar la orden al contexto
     _context.Orders.Add(order);
     await _context.SaveChangesAsync();
 
-    // Mapear la entidad a DTO para retornar la respuesta
     var orderDTO = new OrderDTO
     {
         Id = order.Id,
@@ -63,7 +60,6 @@ public async Task<ActionResult<OrderDTO>> PostOrder(CreateOrderDTO createOrderDT
         }).ToList()
     };
 
-    // Retornar el resultado
     return CreatedAtAction(nameof(GetOrder), new { id = order.Id }, orderDTO);
 }
     }
