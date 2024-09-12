@@ -6,29 +6,35 @@ namespace RestAdminV2.Controllers
 {
     public partial class PreInvoiceController
     {
-        // PUT: api/invoice/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePreInvoice(int id, [FromBody] PreInvoice Preinvoice)
+        public async Task<IActionResult> UpdatePreInvoice(int id, PreInvoice updatedPreInvoice)
         {
-            if (id != Preinvoice.Id)
+            if (id != updatedPreInvoice.Id)
             {
-                return BadRequest("Invoice ID mismatch.");
+                return BadRequest("The invoice ID in the URL does not match the ID in the body.");
             }
 
-            if (!ModelState.IsValid)
+            var existingPreInvoice = await _context.PreInvoices.FindAsync(id);
+            if (existingPreInvoice == null)
             {
-                return BadRequest(ModelState);
+                return NotFound("PreInvoice not found.");
             }
 
-            _context.Entry(Preinvoice).State = EntityState.Modified;
+            // Update the existing PreInvoice with the new values
+            existingPreInvoice.Number = updatedPreInvoice.Number;
+            existingPreInvoice.OrderId = updatedPreInvoice.OrderId;
+            existingPreInvoice.Observations = updatedPreInvoice.Observations;
+            existingPreInvoice.Total = updatedPreInvoice.Total;
+            existingPreInvoice.DateInvoice = updatedPreInvoice.DateInvoice;
 
             try
             {
+                // Save changes to the database
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!InvoiceExists(id))
+                if (!PreInvoiceExists(id))
                 {
                     return NotFound();
                 }
@@ -38,12 +44,12 @@ namespace RestAdminV2.Controllers
                 }
             }
 
-            return NoContent();
+            return NoContent(); // Return 204 No Content on successful update
         }
 
-        private bool InvoiceExists(int id)
+        private bool PreInvoiceExists(int id)
         {
-            return _context.Invoices.Any(e => e.Id == id);
+            return _context.PreInvoices.Any(e => e.Id == id);
         }
     }
 }
