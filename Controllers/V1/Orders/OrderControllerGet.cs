@@ -31,6 +31,7 @@ namespace RestAdminV2.Controllers
                     Id = op.Product.Id,
                     Name = op.Product.Name,
                     Price = op.Product.Price,
+                    Quantity = op.Quantity,
                     ImageURL = op.Product.ImageURL,
                     Category = op.Product.Category
                 }).ToList()
@@ -64,6 +65,7 @@ namespace RestAdminV2.Controllers
                     Id = op.Product.Id,
                     Name = op.Product.Name,
                     Price = op.Product.Price,
+                    Quantity = op.Quantity,
                     ImageURL = op.Product.ImageURL,
                     Category = op.Product.Category
 
