@@ -20,7 +20,6 @@ namespace RestAdminV2.Controllers
                 return NotFound("PreInvoice not found.");
             }
 
-            // Update the existing PreInvoice with the new values
             existingPreInvoice.Number = updatedPreInvoice.Number;
             existingPreInvoice.OrderId = updatedPreInvoice.OrderId;
             existingPreInvoice.Observations = updatedPreInvoice.Observations;
@@ -29,7 +28,7 @@ namespace RestAdminV2.Controllers
 
             try
             {
-                // Save changes to the database
+     
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -44,7 +43,7 @@ namespace RestAdminV2.Controllers
                 }
             }
 
-            return NoContent(); // Return 204 No Content on successful update
+            return NoContent(); 
         }
 
         private bool PreInvoiceExists(int id)

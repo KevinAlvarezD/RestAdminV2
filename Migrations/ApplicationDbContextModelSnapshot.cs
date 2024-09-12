@@ -39,7 +39,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("categories");
+                    b.ToTable("categories", (string)null);
 
                     b.HasData(
                         new
@@ -96,7 +96,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("clients");
+                    b.ToTable("clients", (string)null);
 
                     b.HasData(
                         new
@@ -160,7 +160,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("company");
+                    b.ToTable("company", (string)null);
 
                     b.HasData(
                         new
@@ -202,7 +202,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("invoices");
+                    b.ToTable("invoices", (string)null);
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Kitchen", b =>
@@ -226,7 +226,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("kitchen");
+                    b.ToTable("kitchen", (string)null);
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Order", b =>
@@ -252,7 +252,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasIndex("TablesId");
 
-                    b.ToTable("orders");
+                    b.ToTable("orders", (string)null);
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.OrderProduct", b =>
@@ -275,7 +275,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("order_products");
+                    b.ToTable("order_products", (string)null);
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.PreInvoice", b =>
@@ -311,7 +311,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("pre_invoices");
+                    b.ToTable("pre_invoices", (string)null);
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Product", b =>
@@ -349,7 +349,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("products");
+                    b.ToTable("products", (string)null);
 
                     b.HasData(
                         new
@@ -479,7 +479,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("roles");
+                    b.ToTable("roles", (string)null);
 
                     b.HasData(
                         new
@@ -522,7 +522,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("tables");
+                    b.ToTable("tables", (string)null);
 
                     b.HasData(
                         new
@@ -600,7 +600,7 @@ namespace RestAdminV2.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("users");
+                    b.ToTable("users", (string)null);
 
                     b.HasData(
                         new
