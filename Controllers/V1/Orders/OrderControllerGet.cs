@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using RestAdminV2.DTOs;
 using RestAdminV2.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,35 +11,67 @@ namespace RestAdminV2.Controllers
 
     public partial class OrderController : ControllerBase
     {
-        // GET: api/Order
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
+        [HttpGet("Orders")]
+        public async Task<ActionResult<IEnumerable<OrderDTO>>> GetOrders()
         {
             var orders = await _context.Orders
                 .Include(o => o.Tables)
                 .Include(o => o.OrderProducts)
-                .ThenInclude(op => op.Product)
+                .ThenInclude(op => op.Product.Category)
                 .ToListAsync();
 
-            return Ok(orders);
+            var orderDTOs = orders.Select(o => new OrderDTO
+            {
+                Id = o.Id,
+                Observations = o.Observations,
+                TablesId = o.TablesId,
+                TableName = o.Tables.Name,
+                Products = o.OrderProducts.Select(op => new ProductDTO
+                {
+                    Id = op.Product.Id,
+                    Name = op.Product.Name,
+                    Price = op.Product.Price,
+                    ImageURL = op.Product.ImageURL,
+                    Category = op.Product.Category
+                }).ToList()
+            }).ToList();
+
+            return Ok(orderDTOs);
         }
 
-        // GET: api/Order/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Order>> GetOrder(int id)
+        [HttpGet("OrderProducts")]
+        public async Task<ActionResult<OrderDTO>> GetOrder(int id)
         {
             var order = await _context.Orders
-                .Include(o => o.Tables)  
-                .Include(o => o.OrderProducts)  
-                .ThenInclude(op => op.Product)  
+                .Include(o => o.Tables)
+                .Include(o => o.OrderProducts)
+                    .ThenInclude(op => op.Product)
+                        .ThenInclude(p => p.Category)
                 .FirstOrDefaultAsync(o => o.Id == id);
 
             if (order == null)
             {
                 return NotFound();
             }
+            var orderDTO = new OrderDTO
+            {
+                Id = order.Id,
+                Observations = order.Observations,
+                TablesId = order.TablesId,
+                TableName = order.Tables.Name,
+                Products = order.OrderProducts.Select(op => new ProductDTO
+                {
+                    Id = op.Product.Id,
+                    Name = op.Product.Name,
+                    Price = op.Product.Price,
+                    ImageURL = op.Product.ImageURL,
+                    Category = op.Product.Category
 
-            return Ok(order);
+                }).ToList()
+            };
+
+            return Ok(orderDTO);
         }
+
     }
 }
