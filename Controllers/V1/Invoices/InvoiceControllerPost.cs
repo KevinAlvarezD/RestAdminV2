@@ -22,13 +22,13 @@ namespace RestAdminV2.Controllers
                 return NotFound("Order not found or no products associated with this order.");
             }
 
-            // Calculate the total
+           
             var total = orderProducts.Sum(op => op.Product.Price * op.Quantity);
 
-            // Create the new Invoice
+         
             var invoice = new Invoice
             {
-                Number = GenerateInvoiceNumber(), // Implement this method to generate invoice number
+                Number = GenerateInvoiceNumber(), 
                 OrderId = orderId,
                 Total = total,
                 DateInvoice = DateTime.Now
@@ -37,14 +37,14 @@ namespace RestAdminV2.Controllers
             _context.Invoices.Add(invoice);
             await _context.SaveChangesAsync();
 
-            // Return the created Invoice with a route to its details
+            
             return CreatedAtAction(nameof(GetInvoice), new { id = invoice.Id }, invoice);
         }
 
         private int GenerateInvoiceNumber()
         {
-            // Implement a logic to generate invoice numbers
-            return new Random().Next(1000, 9999); // Example implementation
+          
+            return new Random().Next(1000, 9999); 
         }
     }
 }

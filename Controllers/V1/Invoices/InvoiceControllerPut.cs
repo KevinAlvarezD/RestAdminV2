@@ -21,7 +21,7 @@ namespace RestAdminV2.Controllers
                 return NotFound();
             }
 
-            // Update the existing Invoice with the new values
+           
             existingInvoice.Number = updatedInvoice.Number;
             existingInvoice.OrderId = updatedInvoice.OrderId;
             existingInvoice.Total = updatedInvoice.Total;
@@ -29,7 +29,7 @@ namespace RestAdminV2.Controllers
 
             try
             {
-                // Save changes to the database
+               
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -44,7 +44,7 @@ namespace RestAdminV2.Controllers
                 }
             }
 
-            return NoContent(); // Return 204 No Content on successful update
+            return NoContent();
         }
     }
 }
