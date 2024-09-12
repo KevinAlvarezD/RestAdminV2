@@ -23,6 +23,11 @@ public class Invoice
     [Range(1, int.MaxValue, ErrorMessage = "The order ID must be a positive number.")]
     public int OrderId { get; set; }
 
+    [Column("observations")]
+    [MaxLength(155, ErrorMessage = "The observations must be at most {1} characters.")]
+    [Required(ErrorMessage = "The observations is required.")]
+    public string Observations { get; set; }
+
     [Column("total")]
     [Range(0.01, double.MaxValue, ErrorMessage = "The total must be a positive number greater than zero.")]
     [DataType(DataType.Currency, ErrorMessage = "The total must be in a valid currency format.")]

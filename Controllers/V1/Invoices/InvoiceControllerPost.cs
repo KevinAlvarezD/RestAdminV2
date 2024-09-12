@@ -31,6 +31,7 @@ namespace RestAdminV2.Controllers
                 Number = GenerateInvoiceNumber(), 
                 OrderId = orderId,
                 Total = total,
+                Observations = "Generated from order", 
                 DateInvoice = DateTime.Now
             };
 
