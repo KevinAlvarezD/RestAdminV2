@@ -27,7 +27,7 @@ public class User
     [Column("password")]
     [MinLength(5, ErrorMessage = "The password field must be at least {1} characters.")]
     [MaxLength(255, ErrorMessage = "The Password field must be at most {1} characters.")]
-    public string Password { get; set; }
+    public string PasswordHash { get; set; }
 
     [Column("phone")]
     [MinLength(5, ErrorMessage = "The Telefono field be at least {1} characters.")]
