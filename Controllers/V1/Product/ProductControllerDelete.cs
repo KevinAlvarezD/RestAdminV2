@@ -8,13 +8,13 @@ namespace RestAdminV2.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
-            var invoice = await _context.Invoices.FindAsync(id);
-            if (invoice == null)
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
             {
                 return NotFound();
             }
 
-            _context.Invoices.Remove(invoice);
+            _context.Products.Remove(product);
             await _context.SaveChangesAsync();
 
             return NoContent();

@@ -11,7 +11,7 @@ namespace RestAdminV2.Controllers
 
     public partial class OrderController : ControllerBase
     {
-        [HttpGet("Orders")]
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<OrderDTO>>> GetOrders()
         {
             var orders = await _context.Orders
@@ -40,7 +40,7 @@ namespace RestAdminV2.Controllers
             return Ok(orderDTOs);
         }
 
-        [HttpGet("OrderProducts")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<OrderDTO>> GetOrder(int id)
         {
             var order = await _context.Orders
