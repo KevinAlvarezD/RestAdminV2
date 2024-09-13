@@ -26,20 +26,17 @@ public class AuthController : ControllerBase
             return BadRequest("Invalid login request");
         }
 
-        // Verificar que _userService no sea nulo
         if (_userService == null)
         {
             return StatusCode(StatusCodes.Status500InternalServerError, "User service not initialized");
         }
 
-        // Verificar que el resultado de _userService.GetUserByEmail no sea nulo
         var user = _userService.GetUserByEmail(login.Email);
         if (user == null)
         {
             return Unauthorized("User not found");
         }
 
-        // Verificar que la contraseña sea válida
         if (!VerifyPassword(login.Password, user.PasswordHash))
         {
             return Unauthorized("Invalid password");
@@ -70,12 +67,11 @@ public class AuthController : ControllerBase
         });
     }
 
-    // Método para verificar la contraseña
     private bool VerifyPassword(string password, string passwordHash)
 {
     if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(passwordHash))
     {
-        return false; // O maneja el error de manera apropiada
+        return false;
     }
 
     return BCrypt.Net.BCrypt.Verify(password, passwordHash);
