@@ -29,7 +29,7 @@ public class Product
     public double Cost { get; set; }
 
     [Column("image_url")]
-    [MaxLength(255, ErrorMessage = "The field must be at most {1} characters.")]
+    [MaxLength(500, ErrorMessage = "The field must be at most {1} characters.")]
     [DataType(DataType.ImageUrl, ErrorMessage = "The field must be a valid URL.")]
     public string ImageURL { get; set; }
 
