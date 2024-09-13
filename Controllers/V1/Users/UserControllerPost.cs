@@ -1,19 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
 using RestAdminV2.Models;
 
-
 namespace RestAdminV2.Controllers
 {
     public partial class UserController
     {
         // POST: api/Users
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User User)
+        public async Task<ActionResult<User>> PostUser(User user)
         {
-            _context.Users.Add(User);
+            // Encript the password
+            user.PasswordHash = PasswordHelper.HashPassword(user.PasswordHash);
+
+            _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetUser), new { id = User.Id }, User);
+            return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
         }
     }
 }
