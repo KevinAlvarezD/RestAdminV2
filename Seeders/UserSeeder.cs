@@ -13,7 +13,7 @@ namespace RestAdminV2.Seeders
                     Id = 1,
                     Name = "Erik Uribe",
                     Email = "erik@elmejor.com",
-                    PasswordHash = PasswordHelper.HashPassword("riwi1234"), // Contraseña hasheada
+                    PasswordHash = PasswordHelper.HashPassword("riwi1234"),
                     Phone = "3242144893",
                     Address = "Cra 50 40 90",
                     RoleId = 1
@@ -23,7 +23,7 @@ namespace RestAdminV2.Seeders
                     Id = 2,
                     Name = "Alejandro Echavarria",
                     Email = "aechavarriaj@gmail.com",
-                    PasswordHash = PasswordHelper.HashPassword("Susana1901"), // Contraseña hasheada
+                    PasswordHash = PasswordHelper.HashPassword("Susana1901"),
                     Phone = "3004001077",
                     Address = "Cra 50a 36 90",
                     RoleId = 2
@@ -33,7 +33,7 @@ namespace RestAdminV2.Seeders
                     Id = 3,
                     Name = "Alejandro Castrillón",
                     Email = "alejomi192005@gmail.com",
-                    PasswordHash = PasswordHelper.HashPassword("21354"), // Contraseña hasheada
+                    PasswordHash = PasswordHelper.HashPassword("21354"),
                     Phone = "333245884",
                     Address = "Cra 59a 66 57",
                     RoleId = 3
