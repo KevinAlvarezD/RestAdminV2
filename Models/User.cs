@@ -43,9 +43,9 @@ public class User
 
 
     [Column("role_id")]
-    public int RoleId { get; set; } // Clave foránea
+    public int RoleId { get; set; } 
 
     [ForeignKey("RoleId")]
-    public Role Role { get; set; } // Propiedad de navegación
+    public Role Role { get; set; } 
 
 }

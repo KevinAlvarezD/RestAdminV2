@@ -19,17 +19,9 @@ public class Kitchen
     [Range(1, int.MaxValue, ErrorMessage = "The order ID must be a positive number.")]
     public int TableId { get; set; }
 
-    // [Column("items")]
-    // public ICollection<Menu> Items { get; set; }
-
     [Column("observations")]
     [MaxLength(155, ErrorMessage = "The observations must be at most {1} characters.")]
     [Required(ErrorMessage = "The observations is required.")]
     public string Observations { get; set; }
-
-
-    // [NotMapped]
-    // [ForeignKey("menu_id")]
-    // public virtual Menu MenuID { get; set; }
 
 }

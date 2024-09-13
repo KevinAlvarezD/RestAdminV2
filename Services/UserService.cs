@@ -14,7 +14,6 @@ public class UserService : IUserService
 
     public User GetUserByEmail(string email)
     {
-        // Verifica si el email no es nulo o vacío
         if (string.IsNullOrWhiteSpace(email))
         {
             throw new ArgumentException("Email cannot be null or empty", nameof(email));
