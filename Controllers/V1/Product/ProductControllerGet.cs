@@ -11,7 +11,7 @@ namespace RestAdminV2.Controllers
         // GET: api/product
         [HttpGet]
         [SwaggerOperation(
-            Summary = "Retrieve a list of all products",
+            Summary = "Return a list of all products",
             Description = "Returns a list of all products available in the database, including their associated categories."
         )]
         [SwaggerResponse(200, "Returns the list of products.")]
@@ -25,7 +25,7 @@ namespace RestAdminV2.Controllers
         // GET: api/product/5
         [HttpGet("{id}")]
         [SwaggerOperation(
-            Summary = "Retrieve a product by ID",
+            Summary = "Return a product by ID",
             Description = "Returns a specific product from the database by its ID, including its associated category. Returns 404 if the product does not exist."
         )]
         
