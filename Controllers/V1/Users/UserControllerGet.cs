@@ -10,7 +10,7 @@ namespace RestAdminV2.Controllers
         // GET: api/users
         [HttpGet]
         [SwaggerOperation(
-            Summary = "Retrieve all users",
+            Summary = "Return all users",
             Description = "Gets a list of all users from the database, including their associated roles."
         )]
         
@@ -25,7 +25,7 @@ namespace RestAdminV2.Controllers
         // GET: api/users/5
         [HttpGet("{id}")]
         [SwaggerOperation(
-            Summary = "Retrieve a specific user",
+            Summary = "Return a specific user",
             Description = "Gets a user by their ID, including their associated role."
         )]
 

@@ -10,7 +10,7 @@ namespace RestAdminV2.Controllers
         // GET: api/tables
         [HttpGet]
         [SwaggerOperation(
-            Summary = "Retrieve a list of all tables",
+            Summary = "Return a list of all tables",
             Description = "Returns a list of all tables available in the database."
         )]
         
@@ -25,7 +25,7 @@ namespace RestAdminV2.Controllers
         // GET: api/tables/5
         [HttpGet("{id}")]
         [SwaggerOperation(
-            Summary = "Retrieve a table by ID",
+            Summary = "Return a table by ID",
             Description = "Returns a specific table identified by its ID. Returns 404 if the table with the specified ID is not found."
         )]
 
