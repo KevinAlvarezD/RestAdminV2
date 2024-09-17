@@ -2,26 +2,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestAdminV2.DTOs;
 using RestAdminV2.Models;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace RestAdminV2.Controllers
 {
-
     public partial class OrderController : ControllerBase
     {
-        /// <summary>
-        /// Return a list of all Order.
-        /// </summary>
-
-        /// <remarks>
-        /// This endpoint returns a list of all Order available in the database.
-        /// </remarks>
-
-        /// <response code="200">Returns the list of Order</response>
-        /// <response code="500">If there was an internal error while fetching the Order</response>
         [HttpGet]
+        [SwaggerOperation(
+            Summary = "Retrieves a list of all orders",
+            Description = "This endpoint returns a list of all orders available in the database."
+        )]
+        [SwaggerResponse(200, "Returns the list of orders.", typeof(IEnumerable<OrderDTO>))]
+        [SwaggerResponse(500, "An internal server error occurred.")]
         public async Task<ActionResult<IEnumerable<OrderDTO>>> GetOrders()
         {
             var orders = await _context.Orders
@@ -51,6 +47,13 @@ namespace RestAdminV2.Controllers
         }
 
         [HttpGet("{id}")]
+        [SwaggerOperation(
+            Summary = "Retrieves a specific order by ID",
+            Description = "This endpoint returns a specific order from the database by its ID."
+        )]
+        [SwaggerResponse(200, "Returns the order with the specified ID.", typeof(OrderDTO))]
+        [SwaggerResponse(404, "If the order with the specified ID is not found.")]
+        [SwaggerResponse(500, "An internal server error occurred.")]
         public async Task<ActionResult<OrderDTO>> GetOrder(int id)
         {
             var order = await _context.Orders
@@ -64,6 +67,7 @@ namespace RestAdminV2.Controllers
             {
                 return NotFound();
             }
+
             var orderDTO = new OrderDTO
             {
                 Id = order.Id,
@@ -78,12 +82,10 @@ namespace RestAdminV2.Controllers
                     Quantity = op.Quantity,
                     ImageURL = op.Product.ImageURL,
                     Category = op.Product.Category
-
                 }).ToList()
             };
 
             return Ok(orderDTO);
         }
-
     }
 }

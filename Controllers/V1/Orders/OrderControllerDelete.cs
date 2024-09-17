@@ -1,29 +1,29 @@
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class OrderController
+    public partial class OrderController : ControllerBase
     {
-        /// <summary>
-        /// Deletes a Order specified by its ID.
-        /// </summary>
-
-        /// <remarks>
-        /// This endpoint allows you to delete a Order from the database. If the Order does not exist, a 404 (Not Found) status code is returned.
-        /// </remarks>
-
-        // DELETE: api/Order/5
         [HttpDelete("{id}")]
+        [SwaggerOperation(
+            Summary = "Deletes an order by ID",
+            Description = "Deletes a specific order from the database by its ID. Returns 404 if the order does not exist."
+        )]
+        
+        [SwaggerResponse(204, "The order was successfully deleted.")]
+        [SwaggerResponse(404, "If the order with the specified ID is not found.")]
+        [SwaggerResponse(500, "An internal server error occurred.")]
         public async Task<IActionResult> DeleteOrder(int id)
         {
-            var Order = await _context.Orders.FindAsync(id);
-            if (Order == null)
+            var order = await _context.Orders.FindAsync(id);
+            if (order == null)
             {
                 return NotFound();
             }
 
-            _context.Orders.Remove(Order);
+            _context.Orders.Remove(order);
             await _context.SaveChangesAsync();
 
             return NoContent();
