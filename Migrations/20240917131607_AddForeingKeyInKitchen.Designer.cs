@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestAdminV2.Models;
 
@@ -11,9 +12,11 @@ using RestAdminV2.Models;
 namespace RestAdminV2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240917131607_AddForeingKeyInKitchen")]
+    partial class AddForeingKeyInKitchen
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -198,9 +201,9 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("varchar(155)")
                         .HasColumnName("observations");
 
-                    b.Property<int>("OrderKitchenId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("int")
-                        .HasColumnName("order_kitchen_id");
+                        .HasColumnName("table_id");
 
                     b.Property<double>("Total")
                         .HasColumnType("double")
@@ -229,36 +232,6 @@ namespace RestAdminV2.Migrations
                     b.HasIndex("OrderId");
 
                     b.ToTable("kitchen");
-                });
-
-            modelBuilder.Entity("RestAdminV2.Models.KitchenItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("KitchenId")
-                        .HasColumnType("int")
-                        .HasColumnName("kitchen_id");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int")
-                        .HasColumnName("product_id");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int")
-                        .HasColumnName("quantity");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("KitchenId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("kitchen_item");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Order", b =>
@@ -337,9 +310,9 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("varchar(155)")
                         .HasColumnName("observations");
 
-                    b.Property<int>("OrderKitchenId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("int")
-                        .HasColumnName("order_kitchen_id");
+                        .HasColumnName("table_id");
 
                     b.Property<double>("Total")
                         .HasColumnType("double")
@@ -645,7 +618,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 50 40 90",
                             Email = "erik@elmejor.com",
                             Name = "Erik Uribe",
-                            PasswordHash = "$2a$11$QqX.UvVS1W04eyX1nkaVQO.RtFrQjBM9cbsj76FLiXntt4nfTBvRu",
+                            PasswordHash = "$2a$11$Xd6ODWUdu./nvor35VqJBum79DfhHgAQ3PjrsmQwSksrZRoaDS/qK",
                             Phone = "3242144893",
                             RoleId = 1
                         },
@@ -655,7 +628,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 50a 36 90",
                             Email = "aechavarriaj@gmail.com",
                             Name = "Alejandro Echavarria",
-                            PasswordHash = "$2a$11$PbF1AD8SBXuB3KKRvNWgtOapbLyRytB41RFNJRyPTD0.xeF4J6n..",
+                            PasswordHash = "$2a$11$/gjaWWerCck8LHEAyktZUOXoTDfk3aUwqmyF4WsF2.rY05IqnyWUa",
                             Phone = "3004001077",
                             RoleId = 2
                         },
@@ -665,7 +638,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 59a 66 57",
                             Email = "alejomi192005@gmail.com",
                             Name = "Alejandro Castrillón",
-                            PasswordHash = "$2a$11$7fZCl7VBgZGX2CJLvDYZzeS6TuX4b6zHEnNO0rI8Hi0RqPPqodGay",
+                            PasswordHash = "$2a$11$NYEoX3yEJBoCj1oPg4.3OeOIfccKq68zttxZC7e/gt/.IUM2/N57.",
                             Phone = "333245884",
                             RoleId = 3
                         },
@@ -675,7 +648,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 45 67 89",
                             Email = "Alejandro@gmail.com",
                             Name = "Alejandro Londoño",
-                            PasswordHash = "$2a$11$ezki5ZdrMBnpOQ8SuyUsLuFxuJpYgWCJjCaB7YLLbVHlmzzQuwDeW",
+                            PasswordHash = "$2a$11$msDY9PS9tSoXNsCoNCnPWeS1M9bho0K3D6MMwEbD.QZcHyovMvEpi",
                             Phone = "3123456789",
                             RoleId = 2
                         },
@@ -685,7 +658,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 40 50 60",
                             Email = "kev@gmail.com",
                             Name = "Kevin Alvarez",
-                            PasswordHash = "$2a$11$FPN0s06LkCDwVaK18lyMgOFibcN4P08jzYD3Ixi4Rjx9LfljIeD3u",
+                            PasswordHash = "$2a$11$MC4Y.h60i478zf7hGltvJOrNYrqIGYrVZcWWCI6UDc/SRi8VcbCSW",
                             Phone = "3132145678",
                             RoleId = 2
                         },
@@ -695,7 +668,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 55 33 44",
                             Email = "laura.jimenez@restadmin.com",
                             Name = "Laura Jimenez",
-                            PasswordHash = "$2a$11$3Xu0JDsFr06PbB1dNOZGxuoOp.2YZ69ApJV4cJWoN66BdpbvlMY.q",
+                            PasswordHash = "$2a$11$YZCfmVYbtUKJ8BvSfdmDiueM104jkvfuDnyIAsM31vP0OF217w03K",
                             Phone = "3221234567",
                             RoleId = 3
                         },
@@ -705,7 +678,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 60 35 78",
                             Email = "carlos.mejia@restadmin.com",
                             Name = "Carlos Mejia",
-                            PasswordHash = "$2a$11$5IZ.rjjYZm8jBCgDJcc4PeNggiP8kTsfaZy4IF5VcE5iyGhOtJ4mK",
+                            PasswordHash = "$2a$11$ajbMqiCNydofesDbjkra..82RY63f/vatAPkRjlt6HqGSqjnJV2oi",
                             Phone = "3209876543",
                             RoleId = 1
                         },
@@ -715,7 +688,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 42 55 88",
                             Email = "diana.lopez@restadmin.com",
                             Name = "Diana Lopez",
-                            PasswordHash = "$2a$11$bhKFUFucO5oDjpZWhx46t.2J.bh4L6emc9IYP/ID56zGWHZAk/XkW",
+                            PasswordHash = "$2a$11$UmuBXTJj349kvgRGf9paFe14HJhqLGCxcKZpQcHsXlXCZVkxk50BO",
                             Phone = "3111239876",
                             RoleId = 1
                         });
@@ -730,25 +703,6 @@ namespace RestAdminV2.Migrations
                         .IsRequired();
 
                     b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("RestAdminV2.Models.KitchenItem", b =>
-                {
-                    b.HasOne("RestAdminV2.Models.Kitchen", "Kitchen")
-                        .WithMany("KitchenItems")
-                        .HasForeignKey("KitchenId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RestAdminV2.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Kitchen");
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Order", b =>
@@ -801,11 +755,6 @@ namespace RestAdminV2.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("RestAdminV2.Models.Kitchen", b =>
-                {
-                    b.Navigation("KitchenItems");
                 });
 
             modelBuilder.Entity("RestAdminV2.Models.Order", b =>

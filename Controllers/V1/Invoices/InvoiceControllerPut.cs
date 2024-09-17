@@ -31,7 +31,7 @@ namespace RestAdminV2.Controllers
             }
 
             existingInvoice.Number = updatedInvoice.Number;
-            existingInvoice.OrderId = updatedInvoice.OrderId;
+            existingInvoice.OrderKitchenId = updatedInvoice.OrderKitchenId;
             existingInvoice.Total = updatedInvoice.Total;
             existingInvoice.DateInvoice = updatedInvoice.DateInvoice;
 

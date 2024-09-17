@@ -26,7 +26,7 @@ namespace RestAdminV2.Controllers
             Summary = "Retrieves a pre-invoice by ID",
             Description = "This endpoint returns a specific pre-invoice by its ID. Returns 404 if the pre-invoice does not exist."
         )]
-        
+
         [SwaggerResponse(200, "Returns the requested pre-invoice.")]
         [SwaggerResponse(404, "If the pre-invoice with the specified ID is not found.")]
         [SwaggerResponse(500, "An internal server error occurred.")]

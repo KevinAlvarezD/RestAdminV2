@@ -18,10 +18,10 @@ public class Invoice
     [Range(1, int.MaxValue, ErrorMessage = "The order number must be a positive number.")]
     public int Number { get; set; }
 
-    [Column("table_id")]
+    [Column("order_kitchen_id")]
     [Required(ErrorMessage = "The order ID is required..")]
     [Range(1, int.MaxValue, ErrorMessage = "The order ID must be a positive number.")]
-    public int OrderId { get; set; }
+    public int OrderKitchenId { get; set; }
 
     [Column("observations")]
     [MaxLength(155, ErrorMessage = "The observations must be at most {1} characters.")]

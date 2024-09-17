@@ -30,7 +30,7 @@ namespace RestAdminV2.Controllers
             }
 
             existingPreInvoice.Number = updatedPreInvoice.Number;
-            existingPreInvoice.OrderId = updatedPreInvoice.OrderId;
+            existingPreInvoice.OrderKitchenId = updatedPreInvoice.OrderKitchenId;
             existingPreInvoice.Observations = updatedPreInvoice.Observations;
             existingPreInvoice.Total = updatedPreInvoice.Total;
             existingPreInvoice.DateInvoice = updatedPreInvoice.DateInvoice;

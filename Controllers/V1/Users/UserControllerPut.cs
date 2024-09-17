@@ -24,7 +24,8 @@ namespace RestAdminV2.Controllers
             {
                 return BadRequest("User ID mismatch.");
             }
-
+            
+            User.PasswordHash = PasswordHelper.HashPassword(User.PasswordHash);
             _context.Entry(User).State = EntityState.Modified;
 
             try
