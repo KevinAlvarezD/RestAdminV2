@@ -36,7 +36,7 @@ namespace RestAdminV2.Services
 
             var preInvoice = new PreInvoice
             {
-                OrderKitchenId = orderId,
+                OrderId = orderId,
                 Total = total,
                 DateInvoice = DateTime.Now,
                 Observations = "Generated from order"
