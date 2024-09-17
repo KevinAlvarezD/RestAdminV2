@@ -13,6 +13,24 @@ namespace RestAdminV2.Controllers
             return await _context.Clients.ToListAsync();
         }
 
+
+        /// <summary>
+        /// Return a client by its ID.
+        /// </summary>
+
+        /// <param name="id">
+        /// The id of the client to Return
+        /// </param>
+
+        /// <remarks>
+        /// This endpoint allows you to fetch a specific client by providing its ID.
+        /// If the client does not exist, a 404 (Not Found) status code is returned.
+        /// </remarks>
+
+        /// <response code="200">Returns the requested client</response>
+        /// <response code="404">If the client with the specified ID is not found</response>
+        /// <response code="500">If there was an internal error while fetching the client</response>
+
         // GET: api/Client/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Client>> GetClient(int id)
