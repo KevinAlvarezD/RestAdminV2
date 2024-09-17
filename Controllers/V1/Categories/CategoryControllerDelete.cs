@@ -1,19 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace RestAdmin.Controllers
 {
-    public partial class CategoriesController
+    public partial class CategoriesController : ControllerBase
     {
-        /// <summary>
-        /// Deletes a category specified by its ID.
-        /// </summary>
-        
-        /// <remarks>
-        /// This endpoint allows you to delete a category from the database. If the category does not exist, a 404 (Not Found) status code is returned.
-        /// </remarks>
-        
-        //Delete: api/Categories/5
         [HttpDelete("{id}")]
+        [SwaggerOperation(
+            Summary = "Deletes a category by ID",
+            Description = "Deletes a specific category from the database by its ID. Returns 404 if the category does not exist."
+        )]
+
+        [SwaggerResponse(204, "The category was successfully deleted.")]
+        [SwaggerResponse(404, "If the category with the specified ID is not found.")]
+        [SwaggerResponse(500, "An internal server error occurred.")]
         public async Task<IActionResult> DeleteCategories(int id)
         {
             var Categories = await _context.Categories.FindAsync(id);

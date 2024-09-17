@@ -11,6 +11,16 @@ namespace RestAdminV2.Controllers
 
     public partial class OrderController : ControllerBase
     {
+        /// <summary>
+        /// Return a list of all Order.
+        /// </summary>
+
+        /// <remarks>
+        /// This endpoint returns a list of all Order available in the database.
+        /// </remarks>
+
+        /// <response code="200">Returns the list of Order</response>
+        /// <response code="500">If there was an internal error while fetching the Order</response>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<OrderDTO>>> GetOrders()
         {

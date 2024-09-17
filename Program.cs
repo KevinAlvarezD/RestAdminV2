@@ -91,38 +91,10 @@ builder.Services.AddSwaggerGen(c =>
 
 
 builder.Services.AddSwaggerGen(c =>
-{
-    // Cambia el nombre del esquema si necesitas agregar otro distinto
-    c.AddSecurityDefinition("BearerAuth", new OpenApiSecurityScheme
     {
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "bearer",
-        BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = "JWT Authorization header using the Bearer scheme."
+        c.SwaggerDoc("v2", new OpenApiInfo { Title = "RestAdmin", Version = "V2" });
+        c.EnableAnnotations();
     });
-
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = "BearerAuth" // Cambia a este identificador único
-                }
-            },
-            new string[] {}
-        }
-    });
-
-    // Incluir la documentación XML generada por los comentarios
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    c.IncludeXmlComments(xmlPath);
-});
 
 
 builder.Services.AddScoped<IUserService, UserService>();
