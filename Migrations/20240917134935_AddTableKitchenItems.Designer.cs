@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestAdminV2.Models;
 
@@ -11,9 +12,11 @@ using RestAdminV2.Models;
 namespace RestAdminV2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240917134935_AddTableKitchenItems")]
+    partial class AddTableKitchenItems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -200,7 +203,7 @@ namespace RestAdminV2.Migrations
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int")
-                        .HasColumnName("order_id");
+                        .HasColumnName("table_id");
 
                     b.Property<double>("Total")
                         .HasColumnType("double")
@@ -339,7 +342,7 @@ namespace RestAdminV2.Migrations
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int")
-                        .HasColumnName("order_id");
+                        .HasColumnName("table_id");
 
                     b.Property<double>("Total")
                         .HasColumnType("double")
@@ -645,7 +648,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 50 40 90",
                             Email = "erik@elmejor.com",
                             Name = "Erik Uribe",
-                            PasswordHash = "$2a$11$ovP.zAiN4Voez1MzhfcaDeJM8oZRCTaFgcdhxEclw/OrCrYn3dGr2",
+                            PasswordHash = "$2a$11$ISaE.KqS6s8xna/mP7D8/eQs81MlViPp6Fwi1VysWqmu.5lFsx9EO",
                             Phone = "3242144893",
                             RoleId = 1
                         },
@@ -655,7 +658,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 50a 36 90",
                             Email = "aechavarriaj@gmail.com",
                             Name = "Alejandro Echavarria",
-                            PasswordHash = "$2a$11$SXAhqjoHoR/XyPOSkKdSAOU5Gk8AJw4oq15g0PBhZf378Qgl0kF3G",
+                            PasswordHash = "$2a$11$WnH/HOP81LxeK5lH0nfSIeUPuOJwCPVnycdpDRfLpkWTZCyOHfxAK",
                             Phone = "3004001077",
                             RoleId = 2
                         },
@@ -665,7 +668,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 59a 66 57",
                             Email = "alejomi192005@gmail.com",
                             Name = "Alejandro Castrillón",
-                            PasswordHash = "$2a$11$ruc5SGw95dgZnYyy5OD5XeCiLAraqX8eLG3JyrsV/1CyoTVwqM87W",
+                            PasswordHash = "$2a$11$3oIo8RNQYbn0h3EN5lYqsea3mye4pNCKYcb9hxhEtMiFq7nX.INdi",
                             Phone = "333245884",
                             RoleId = 3
                         },
@@ -675,7 +678,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 45 67 89",
                             Email = "Alejandro@gmail.com",
                             Name = "Alejandro Londoño",
-                            PasswordHash = "$2a$11$5Q8J70riuyXVw.9uW9Ag3uHKfgtWFhzRtCaR6.z.4GPuwI.Fcfesi",
+                            PasswordHash = "$2a$11$DbhuhbnIZXnABN4fsbdbl.WUpBWB2hxZea9ktQHgAF8cnP0NKGLxK",
                             Phone = "3123456789",
                             RoleId = 2
                         },
@@ -685,7 +688,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 40 50 60",
                             Email = "kev@gmail.com",
                             Name = "Kevin Alvarez",
-                            PasswordHash = "$2a$11$KmhrJey/br1U6ImVudUa.ufNZqL6vCRVIAegcLIm/qYVnQbd4iIz2",
+                            PasswordHash = "$2a$11$UK7ecb1g4Q1nJC85oBUDqOaCohoejLhzxUbGj.haBOQJziKUvJzX2",
                             Phone = "3132145678",
                             RoleId = 2
                         },
@@ -695,7 +698,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 55 33 44",
                             Email = "laura.jimenez@restadmin.com",
                             Name = "Laura Jimenez",
-                            PasswordHash = "$2a$11$jF1yyyH.PCgI6gLF8pYVWuPv9qUOaBee7by8/Z985MlJCiHpQr6SC",
+                            PasswordHash = "$2a$11$jp2JQFLPqJYb0DidZpnnoO9uYqiWxc6iLEi3LRAqA9R.hLuNdPpVq",
                             Phone = "3221234567",
                             RoleId = 3
                         },
@@ -705,7 +708,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 60 35 78",
                             Email = "carlos.mejia@restadmin.com",
                             Name = "Carlos Mejia",
-                            PasswordHash = "$2a$11$zuCzF.OtznowzKQpF70AbexgWKYj3n7EiCW3bgpOWR2sj6pif1aze",
+                            PasswordHash = "$2a$11$BQH/D1FTuvqa7mMr2apSgua5qSmKOIuuNogx/UWNPa9JJqr93x.8.",
                             Phone = "3209876543",
                             RoleId = 1
                         },
@@ -715,7 +718,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 42 55 88",
                             Email = "diana.lopez@restadmin.com",
                             Name = "Diana Lopez",
-                            PasswordHash = "$2a$11$Yc34PADXM7XzXr3hNxy3ielmykDAXAhDddvqt3d5VG5rHJ0gXt0JC",
+                            PasswordHash = "$2a$11$FeyWfH281Ij7LpqLX60R4ebGBpX7DV4CrGy61bc6iL2BGPGXhuzMK",
                             Phone = "3111239876",
                             RoleId = 1
                         });

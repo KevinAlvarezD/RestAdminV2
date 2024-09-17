@@ -18,7 +18,7 @@ public class PreInvoice
     [Range(1, int.MaxValue, ErrorMessage = "The order number must be a positive number.")]
     public int Number { get; set; }
 
-    [Column("table_id")]
+    [Column("order_id")]
     [Required(ErrorMessage = "The order ID is required..")]
     [Range(1, int.MaxValue, ErrorMessage = "The order ID must be a positive number.")]
     public int OrderId { get; set; }
