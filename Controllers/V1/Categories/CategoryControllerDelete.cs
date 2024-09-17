@@ -2,7 +2,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace RestAdmin.Controllers
 {
-    public partial class CategoriesController{
+    public partial class CategoriesController
+    {
+        /// <summary>
+        /// Deletes a category specified by its ID.
+        /// </summary>
+        
+        /// <remarks>
+        /// This endpoint allows you to delete a category from the database. If the category does not exist, a 404 (Not Found) status code is returned.
+        /// </remarks>
+        
         //Delete: api/Categories/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategories(int id)
