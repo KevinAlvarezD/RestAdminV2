@@ -8,13 +8,13 @@ namespace RestAdminV2.Controllers
     public partial class InvoiceController
     {
         // POST: api/invoice/create-from-order/{orderId}
-        [HttpPost("create-from-order/{orderId}")]
-        public async Task<IActionResult> CreateInvoiceFromOrder(int orderId)
+        [HttpPost("create-from-orderKitchen")]
+        public async Task<IActionResult> CreateInvoiceFromOrder(int orderKitchenId)
         {
             // Get the order and its products
-            var orderProducts = await _context.OrderProducts
+            var orderProducts = await _context.KitchenItems
                 .Include(op => op.Product)
-                .Where(op => op.OrderId == orderId)
+                .Where(op => op.Kitchen.Id == orderKitchenId)
                 .ToListAsync();
 
             if (orderProducts == null || !orderProducts.Any())
@@ -29,7 +29,7 @@ namespace RestAdminV2.Controllers
             var invoice = new Invoice
             {
                 Number = GenerateInvoiceNumber(), 
-                OrderId = orderId,
+                OrderKitchenId = orderKitchenId,
                 Total = total,
                 Observations = "Generated from order", 
                 DateInvoice = DateTime.Now

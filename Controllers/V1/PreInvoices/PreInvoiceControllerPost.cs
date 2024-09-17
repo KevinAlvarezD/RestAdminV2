@@ -9,13 +9,13 @@ namespace RestAdminV2.Controllers
     {
 
         // POST: api/preinvoice/create-from-order/5
-        [HttpPost("create-from-order/{orderId}")]
-        public async Task<IActionResult> CreatePreInvoiceFromOrder(int orderId)
+        [HttpPost("create-from-orderKitchen")]
+        public async Task<IActionResult> CreatePreInvoiceFromOrder(int orderKitchenId)
         {
             
-            var orderProducts = await _context.OrderProducts
+            var orderProducts = await _context.KitchenItems
                 .Include(op => op.Product)
-                .Where(op => op.OrderId == orderId)
+                .Where(op => op.Kitchen.Id == orderKitchenId)
                 .ToListAsync();
 
             if (orderProducts == null || !orderProducts.Any())
@@ -29,7 +29,7 @@ namespace RestAdminV2.Controllers
             var preInvoice = new PreInvoice
             {
                 Number = GenerateInvoiceNumber(), 
-                OrderId = orderId,
+                OrderKitchenId = orderKitchenId,
                 Total = total,
                 DateInvoice = DateTime.Now,
                 Observations = "Generated from order"
