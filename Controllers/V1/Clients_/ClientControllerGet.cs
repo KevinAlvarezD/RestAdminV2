@@ -6,6 +6,17 @@ namespace RestAdminV2.Controllers
 {
     public partial class ClientsController
     {
+
+        /// <summary>
+        /// Return a list of all client.
+        /// </summary>
+
+        /// <remarks>
+        /// This endpoint returns a list of all client available in the database.
+        /// </remarks>
+
+        /// <response code="200">Returns the list of client</response>
+        /// <response code="500">If there was an internal error while fetching the client</response>
         // GET: api/Client
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Client>>> GetClient()
