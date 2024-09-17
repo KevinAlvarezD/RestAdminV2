@@ -2,16 +2,25 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestAdminV2.Models;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class ProductController
+    public partial class ProductController : ControllerBase
     {
-        // PUT: api/Products/5
+        // PUT: api/products/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(int id, [FromBody] Product Product)
+        [SwaggerOperation(
+            Summary = "Update an existing product",
+            Description = "Updates the details of an existing product identified by its ID. Returns 400 if there is a mismatch between the ID in the URL and the ID in the body, or if the input data is invalid. Returns 404 if the product is not found. Returns 500 if there is an internal server error."
+        )]
+        [SwaggerResponse(204, "The product was successfully updated.")]
+        [SwaggerResponse(400, "If there is a mismatch between the ID in the URL and the ID in the body, or if the input data is invalid.")]
+        [SwaggerResponse(404, "If the product with the specified ID is not found.")]
+        [SwaggerResponse(500, "If there is an internal server error.")]
+        public async Task<IActionResult> UpdateProduct(int id, [FromBody] Product product)
         {
-            if (id!= Product.Id)
+            if (id != product.Id)
             {
                 return BadRequest("Product ID mismatch.");
             }
@@ -21,7 +30,7 @@ namespace RestAdminV2.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Entry(Product).State = EntityState.Modified;
+            _context.Entry(product).State = EntityState.Modified;
 
             try
             {
@@ -46,7 +55,5 @@ namespace RestAdminV2.Controllers
         {
             return _context.Products.Any(e => e.Id == id);
         }
-
-        
     }
 }
