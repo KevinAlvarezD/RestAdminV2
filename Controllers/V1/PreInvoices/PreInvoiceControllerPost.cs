@@ -9,7 +9,7 @@ namespace RestAdminV2.Controllers
     public partial class PreInvoiceController : ControllerBase
     {
         // POST: api/preinvoice/create-from-order/5
-        [HttpPost("create-from-order/{orderId}")]
+        [HttpPost("create-from-orderKitchen")]
         [SwaggerOperation(
             Summary = "Creates a pre-invoice from an existing order",
             Description = "This endpoint generates a pre-invoice based on the provided order ID. Calculates the total from the associated order products and creates a new pre-invoice entry in the database. Returns 404 if the order or associated products are not found."
@@ -17,11 +17,12 @@ namespace RestAdminV2.Controllers
         [SwaggerResponse(201, "The pre-invoice was successfully created.")]
         [SwaggerResponse(404, "If the order with the specified ID is not found or there are no products associated with the order.")]
         [SwaggerResponse(500, "An internal server error occurred.")]
-        public async Task<IActionResult> CreatePreInvoiceFromOrder(int orderId)
+        public async Task<IActionResult> CreatePreInvoiceFromOrder(int orderKitchenId)
         {
-            var orderProducts = await _context.OrderProducts
+            
+            var orderProducts = await _context.KitchenItems
                 .Include(op => op.Product)
-                .Where(op => op.OrderId == orderId)
+                .Where(op => op.Kitchen.Id == orderKitchenId)
                 .ToListAsync();
 
             if (orderProducts == null || !orderProducts.Any())
@@ -34,8 +35,8 @@ namespace RestAdminV2.Controllers
 
             var preInvoice = new PreInvoice
             {
-                Number = GenerateInvoiceNumber(),
-                OrderId = orderId,
+                Number = GenerateInvoiceNumber(), 
+                OrderKitchenId = orderKitchenId,
                 Total = total,
                 DateInvoice = DateTime.Now,
                 Observations = "Generated from order"

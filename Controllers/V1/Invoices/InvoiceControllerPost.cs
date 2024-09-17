@@ -7,7 +7,7 @@ namespace RestAdminV2.Controllers
 {
     public partial class InvoiceController : ControllerBase
     {
-        [HttpPost("create-from-order/{orderId}")]
+        [HttpPost("create-from-orderKitchen")]
         [SwaggerOperation(
             Summary = "Creates a new invoice from an order",
             Description = "This endpoint allows you to create a new invoice in the database from an existing order. The created invoice will be returned in the response."
@@ -17,12 +17,12 @@ namespace RestAdminV2.Controllers
         [SwaggerResponse(400, "The invoice data is invalid or missing.")]
         [SwaggerResponse(404, "The order was not found or no products are associated with the order.")]
         [SwaggerResponse(500, "An internal server error occurred while creating the invoice.")]
-        public async Task<IActionResult> CreateInvoiceFromOrder(int orderId)
+        public async Task<IActionResult> CreateInvoiceFromOrder(int orderKitchenId)
         {
             // Get the order and its products
-            var orderProducts = await _context.OrderProducts
+            var orderProducts = await _context.KitchenItems
                 .Include(op => op.Product)
-                .Where(op => op.OrderId == orderId)
+                .Where(op => op.Kitchen.Id == orderKitchenId)
                 .ToListAsync();
 
             if (orderProducts == null || !orderProducts.Any())
@@ -34,8 +34,8 @@ namespace RestAdminV2.Controllers
 
             var invoice = new Invoice
             {
-                Number = GenerateInvoiceNumber(),
-                OrderId = orderId,
+                Number = GenerateInvoiceNumber(), 
+                OrderKitchenId = orderKitchenId,
                 Total = total,
                 Observations = "Generated from order",
                 DateInvoice = DateTime.Now
