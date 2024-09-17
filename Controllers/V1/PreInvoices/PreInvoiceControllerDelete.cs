@@ -12,7 +12,7 @@ namespace RestAdminV2.Controllers
             Summary = "Deletes a pre-invoice by ID",
             Description = "This endpoint deletes a specific pre-invoice from the database by its ID. Returns 404 if the pre-invoice does not exist."
         )]
-        
+
         [SwaggerResponse(204, "The pre-invoice was successfully deleted.")]
         [SwaggerResponse(404, "If the pre-invoice with the specified ID is not found.")]
         [SwaggerResponse(500, "An internal server error occurred.")]

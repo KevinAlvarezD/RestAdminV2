@@ -12,7 +12,7 @@ namespace RestAdminV2.Controllers
             Summary = "Creates a new invoice from an order",
             Description = "This endpoint allows you to create a new invoice in the database from an existing order. The created invoice will be returned in the response."
         )]
-      
+
         [SwaggerResponse(201, "Returns the created invoice along with its ID.")]
         [SwaggerResponse(400, "The invoice data is invalid or missing.")]
         [SwaggerResponse(404, "The order was not found or no products are associated with the order.")]
@@ -34,7 +34,7 @@ namespace RestAdminV2.Controllers
 
             var invoice = new Invoice
             {
-                Number = GenerateInvoiceNumber(), 
+                Number = GenerateInvoiceNumber(),
                 OrderKitchenId = orderKitchenId,
                 Total = total,
                 Observations = "Generated from order",

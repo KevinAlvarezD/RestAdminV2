@@ -19,7 +19,7 @@ namespace RestAdminV2.Controllers
         [SwaggerResponse(500, "An internal server error occurred.")]
         public async Task<IActionResult> CreatePreInvoiceFromOrder(int orderKitchenId)
         {
-            
+
             var orderProducts = await _context.KitchenItems
                 .Include(op => op.Product)
                 .Where(op => op.Kitchen.Id == orderKitchenId)
@@ -35,7 +35,7 @@ namespace RestAdminV2.Controllers
 
             var preInvoice = new PreInvoice
             {
-                Number = GenerateInvoiceNumber(), 
+                Number = GenerateInvoiceNumber(),
                 OrderKitchenId = orderKitchenId,
                 Total = total,
                 DateInvoice = DateTime.Now,
