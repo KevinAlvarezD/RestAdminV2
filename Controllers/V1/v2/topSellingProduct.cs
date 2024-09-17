@@ -1,13 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestAdminV2.Models;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace RestAdminV2.Controllers
-
 {
-    public partial class ProductController
+    public partial class ProductController : ControllerBase
     {
+        // GET: api/products/topSellingProduct
         [HttpGet("topSellingProduct")]
+        [SwaggerOperation(
+            Summary = "Get top selling product",
+            Description = "Retrieves the top selling product based on total quantity sold and total earnings."
+        )]
+        
+        [SwaggerResponse(200, "Returns the top selling product along with total quantity sold and total earnings.")]
+        [SwaggerResponse(404, "If no sales data is found.")]
         public async Task<ActionResult> GetTopSellingProduct()
         {
             var orderProducts = await _context.OrderProducts

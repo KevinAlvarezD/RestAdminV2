@@ -1,16 +1,26 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestAdminV2.Models;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class TablesController
+    public partial class TablesController : ControllerBase
     {
-        // PUT: api/Menus/5
+        // PUT: api/tables/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTables(int id, [FromBody] Tables Tables)
+        [SwaggerOperation(
+            Summary = "Update an existing table",
+            Description = "Updates the details of an existing table in the database."
+        )]
+        
+        [SwaggerResponse(204, "The table was updated successfully.")]
+        [SwaggerResponse(400, "If the request data is invalid or the table ID in the URL does not match the ID in the body.")]
+        [SwaggerResponse(404, "If the table with the specified ID is not found.")]
+        [SwaggerResponse(500, "If there was an internal error while updating the table.")]
+        public async Task<IActionResult> UpdateTables(int id, [FromBody] Tables tables)
         {
-            if (id != Tables.Id)
+            if (id != tables.Id)
             {
                 return BadRequest("Tables ID mismatch.");
             }
@@ -20,7 +30,7 @@ namespace RestAdminV2.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Entry(Tables).State = EntityState.Modified;
+            _context.Entry(tables).State = EntityState.Modified;
 
             try
             {
