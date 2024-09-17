@@ -11,11 +11,8 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 Env.Load();
-
 builder.Configuration.AddEnvironmentVariables();
-
 
 var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
 var dbPort = Environment.GetEnvironmentVariable("DB_PORT");
@@ -25,11 +22,9 @@ var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
 
 var mySqlConnection = $"server={dbHost};port={dbPort};database={dbDatabaseName};uid={dbUser};password={dbPassword}";
 
-
 builder.Services.AddControllers();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(mySqlConnection, ServerVersion.Parse("8.0.20-mysql")));
-
 
 builder.Services.AddCors(options =>
 {
@@ -41,7 +36,6 @@ builder.Services.AddCors(options =>
                   .AllowAnyHeader();
         });
 });
-
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -59,10 +53,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Farm", Version = "v1" });
+    c.EnableAnnotations();
+    
+    // Configure Swagger to use JWT Bearer authentication
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -89,20 +86,17 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
-builder.Services.AddSwaggerGen(c =>
-    {
-        c.SwaggerDoc("v2", new OpenApiInfo { Title = "RestAdmin", Version = "V2" });
-        c.EnableAnnotations();
-    });
-
-
 builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Farm V1");
+    c.RoutePrefix = string.Empty; // Set Swagger UI at the app's root
+});
+
 app.UseCors("AllowAllOrigins");
 
 app.UseHttpsRedirection();

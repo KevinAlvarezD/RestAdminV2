@@ -1,41 +1,30 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Annotations;
 using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class ClientsController
+    public partial class ClientsController : ControllerBase
     {
-        /// <summary>
-        /// Updates an existing Client by its ID.
-        /// </summary>
-
-        /// <remarks>
-        /// This endpoint allows you to update an existing Client in the database. If the Client with the specified ID does not exist, a 404 (Not Found) status code is returned. If the request data is invalid or does not match the ID, a 400 (Bad Request) status code is returned.
-        /// </remarks>
-
-        /// <param name="id">
-        /// The ID of the Client to update.
-        /// </param>
-
-        /// <param name="Client">
-        /// The Client object containing the updated data.
-        /// </param>
-
-        /// <response code="204">If the Client was updated successfully</response>
-        /// <response code="400">If the Client ID does not match or the request data is invalid</response>
-        /// <response code="404">If the Client with the specified ID was not found</response>
-        /// <response code="500">If there was an internal error while updating the Client</response>
-        // PUT: api/Client/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutClient(int id, Client Client)
+        [SwaggerOperation(
+            Summary = "Updates an existing client by its ID",
+            Description = "Updates an existing client in the database. If the client with the specified ID does not exist, a 404 (Not Found) status code is returned. If the request data is invalid or does not match the ID, a 400 (Bad Request) status code is returned."
+        )]
+        
+        [SwaggerResponse(204, "If the client was updated successfully.")]
+        [SwaggerResponse(400, "If the client ID does not match or the request data is invalid.")]
+        [SwaggerResponse(404, "If the client with the specified ID was not found.")]
+        [SwaggerResponse(500, "An internal server error occurred.")]
+        public async Task<IActionResult> PutClient(int id, [FromBody] Client client)
         {
-            if (id != Client.Id)
+            if (id != client.Id)
             {
                 return BadRequest("Client ID mismatch.");
             }
 
-            _context.Entry(Client).State = EntityState.Modified;
+            _context.Entry(client).State = EntityState.Modified;
 
             try
             {

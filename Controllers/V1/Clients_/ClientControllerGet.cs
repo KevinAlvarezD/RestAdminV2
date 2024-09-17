@@ -1,58 +1,46 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Annotations;
 using RestAdminV2.Models;
 
 namespace RestAdminV2.Controllers
 {
-    public partial class ClientsController
+    public partial class ClientsController : ControllerBase
     {
-
-        /// <summary>
-        /// Return a list of all client.
-        /// </summary>
-
-        /// <remarks>
-        /// This endpoint returns a list of all client available in the database.
-        /// </remarks>
-
-        /// <response code="200">Returns the list of client</response>
-        /// <response code="500">If there was an internal error while fetching the client</response>
-        // GET: api/Client
         [HttpGet]
+        [SwaggerOperation(
+            Summary = "Retrieves all clients",
+            Description = "This endpoint returns a list of all clients available in the database."
+        )]
+        
+        [SwaggerResponse(200, "Returns a list of clients", typeof(IEnumerable<Client>))]
+        [SwaggerResponse(500, "An internal server error occurred.")]
+
         public async Task<ActionResult<IEnumerable<Client>>> GetClient()
         {
-            return await _context.Clients.ToListAsync();
+            var clients = await _context.Clients.ToListAsync();
+            return Ok(clients);
         }
 
-
-        /// <summary>
-        /// Return a client by its ID.
-        /// </summary>
-
-        /// <param name="id">
-        /// The id of the client to Return
-        /// </param>
-
-        /// <remarks>
-        /// This endpoint allows you to fetch a specific client by providing its ID.
-        /// If the client does not exist, a 404 (Not Found) status code is returned.
-        /// </remarks>
-
-        /// <response code="200">Returns the requested client</response>
-        /// <response code="404">If the client with the specified ID is not found</response>
-        /// <response code="500">If there was an internal error while fetching the client</response>
-
-        // GET: api/Client/5
         [HttpGet("{id}")]
+        [SwaggerOperation(
+            Summary = "Retrieves a client by ID",
+            Description = "This endpoint allows you to fetch a specific client by providing its ID. If the client does not exist, a 404 (Not Found) status code is returned."
+        )]
+
+        [SwaggerResponse(200, "Returns the requested client", typeof(Client))]
+        [SwaggerResponse(404, "If the client with the specified ID is not found.")]
+        [SwaggerResponse(500, "An internal server error occurred.")]
+
         public async Task<ActionResult<Client>> GetClient(int id)
         {
-            var Client = await _context.Clients.FindAsync(id);
-            if (Client == null)
+            var client = await _context.Clients.FindAsync(id);
+            if (client == null)
             {
                 return NotFound();
             }
 
-            return Client;
+            return Ok(client);
         }
     }
 }
