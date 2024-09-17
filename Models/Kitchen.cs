@@ -14,14 +14,12 @@ public class Kitchen
     [Column("id")]
     public int Id { get; set; }
 
-    [Column("table_id")]
-    [Required(ErrorMessage = "The order ID is required..")]
-    [Range(1, int.MaxValue, ErrorMessage = "The order ID must be a positive number.")]
-    public int TableId { get; set; }
+    [Column("order_id")]
+    public int OrderId { get; set; }
 
-    [Column("observations")]
-    [MaxLength(155, ErrorMessage = "The observations must be at most {1} characters.")]
-    [Required(ErrorMessage = "The observations is required.")]
-    public string Observations { get; set; }
+    [ForeignKey("OrderId")]
+    public Order Order { get; set; }
 
+    [JsonIgnore]
+    public ICollection<KitchenItem> KitchenItems { get; set; } = new List<KitchenItem>();
 }
