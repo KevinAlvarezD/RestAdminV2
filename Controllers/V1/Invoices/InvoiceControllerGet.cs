@@ -6,6 +6,16 @@ namespace RestAdminV2.Controllers
 {
     public partial class InvoiceController
     {
+        /// <summary>
+        /// Return a list of all Invoice.
+        /// </summary>
+
+        /// <remarks>
+        /// This endpoint returns a list of all Invoice available in the database.
+        /// </remarks>
+
+        /// <response code="200">Returns the list of Invoice</response>
+        /// <response code="500">If there was an internal error while fetching the Invoice</response>
         // GET: api/invoice
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Invoice>>> GetInvoices()
