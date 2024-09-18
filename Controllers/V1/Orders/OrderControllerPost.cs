@@ -20,56 +20,109 @@ namespace RestAdminV2.Controllers
         [SwaggerResponse(500, "An internal server error occurred.")]
         public async Task<ActionResult<OrderDTO>> PostOrder(CreateOrderDTO createOrderDTO)
         {
-            var table = await _context.Tables.FindAsync(createOrderDTO.TablesId);
-            if (table == null)
+            // validar si hay o no hay un TablesId
+            if (createOrderDTO.TablesId == null)
             {
-                return BadRequest("Table not found.");
-            }
-
-            var order = new Order
-            {
-                TablesId = createOrderDTO.TablesId,
-                Observations = createOrderDTO.Observations,
-                Tables = table,
-                OrderProducts = new List<OrderProduct>()
-            };
-
-            foreach (var orderProductDTO in createOrderDTO.OrderProducts)
-            {
-                var product = await _context.Products.FindAsync(orderProductDTO.ProductId);
-                if (product == null)
+                // proceso de un domicilio
+                var order = new Order
                 {
-                    return BadRequest($"Product with ID {orderProductDTO.ProductId} not found.");
+                    Observations = createOrderDTO.Observations,
+                    Status = createOrderDTO.Status,
+                    OrderProducts = new List<OrderProduct>()
+                };
+
+                foreach (var orderProductDTO in createOrderDTO.OrderProducts)
+                {
+                    var product = await _context.Products.FindAsync(orderProductDTO.ProductId);
+                    if (product == null)
+                    {
+                        return BadRequest($"Product with ID {orderProductDTO.ProductId} not found.");
+                    }
+
+                    order.OrderProducts.Add(new OrderProduct
+                    {
+                        ProductId = product.Id,
+                        Quantity = orderProductDTO.Quantity,
+                        Order = order
+                    });
                 }
 
-                order.OrderProducts.Add(new OrderProduct
+                _context.Orders.Add(order);
+                await _context.SaveChangesAsync();
+
+                var orderDTO = new OrderDTO
                 {
-                    ProductId = product.Id,
-                    Quantity = orderProductDTO.Quantity,
-                    Order = order
-                });
+                    Id = order.Id,
+                    Status = order.Status,
+                    Observations = order.Observations,
+                    Products = order.OrderProducts.Select(op => new ProductDTO
+                    {
+                        Id = op.Product.Id,
+                        Name = op.Product.Name,
+                        Price = op.Product.Price,
+                        ImageURL = op.Product.ImageURL,
+                        Category = op.Product.Category
+                    }).ToList()
+                };
+
+                return CreatedAtAction(nameof(GetOrder), new { id = order.Id }, orderDTO);
+            }
+            else
+            {
+                var table = await _context.Tables.FindAsync(createOrderDTO.TablesId);
+                if (table == null)
+                {
+                    return BadRequest("Table not found.");
+                }
+
+                var order = new Order
+                {
+                    TablesId = createOrderDTO.TablesId,
+                    Observations = createOrderDTO.Observations,
+                    Status = createOrderDTO.Status,
+                    Tables = table,
+                    OrderProducts = new List<OrderProduct>()
+                };
+
+                foreach (var orderProductDTO in createOrderDTO.OrderProducts)
+                {
+                    var product = await _context.Products.FindAsync(orderProductDTO.ProductId);
+                    if (product == null)
+                    {
+                        return BadRequest($"Product with ID {orderProductDTO.ProductId} not found.");
+                    }
+
+                    order.OrderProducts.Add(new OrderProduct
+                    {
+                        ProductId = product.Id,
+                        Quantity = orderProductDTO.Quantity,
+                        Order = order
+                    });
+                }
+
+                _context.Orders.Add(order);
+                await _context.SaveChangesAsync();
+
+                var orderDTO = new OrderDTO
+                {
+                    Id = order.Id,
+                    Status = order.Status,
+                    Observations = order.Observations,
+                    TablesId = order.TablesId,
+                    TableName = table.Name,
+                    Products = order.OrderProducts.Select(op => new ProductDTO
+                    {
+                        Id = op.Product.Id,
+                        Name = op.Product.Name,
+                        Price = op.Product.Price,
+                        ImageURL = op.Product.ImageURL,
+                        Category = op.Product.Category
+                    }).ToList()
+                };
+
+                return CreatedAtAction(nameof(GetOrder), new { id = order.Id }, orderDTO);
             }
 
-            _context.Orders.Add(order);
-            await _context.SaveChangesAsync();
-
-            var orderDTO = new OrderDTO
-            {
-                Id = order.Id,
-                Observations = order.Observations,
-                TablesId = order.TablesId,
-                TableName = table.Name,
-                Products = order.OrderProducts.Select(op => new ProductDTO
-                {
-                    Id = op.Product.Id,
-                    Name = op.Product.Name,
-                    Price = op.Product.Price,
-                    ImageURL = op.Product.ImageURL,
-                    Category = op.Product.Category
-                }).ToList()
-            };
-
-            return CreatedAtAction(nameof(GetOrder), new { id = order.Id }, orderDTO);
         }
     }
 }
