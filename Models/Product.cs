@@ -5,6 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RestAdminV2.Models;
 
+
+public enum ProductStatus
+{
+    Habilitado,
+    Deshabilitado
+}
+
 [Table("products")]
 public class Product
 {
@@ -34,12 +41,16 @@ public class Product
     public string ImageURL { get; set; }
 
     [Column("category_id")]
-    public int CategoryId { get; set; } 
+    public int CategoryId { get; set; }
 
     [ForeignKey("CategoryId")]
-    public Categories Category { get; set; } 
+    public Categories Category { get; set; }
 
-    
+    [Column("status")]
+    [Required(ErrorMessage = "The status is required.")]
+    public ProductStatus Status { get; set; }
+
+
 
 
 

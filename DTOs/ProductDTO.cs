@@ -17,5 +17,6 @@ namespace RestAdminV2.DTOs
 
         [ForeignKey("CategoryId")]
         public Categories Category { get; set; }
+        public ProductStatus Status { get; set; }
     }
 }

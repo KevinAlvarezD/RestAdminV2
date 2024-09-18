@@ -29,9 +29,10 @@ namespace RestAdminV2.Controllers
             var orderDTOs = orders.Select(o => new OrderDTO
             {
                 Id = o.Id,
+                Status = o.Status,
                 Observations = o.Observations,
-                TablesId = o.TablesId,
-                TableName = o.Tables.Name,
+                TablesId = o.TablesId, 
+                TableName = o.TablesId.HasValue ? o.Tables.Name : null,
                 Products = o.OrderProducts.Select(op => new ProductDTO
                 {
                     Id = op.Product.Id,
@@ -71,9 +72,10 @@ namespace RestAdminV2.Controllers
             var orderDTO = new OrderDTO
             {
                 Id = order.Id,
+                Status = order.Status,
                 Observations = order.Observations,
                 TablesId = order.TablesId,
-                TableName = order.Tables.Name,
+                TableName = order.TablesId.HasValue ? order.Tables.Name : null, 
                 Products = order.OrderProducts.Select(op => new ProductDTO
                 {
                     Id = op.Product.Id,
@@ -89,3 +91,4 @@ namespace RestAdminV2.Controllers
         }
     }
 }
+
