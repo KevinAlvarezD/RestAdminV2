@@ -1,136 +1,140 @@
 # RestAdmin
 
-RestAdmin es un sistema de facturación completo para restaurantes. Es una API web creada en C# y .NET, utilizando Swagger para la documentación. El sistema incluye funcionalidades de CRUD (Crear, Leer, Actualizar, Eliminar) y consultas especializadas a la base de datos.
+<div style="text-align: center;">
+    <img src="https://www.restadmin.co/images/restadmin.png" alt="Logo" width="200" style="display: block; margin: 0 auto;"/>
+</div>
 
-![Licencia](https://img.shields.io/badge/license-MIT-blue.svg) ![Versión](https://img.shields.io/badge/version-1.0.0-blue.svg)
 
-## Índice
+RestAdmin is a comprehensive billing system for restaurants. It is a web API created in C# and .NET, using Swagger for documentation. The system includes CRUD (Create, Read, Update, Delete) functionalities and specialized queries to the database.
 
-1. [Descripción](#descripción)
-2. [Características](#características)
-3. [Tecnologías](#tecnologías)
-4. [Instalación](#instalación)
-5. [Uso](#uso)
-6. [Contribución](#contribución)
-7. [Licencia](#licencia)
-8. [Créditos](#créditos)
-9. [Contacto](#contacto)
+![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 
-## Descripción
+## Index
 
-RestAdmin es una solución de facturación para restaurantes que permite gestionar órdenes, facturas y datos de clientes a través de una API robusta. El sistema permite realizar operaciones CRUD y ejecutar consultas avanzadas sobre la base de datos para obtener información específica y útil.
+1. [Description](#description)
+2. [Features](#features)
+3. [Technologies](#technologies)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [Contribution](#contribution)
+7. [License](#license)
+8. [Credits](#credits)
+9. [Contact](#contact)
 
-## Características
+## Description
 
-- **CRUD Completo:** Crear, leer, actualizar y eliminar registros de órdenes, facturas y clientes.
-- **Consultas Especializadas:** Ejecuta consultas avanzadas para obtener información detallada.
-- **Documentación Swagger:** Interactúa con la API de manera intuitiva a través de Swagger UI.
-- **Seguridad y Control:** Gestión de acceso y autorización para proteger datos sensibles.
+RestAdmin is a billing solution for restaurants that allows you to manage orders, invoices, and customer data through a robust API. The system allows for CRUD operations and executes advanced queries on the database to obtain specific and useful information.
 
-## Tecnologías
+## Features
 
-- **Lenguajes:** C#
+- **Complete CRUD:** Create, read, update, and delete records of orders, invoices, and customers.
+- **Specialized Queries:** Execute advanced queries to obtain detailed information.
+- **Swagger Documentation:** Interact with the API intuitively through Swagger UI.
+- **Security and Control:** Access management and authorization to protect sensitive data.
+
+## Technologies
+
+- **Languages:** C#
 - **Frameworks:** .NET Core
-- **Documentación:** Swagger
-- **Base de Datos:** MySQL
+- **Documentation:** Swagger
+- **Database:** MySQL
 - **ORM:** Entity Framework Core
 
-## Instalación
+## Installation
 
-### Requisitos Previos
+### Prerequisites
 
-- **.NET Core SDK:** Asegúrate de tener instalado el SDK de .NET Core (versión 3.1 o superior).
-- **MySQL:** Debes tener MySQL instalado y configurado en tu máquina.
+- **.NET Core SDK:** Ensure that you have the .NET Core SDK (version 3.1 or higher) installed.
+- **MySQL:** You must have MySQL installed and configured on your machine.
 
-### Clonación del Repositorio
+### Cloning the Repository
 
 ```bash
-git clone https://github.com/tu_usuario/restadmin.git
+git clone https://github.com/your_user/restadmin.git
 ```
 
-### Instalación de Dependencias
+### Installing Dependencies
 
 ```bash
 cd restadmin
 dotnet restore
 ```
 
-### Configuración
+### Configuration
 
-1. **Base de Datos:**
-   - Crea una base de datos en MySQL y configura la cadena de conexión en `appsettings.json`.
+1. **Database:**
+   - Create a database in MySQL and configure the connection string in `appsettings.json`.
 
-2. **Migraciones:**
-   - Ejecuta las migraciones para crear las tablas en la base de datos:
+2. **Migrations:**
+   - Run the migrations to create the tables in the database:
 
    ```bash
    dotnet ef database update
    ```
 
-### Ejecución
+### Running
 
-Para ejecutar la API en el entorno local:
+To run the API locally:
 
 ```bash
 dotnet run
 ```
 
-La API estará disponible en `http://localhost:5000`. Puedes acceder a la documentación Swagger en `http://localhost:5000/swagger`.
+The API will be available at `https://restadmin.azurewebsites.net/index.html`. You can access the official page at `www.restadmin.co`.
 
-## Uso
+## Usage
 
-Para interactuar con la API, puedes utilizar herramientas como Postman o la interfaz Swagger UI integrada. Aquí tienes un ejemplo de cómo hacer una solicitud GET para obtener todas las órdenes:
+To interact with the API, you can use tools like Postman or the integrated Swagger UI. Here’s an example of how to make a GET request to retrieve all orders:
 
 ```bash
 curl -X GET "http://localhost:5000/api/orders"
 ```
 
-## Contribución
+## Contribution
 
-Si deseas contribuir al proyecto, sigue estos pasos:
+If you would like to contribute to the project, please follow these steps:
 
-1. **Haz un fork del repositorio.**
+1. **Fork the repository.**
 
-2. **Crea una rama para tu característica:**
-
-   ```bash
-   git checkout -b feature/nueva-caracteristica
-   ```
-
-3. **Realiza tus cambios y haz commits:**
+2. **Create a branch for your feature:**
 
    ```bash
-   git commit -am 'Añadida nueva característica'
+   git checkout -b feature/new-feature
    ```
 
-4. **Envía la rama:**
+3. **Make your changes and commit:**
 
    ```bash
-   git push origin feature/nueva-caracteristica
+   git commit -am 'Added new feature'
    ```
 
-5. **Crea un pull request en GitHub.**
+4. **Push the branch:**
 
-### Código de Conducta
+   ```bash
+   git push origin feature/new-feature
+   ```
 
-Por favor, sigue el código de conducta establecido para mantener un ambiente colaborativo.
+5. **Create a pull request on GitHub.**
 
-## Licencia
+### Code of Conduct
 
-Este proyecto está licenciado bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
+Please follow the established code of conduct to maintain a collaborative environment.
 
-## Créditos
+## License
 
-- **Autores:**
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for more details.
+
+## Credits
+
+- **Authors:**
   - Kevin Alvarez Diaz
   - Luis Alejandro Londoño Valle
   - Alejandro Castrillon
 
-- **Bibliotecas o Recursos:** Agradecimientos a cualquier biblioteca o recurso utilizado en el proyecto.
+- **Libraries or Resources:** Thanks to any libraries or resources used in the project.
 
-## Contacto
+## Contact
 
 - **Kevin Alvarez Diaz:** [GitHub](https://github.com/KevinAlvarezD)
 - **Luis Alejandro Londoño Valle:** [GitHub](https://github.com/AlejandroLondonoValle)
 - **Alejandro Castrillon:** [GitHub](https://github.com/CODEALEJO)
-```
