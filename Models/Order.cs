@@ -7,6 +7,16 @@ using RestAdminV2.Models;
 
 namespace RestAdminV2.Models
 {
+
+    public enum OrderStatus
+    {
+        Cocinando,
+        Ocupado,
+        PorFacturar,
+        Finalizado,
+        Cancelado
+    }
+
     [Table("orders")]
     public class Order
     {
@@ -26,6 +36,12 @@ namespace RestAdminV2.Models
         [MaxLength(155, ErrorMessage = "The observations must be at most {1} characters.")]
         [Required(ErrorMessage = "The observations is required.")]
         public string Observations { get; set; }
+
+        [Column("status")]
+        [Required(ErrorMessage = "The status is required.")]
+        public OrderStatus Status { get; set; }
+
+
 
 
     }
