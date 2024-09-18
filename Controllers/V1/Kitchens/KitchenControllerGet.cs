@@ -79,7 +79,7 @@ namespace RestAdmin.Controllers
                 Order = new OrderKitchenDTO
                 {
                     Observations = kitchen.Order.Observations,
-                    TablesId = kitchen.Order.TablesId,
+                    TablesId = (int)kitchen.Order.TablesId,
                     Products = kitchen.KitchenItems.Select(ki => new ProductKitchenDTO
                     {
                         Name = ki.Product.Name,

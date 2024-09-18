@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestAdminV2.Models;
 
@@ -11,9 +12,11 @@ using RestAdminV2.Models;
 namespace RestAdminV2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240918152640_AddColumnOrderStatus")]
+    partial class AddColumnOrderStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -280,7 +283,7 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("int")
                         .HasColumnName("status");
 
-                    b.Property<int?>("TablesId")
+                    b.Property<int>("TablesId")
                         .HasColumnType("int")
                         .HasColumnName("tables_id");
 
@@ -385,10 +388,6 @@ namespace RestAdminV2.Migrations
                         .HasColumnType("double")
                         .HasColumnName("price");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int")
-                        .HasColumnName("status");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -403,8 +402,7 @@ namespace RestAdminV2.Migrations
                             Cost = 2100.0,
                             ImageURL = "https://res.cloudinary.com/dfdvjpaja/image/upload/v1725641772/j1sfl0ooipp2lfnaznbx.jpg",
                             Name = "Coca cola 400ml",
-                            Price = 3500.0,
-                            Status = 0
+                            Price = 3500.0
                         },
                         new
                         {
@@ -413,8 +411,7 @@ namespace RestAdminV2.Migrations
                             Cost = 9000.0,
                             ImageURL = "https://res.cloudinary.com/dfdvjpaja/image/upload/v1725641834/oeicuuwbem09deuyizwp.jpg",
                             Name = "Hamburguesa",
-                            Price = 18000.0,
-                            Status = 0
+                            Price = 18000.0
                         },
                         new
                         {
@@ -423,8 +420,7 @@ namespace RestAdminV2.Migrations
                             Cost = 12000.0,
                             ImageURL = "https://res.cloudinary.com/dfdvjpaja/image/upload/v1725641861/ix9ooxdajnvxijwq7bwv.jpg",
                             Name = "Pizza Peperoni",
-                            Price = 22000.0,
-                            Status = 0
+                            Price = 22000.0
                         },
                         new
                         {
@@ -433,8 +429,7 @@ namespace RestAdminV2.Migrations
                             Cost = 3500.0,
                             ImageURL = "https://res.cloudinary.com/dfdvjpaja/image/upload/v1725669032/zoc4meht10bhophsaz7z.jpg",
                             Name = "Postobon 1.5lt",
-                            Price = 7000.0,
-                            Status = 0
+                            Price = 7000.0
                         },
                         new
                         {
@@ -443,8 +438,7 @@ namespace RestAdminV2.Migrations
                             Cost = 2500.0,
                             ImageURL = "https://res.cloudinary.com/dfdvjpaja/image/upload/v1725669102/wtymyqe8qug10utjrhmj.jpg",
                             Name = "Michelada clasica",
-                            Price = 5000.0,
-                            Status = 0
+                            Price = 5000.0
                         },
                         new
                         {
@@ -453,8 +447,7 @@ namespace RestAdminV2.Migrations
                             Cost = 3500.0,
                             ImageURL = "https://res.cloudinary.com/dfdvjpaja/image/upload/v1725669255/kg6sllhrux2qs3wogknz.jpg",
                             Name = "Michelada cereza",
-                            Price = 7000.0,
-                            Status = 0
+                            Price = 7000.0
                         },
                         new
                         {
@@ -463,8 +456,7 @@ namespace RestAdminV2.Migrations
                             Cost = 5000.0,
                             ImageURL = "https://assets.unileversolutions.com/recipes-v2/219942.jpg",
                             Name = "Bruschetta",
-                            Price = 12000.0,
-                            Status = 0
+                            Price = 12000.0
                         },
                         new
                         {
@@ -473,8 +465,7 @@ namespace RestAdminV2.Migrations
                             Cost = 12000.0,
                             ImageURL = "https://www.jocooks.com/wp-content/uploads/2022/04/tacos-al-pastor-feature-1.jpg",
                             Name = "Tacos al Pastor",
-                            Price = 25000.0,
-                            Status = 0
+                            Price = 25000.0
                         },
                         new
                         {
@@ -483,8 +474,7 @@ namespace RestAdminV2.Migrations
                             Cost = 3500.0,
                             ImageURL = "https://www.elespectador.com/resizer/tyGJPN_YmWpagQFeXq_YYOxAKjY=/arc-anglerfish-arc2-prod-elespectador/public/2AVD5Z6Y2ZFWHETPQGCPLMNK4A.jpg",
                             Name = "Ceviche",
-                            Price = 7000.0,
-                            Status = 0
+                            Price = 7000.0
                         },
                         new
                         {
@@ -493,8 +483,7 @@ namespace RestAdminV2.Migrations
                             Cost = 3500.0,
                             ImageURL = "https://escuelamundopastel.com/wp-content/uploads/2018/11/ORGANIZACI%C3%93N-DE-EVENTOS-10.png",
                             Name = "Cheesecake",
-                            Price = 7000.0,
-                            Status = 0
+                            Price = 7000.0
                         },
                         new
                         {
@@ -503,8 +492,7 @@ namespace RestAdminV2.Migrations
                             Cost = 3500.0,
                             ImageURL = "https://badun.nestle.es/imgserver/v1/80/1290x742/ac5fa47c04dd-brownie-de-chocolate-negro.jpg",
                             Name = "Brownie",
-                            Price = 6000.0,
-                            Status = 0
+                            Price = 6000.0
                         },
                         new
                         {
@@ -513,8 +501,7 @@ namespace RestAdminV2.Migrations
                             Cost = 3500.0,
                             ImageURL = "https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/6BE1C69C-69FB-4957-96EA-D76159076661/Derivates/BA406212-38AE-4EA0-B4D5-591514C21C2D.jpg",
                             Name = "Tiramisu",
-                            Price = 7000.0,
-                            Status = 0
+                            Price = 7000.0
                         });
                 });
 
@@ -665,7 +652,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 50 40 90",
                             Email = "erik@elmejor.com",
                             Name = "Erik Uribe",
-                            PasswordHash = "$2a$11$xBkCblCGGsEzg/xxYl5Z1ONjTFsM.MDAw1MYTTe1hU/z6bf5h8RvO",
+                            PasswordHash = "$2a$11$LDbukTZ6/hgaRKDsyXYGqedi/HqVkCRuFb3Ds1Qics6cAZ95fhoju",
                             Phone = "3242144893",
                             RoleId = 1
                         },
@@ -675,7 +662,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 50a 36 90",
                             Email = "aechavarriaj@gmail.com",
                             Name = "Alejandro Echavarria",
-                            PasswordHash = "$2a$11$oDSXLVXRKUVvltgEu5Cg5e9yEN7vT7BY.K8RN5MkaNH8mLuRGS0UK",
+                            PasswordHash = "$2a$11$0dajCxatcj0AG6QVbabsIuPeZiayjmzO4Cj/Q954SAxcecWbQAtMa",
                             Phone = "3004001077",
                             RoleId = 2
                         },
@@ -685,7 +672,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 59a 66 57",
                             Email = "alejomi192005@gmail.com",
                             Name = "Alejandro Castrillón",
-                            PasswordHash = "$2a$11$d36D/VDaV.Bg5PhGiWJxFedhzJsonaFvwtLoYU4WwHk/CxwqUD5aS",
+                            PasswordHash = "$2a$11$PfqGBGy1VUrSlP5ZTXrPhODdS.9mvbpH45CqSB9WyFbiwC5yfr6/W",
                             Phone = "333245884",
                             RoleId = 3
                         },
@@ -695,7 +682,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 45 67 89",
                             Email = "Alejandro@gmail.com",
                             Name = "Alejandro Londoño",
-                            PasswordHash = "$2a$11$MnbB2fAR2obJUayBmEEyquzesCeGzWHwht3Zyq.yVWgGXExLwgSh2",
+                            PasswordHash = "$2a$11$M7q6FzkKDIucKBMLMXx8SOZntRn254iy94km21CLa9k6LKJUE2MWS",
                             Phone = "3123456789",
                             RoleId = 2
                         },
@@ -705,7 +692,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 40 50 60",
                             Email = "kev@gmail.com",
                             Name = "Kevin Alvarez",
-                            PasswordHash = "$2a$11$z2EXoeilkX1l.4nX70gj9.BA7s528yskipAQUBODLyXgglQyEEqZK",
+                            PasswordHash = "$2a$11$P38WO93YMUvNDuGJyjyArOLfMDtoToRtiMuKzf3ug.RW24wF0C32O",
                             Phone = "3132145678",
                             RoleId = 2
                         },
@@ -715,7 +702,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 55 33 44",
                             Email = "laura.jimenez@restadmin.com",
                             Name = "Laura Jimenez",
-                            PasswordHash = "$2a$11$re15cRFTTNZXRfE6ZtzCgehWfm6P8/T1iMp4ORTaqAOcUT1Tqe2EC",
+                            PasswordHash = "$2a$11$lxgUkXh4qua.rm6HDNA06.V5MYYWpIHrigc72S2sSj/AJDPsvYiKa",
                             Phone = "3221234567",
                             RoleId = 3
                         },
@@ -725,7 +712,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 60 35 78",
                             Email = "carlos.mejia@restadmin.com",
                             Name = "Carlos Mejia",
-                            PasswordHash = "$2a$11$/nL0Yo/D.V3bkHDJWzmV5OlMwhlZP6n1LJrivWoIiPlisBVNatfSm",
+                            PasswordHash = "$2a$11$r4vrnnMq7AmFpIo2eLzR9eh.OTy5EPHBZfJ9Nyt3JOj6psbH.7Jhm",
                             Phone = "3209876543",
                             RoleId = 1
                         },
@@ -735,7 +722,7 @@ namespace RestAdminV2.Migrations
                             Address = "Cra 42 55 88",
                             Email = "diana.lopez@restadmin.com",
                             Name = "Diana Lopez",
-                            PasswordHash = "$2a$11$TfBSsYLr/72x7.v39XYca.E6gyYbGKNXf0PyJ3WFMA.KtlqRxL.06",
+                            PasswordHash = "$2a$11$AYIvdtJxEzg1LsdL96IQJ.HIQ4Cw69lJwF0P10Y3U0fQLWPBOZehi",
                             Phone = "3111239876",
                             RoleId = 1
                         });
@@ -775,7 +762,9 @@ namespace RestAdminV2.Migrations
                 {
                     b.HasOne("RestAdminV2.Models.Tables", "Tables")
                         .WithMany()
-                        .HasForeignKey("TablesId");
+                        .HasForeignKey("TablesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Tables");
                 });
