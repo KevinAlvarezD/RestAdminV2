@@ -8,7 +8,7 @@ namespace RestAdminV2.DTOs;
 
 public class UpdateOrderDTO
 {
-    public int TablesId { get; set; }
+    public int? TablesId { get; set; }
     public string Observations { get; set; }
     public OrderStatus Status { get; set; }
     public List<OrderProductDTO> OrderProducts { get; set; }
