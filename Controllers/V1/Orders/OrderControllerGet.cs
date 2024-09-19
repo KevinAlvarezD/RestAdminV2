@@ -13,7 +13,7 @@ namespace RestAdminV2.Controllers
     {
         [HttpGet]
         [SwaggerOperation(
-            Summary = "Retrieves a list of all orders",
+            Summary = "Returns a list of all orders",
             Description = "This endpoint returns a list of all orders available in the database."
         )]
         [SwaggerResponse(200, "Returns the list of orders.", typeof(IEnumerable<OrderDTO>))]

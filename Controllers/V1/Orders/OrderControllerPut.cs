@@ -33,6 +33,7 @@ namespace RestAdminV2.Controllers
 
             existingOrder.TablesId = updateOrderDTO.TablesId;
             existingOrder.Observations = updateOrderDTO.Observations;
+            existingOrder.Status = updateOrderDTO.Status;
 
             _context.OrderProducts.RemoveRange(existingOrder.OrderProducts);
 
