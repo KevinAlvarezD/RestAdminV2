@@ -12,9 +12,9 @@ namespace RestAdminV2.Controllers
     {
         [HttpPut("{id}")]
         [SwaggerOperation(
-            Summary = "Updates an existing order",
-            Description = "This endpoint updates an existing order in the database. It requires the ID of the order and the updated data. Returns 204 if the update was successful, or 404 if the order was not found. Returns 400 if any of the products specified in the request are not found."
-        )]
+    Summary = "Updates an existing order",
+    Description = "This endpoint updates an existing order in the database. It requires the ID of the order and the updated data. Returns 204 if the update was successful, or 404 if the order was not found. Returns 400 if any of the products specified in the request are not found."
+)]
         [SwaggerResponse(204, "The order was successfully updated.")]
         [SwaggerResponse(400, "If any of the products specified in the request are not found.")]
         [SwaggerResponse(404, "If the order with the specified ID was not found.")]
@@ -31,7 +31,21 @@ namespace RestAdminV2.Controllers
                 return NotFound();
             }
 
-            existingOrder.TablesId = updateOrderDTO.TablesId;
+            if (updateOrderDTO.TablesId == null)
+            {
+                existingOrder.TablesId = null; 
+            }
+            else
+            {
+                var table = await _context.Tables.FindAsync(updateOrderDTO.TablesId);
+                if (table == null)
+                {
+                    return BadRequest("Table not found.");
+                }
+                existingOrder.TablesId = updateOrderDTO.TablesId;
+                existingOrder.Tables = table; 
+            }
+
             existingOrder.Observations = updateOrderDTO.Observations;
             existingOrder.Status = updateOrderDTO.Status;
 
@@ -49,7 +63,7 @@ namespace RestAdminV2.Controllers
                 {
                     ProductId = product.Id,
                     Quantity = orderProductDTO.Quantity,
-                    OrderId = id 
+                    OrderId = id
                 });
             }
 
