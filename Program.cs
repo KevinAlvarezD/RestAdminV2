@@ -66,7 +66,6 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "RestAdmin", Version = "v1" });
     c.EnableAnnotations();
     
-    // Configure Swagger to use JWT Bearer authentication
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -101,7 +100,7 @@ app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "RestAdminV2");
-    c.RoutePrefix = string.Empty; // Set Swagger UI at the app's root
+    c.RoutePrefix = string.Empty;
 });
 
 app.UseCors("AllowAllOrigins");

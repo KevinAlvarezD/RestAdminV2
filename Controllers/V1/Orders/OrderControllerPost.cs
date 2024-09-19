@@ -20,10 +20,8 @@ namespace RestAdminV2.Controllers
         [SwaggerResponse(500, "An internal server error occurred.")]
         public async Task<ActionResult<OrderDTO>> PostOrder(CreateOrderDTO createOrderDTO)
         {
-            // validar si hay o no hay un TablesId
             if (createOrderDTO.TablesId == null)
             {
-                // proceso de un domicilio
                 var order = new Order
                 {
                     Observations = createOrderDTO.Observations,

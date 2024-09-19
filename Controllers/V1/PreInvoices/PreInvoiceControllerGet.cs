@@ -9,7 +9,7 @@ namespace RestAdminV2.Controllers
     {
         [HttpGet]
         [SwaggerOperation(
-            Summary = "Retrieves a list of all pre-invoices",
+            Summary = "Returns a list of all pre-invoices",
             Description = "This endpoint returns a list of all pre-invoices available in the database."
         )]
         [SwaggerResponse(200, "Returns the list of pre-invoices.")]
@@ -23,7 +23,7 @@ namespace RestAdminV2.Controllers
         // GET: api/preinvoice/5
         [HttpGet("{id}")]
         [SwaggerOperation(
-            Summary = "Retrieves a pre-invoice by ID",
+            Summary = "Returns a pre-invoice by ID",
             Description = "This endpoint returns a specific pre-invoice by its ID. Returns 404 if the pre-invoice does not exist."
         )]
 
