@@ -9,7 +9,7 @@ namespace RestAdmin.Controllers
     {
         [HttpGet]
         [SwaggerOperation(
-            Summary = "Retrieves all categories",
+            Summary = "Return all categories",
             Description = "Gets a list of all categories in the database."
         )]
 

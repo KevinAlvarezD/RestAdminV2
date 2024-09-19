@@ -24,7 +24,7 @@ namespace RestAdminV2.Controllers
 
         [HttpGet("{id}")]
         [SwaggerOperation(
-            Summary = "Retrieves a client by ID",
+            Summary = "Returns a client by ID",
             Description = "This endpoint allows you to fetch a specific client by providing its ID. If the client does not exist, a 404 (Not Found) status code is returned."
         )]
 
