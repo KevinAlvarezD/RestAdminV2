@@ -133,6 +133,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Libraries or Resources:** Thanks to any libraries or resources used in the project.
 
+  ## WorkSpace
+  ## JIRA
+  https://londonovalleluisalejandro.atlassian.net/jira/software/projects/RES/boards/2
+
+  ## DRAW.IO
+  https://app.diagrams.net/#HKevinAlvarezD%2FRestAdminV2%2Fmain%2FDocuments%2FDiagrama.drawio#%7B%22pageId%22%3A%22C5RBs43oDa-KdzZeNtuy%22%7D
+
 ## Contact
 
 - **Kevin Alvarez Diaz:** [GitHub](https://github.com/KevinAlvarezD)
